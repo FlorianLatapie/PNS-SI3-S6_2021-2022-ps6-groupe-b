@@ -1,0 +1,624 @@
+{
+	"info": {
+		"_postman_id": "8aed75de-85af-48ce-9c94-a6f209f03240",
+		"name": "PS6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Quizzes",
+			"item": [
+				{
+					"name": "Get quizzes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create quizz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"theme\": \"Sports\",\n\t\"name\": \"Avec un ballon\"\n}"
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete quizz",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1584372940168",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1584372940168"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get quizz by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1584378903107",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1584378903107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update quiz",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"theme\": \"Sports\",\n\t\"name\": \"Avec 2 ballons\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1584378903107",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1584378903107"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Paul\",\n\t\"lastName\": \"Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/users/1584387277368",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"users",
+								"1584387277368"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/users/1584387277368",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"users",
+								"1584387277368"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/users/1584387277368",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"users",
+								"1584387277368"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Create questions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\": \"Quelle est la capitale de la Finlande ?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1584378903107/questions",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1584378903107",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete questions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1583165184337",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1583165184337"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\": \"Quelle est la capitale de la Finlande ?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get question by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create question with answers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Quelle est la capitale de la Finlande ?\",\n\t\"answers\":\n\t\t[\n\t\t\t{\"value\":\"Helsinki\",\"isCorrect\":true},\n\t\t\t{\"value\":\"Paris\",\"isCorrect\":false}\n\t\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1584378903107/questions",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1584378903107",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answers",
+			"item": [
+				{
+					"name": "Get answers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757/answers",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757",
+								"answers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create answer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": \"Helsinki\",\n\t\"isCorrect\":  true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757/answers",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757",
+								"answers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get answer by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757/answers/1584382671281",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757",
+								"answers",
+								"1584382671281"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update answer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": \"Helsinki\",\n\t\"isCorrect\":  false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757/answers/1584382671281",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757",
+								"answers",
+								"1584382671281"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete answer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9428/api/quizzes/1583165102259/questions/1584373088757/answers/1584382671281",
+							"host": [
+								"localhost"
+							],
+							"port": "9428",
+							"path": [
+								"api",
+								"quizzes",
+								"1583165102259",
+								"questions",
+								"1584373088757",
+								"answers",
+								"1584382671281"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9428/api/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9428",
+					"path": [
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

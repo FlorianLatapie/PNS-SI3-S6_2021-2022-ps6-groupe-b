@@ -1,0 +1,9 @@
+<div class="card">
+    <h2>
+        <i class="fab fa-leanpub"></i>
+        {{quiz.name}}
+    </h2>
+    <button class="button-card" (click)="selectQuiz()">Select</button>
+    <button class="button-card" (click)="delete()">Delete</button>
+    <button class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+</div>

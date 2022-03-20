@@ -1,0 +1,23 @@
+@import "./variables";
+
+.card {
+  background: $white;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 1em 1em 1em;
+}
+
+.button-card {
+  background-color: $white;
+  border: solid 1px $blue;
+  color: $blue;
+  font-weight: bold;
+  padding: 0.5em 1em;
+}
+
+.button-card:hover {
+  cursor: pointer;
+}

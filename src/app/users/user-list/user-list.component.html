@@ -1,0 +1,6 @@
+<app-user-form></app-user-form>
+<div class="user-list">
+    <div class="user" *ngFor="let user of userList">
+        <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
+    </div>
+  </div>
