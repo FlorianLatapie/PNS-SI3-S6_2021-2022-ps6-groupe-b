@@ -9,6 +9,7 @@ import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import {CreateQuizInformationComponent} from './pages/create-quiz-information/create-quiz-information.component';
 
 const routes: Routes = [
     {path: 'main-page', component: MainPageComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path: 'guidelines-page', component: GuidelinesPageComponent},
     {path: 'about-page', component: AboutPageComponent},
     {path: 'account-page', component: AccountPageComponent},
+    {path: 'information-quiz-page', component: CreateQuizInformationComponent},
 
 
     {path: 'user-list', component: UserListComponent},
