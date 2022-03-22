@@ -22,6 +22,7 @@ import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import { QuizListSelectComponent } from './quizzes/quiz-list-select/quiz-list-select.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
     GuidelinesPageComponent,
     AboutPageComponent,
     AccountPageComponent,
+    QuizListSelectComponent,
   ],
   imports: [
     BrowserModule,

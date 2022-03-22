@@ -11,18 +11,20 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 
 const routes: Routes = [
+    // PAGE
     {path: 'main-page', component: MainPageComponent},
     {path: 'play-page', component: PlayPageComponent},
     {path: 'manage-page', component: ManagePageComponent},
     {path: 'guidelines-page', component: GuidelinesPageComponent},
     {path: 'about-page', component: AboutPageComponent},
     {path: 'account-page', component: AccountPageComponent},
+    {path: '', redirectTo: '/main-page', pathMatch: 'full'},
 
-
+    // QUIZ
     {path: 'user-list', component: UserListComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
-    { path: '', redirectTo: '/main-page', pathMatch: 'full' },
+
 ];
 
 @NgModule({
