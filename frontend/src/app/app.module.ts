@@ -22,6 +22,8 @@ import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
     GuidelinesPageComponent,
     AboutPageComponent,
     AccountPageComponent,
+    SignInPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

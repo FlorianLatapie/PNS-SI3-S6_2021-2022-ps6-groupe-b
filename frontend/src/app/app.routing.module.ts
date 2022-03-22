@@ -9,6 +9,8 @@ import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 const routes: Routes = [
     {path: 'main-page', component: MainPageComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
     {path: 'guidelines-page', component: GuidelinesPageComponent},
     {path: 'about-page', component: AboutPageComponent},
     {path: 'account-page', component: AccountPageComponent},
+    {path: 'sign-in-page', component: SignInPageComponent},
+    {path: 'login-page', component: LoginPageComponent},
 
 
     {path: 'user-list', component: UserListComponent},
