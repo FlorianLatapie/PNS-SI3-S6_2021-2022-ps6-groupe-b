@@ -8,7 +8,8 @@ import { Quiz } from 'src/models/quiz.model';
 })
 export class PlayPageComponent implements OnInit {
   quiz : Quiz;
-  
+  isQuizSelected : Boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +17,7 @@ export class PlayPageComponent implements OnInit {
 
   quizSelected(quiz : Quiz){
     this.quiz = quiz;
+    this.isQuizSelected = !this.isQuizSelected;
   }
 
 }

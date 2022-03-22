@@ -1,2 +1,11 @@
-<p>play-page works!</p>
-<app-quiz-list [displayDeleteButton]="false" [displayEditButton]="false" (quizSelectedFromChild)="quizSelected($event)" ></app-quiz-list>
+<p>play-page</p>
+
+<div *ngIf="!isQuizSelected; then quiz_list else quiz_selected">
+</div>
+<ng-template #quiz_list>
+    <app-quiz-list [displayDeleteButton]="false" [displayEditButton]="false" (quizSelectedFromChild)="quizSelected($event)" ></app-quiz-list>
+</ng-template>
+
+<ng-template #quiz_selected>
+    <app-play-quiz-page></app-play-quiz-page>
+</ng-template>
