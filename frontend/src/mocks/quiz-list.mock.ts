@@ -19,13 +19,8 @@ export const QUESTION_ACTOR: Question = {
 export const QUIZ_LIST: Quiz[] = [
     {
         id: '1',
-        name: 'Les Acteurs', // What's happening if I change this value..?
+        name: 'Ceci est un quiz d\'exemple, démarrez le backend pour voir les quiz', // What's happening if I change this value..?
         theme: 'Actor',
-        questions: [],
-    },
-    {
-        id: '2',
-        name: 'Les technos WEB',
         questions: [],
     }
 ];
