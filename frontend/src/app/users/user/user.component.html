@@ -3,6 +3,6 @@
         <i class="fas fa-user"></i>
         {{user.firstName}} {{user.lastName}}
     </h2>
-    <button class="button-card" (click)="delete()">Delete</button>
+    <button *ngIf = "displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
     <button class="button-card" (click)="select()">Sélectionner</button>
 </div>

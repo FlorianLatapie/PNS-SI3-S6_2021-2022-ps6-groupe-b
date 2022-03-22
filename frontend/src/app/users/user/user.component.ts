@@ -12,6 +12,9 @@ export class UserComponent implements OnInit {
   @Input()
   user: User;
 
+  @Input()
+  displayDeleteButton: boolean;
+
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
   @Output()
@@ -20,6 +23,7 @@ export class UserComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.displayDeleteButton);
   }
 
   delete() {
