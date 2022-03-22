@@ -9,7 +9,6 @@ import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
-import { QuizListSelectComponent } from './quizzes/quiz-list-select/quiz-list-select.component';
 
 const routes: Routes = [
     // PAGE
@@ -25,7 +24,6 @@ const routes: Routes = [
     {path: 'user-list', component: UserListComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
-    {path: 'quiz-list-select', component: QuizListSelectComponent},
 ];
 
 @NgModule({

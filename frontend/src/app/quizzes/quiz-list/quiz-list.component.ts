@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
@@ -24,11 +24,16 @@ export class QuizListComponent implements OnInit {
   @Input()
   displayDeleteButton: boolean;
 
+  @Output()
+  quizSelectedFromChild: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+
+
   ngOnInit(): void {
   }
 
-  quizSelected(selected: boolean): void {
-    console.log('event received from child:', selected);
+  quizSelected(selected: Quiz): void {
+    // console.log(selected);
+    this.quizSelectedFromChild.emit(selected);    
   }
 
   editQuiz(quiz: Quiz): void {

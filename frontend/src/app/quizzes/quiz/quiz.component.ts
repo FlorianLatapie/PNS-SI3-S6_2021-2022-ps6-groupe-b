@@ -18,7 +18,7 @@ export class QuizComponent implements OnInit {
   displayDeleteButton: boolean;
   
   @Output()
-  quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
   @Output()
   editQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
@@ -34,7 +34,7 @@ export class QuizComponent implements OnInit {
   }
 
   selectQuiz(): void {
-    this.quizSelected.emit(true);
+    this.quizSelected.emit(this.quiz);
   }
 
   edit(): void {
