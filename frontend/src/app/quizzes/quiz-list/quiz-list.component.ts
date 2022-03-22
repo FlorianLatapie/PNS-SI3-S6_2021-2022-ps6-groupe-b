@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
@@ -17,6 +17,12 @@ export class QuizListComponent implements OnInit {
       this.quizList = quizzes;
     });
   }
+
+  @Input()
+  displayEditButton: boolean;
+
+  @Input()
+  displayDeleteButton: boolean;
 
   ngOnInit(): void {
   }
