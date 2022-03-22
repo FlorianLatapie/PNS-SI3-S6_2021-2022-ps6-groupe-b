@@ -1,0 +1,21 @@
+.body-manage-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.button-placement{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+button{
+  margin: 1rem;
+  padding: 2rem;
+  width: auto;
+  height: auto;
+  text-align: center;
+}

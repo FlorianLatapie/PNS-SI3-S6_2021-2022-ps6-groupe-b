@@ -24,6 +24,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { CreateQuizInformationComponent } from './pages/create-quiz-information/create-quiz-information.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AccountPageComponent,
     SignInPageComponent,
     LoginPageComponent,
+    CreateQuizInformationComponent,
   ],
   imports: [
     BrowserModule,
