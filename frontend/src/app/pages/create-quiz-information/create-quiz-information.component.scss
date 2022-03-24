@@ -1,1 +1,8 @@
 @import '../../../styles/card.scss';
+@import '../../../styles/align-buttons.scss';
+
+.body-manage-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

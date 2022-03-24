@@ -2,6 +2,7 @@ const Joi = require('joi')
 const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('Quiz', {
-  theme: Joi.string().required(),
   name: Joi.string().required(),
+  description: Joi.string().required(),
+  category: Joi.string().required(),
 })

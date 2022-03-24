@@ -1,17 +1,31 @@
 <div class="card">
-  <h2>Create a new Quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
-    <label for="title">
-      Title <br>
+    <label for="name">
+      Nom du Quiz *<br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'">
     </label>
     <br>
-    <label for="theme">
-      Theme <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+    <label for="description">
+      Description *<br>
+      <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'"></textarea>
     </label>
     <br>
-    <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
+    <label for="category">
+      Catégorie *<br>
+      <select id="category" [formControlName]="'category'">
+        <option value="Personnes" selected>Personnes</option>
+        <option value="Lieux">Lieux</option>
+        <option value="Évènements">Évènements</option>
+      </select>
+    </label>
+    <br>
+    <p><i>* : Champs obligatoires</i></p>
+
+    <div class="align-button">
+      <button type="cancel" class="button-card" [routerLink]="['/manage-page']">Annuler</button>
+      <button type="submit" class="button-card" (click)="addQuiz()" [routerLink]="['/manage-page']">Valider</button>
+    </div>
+
   </form>
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->

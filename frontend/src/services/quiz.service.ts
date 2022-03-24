@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,10 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz): void {
-    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Quiz>('addQuiz'))
+      ).subscribe(() => this.retrieveQuizzes());
   }
 
   setSelectedQuiz(quizId: string): void {
@@ -70,6 +74,17 @@ export class QuizService {
   deleteQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
+  // tslint:disable-next-line:typedef
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+      console.log('Il y a eu une erreur');
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 
   /*

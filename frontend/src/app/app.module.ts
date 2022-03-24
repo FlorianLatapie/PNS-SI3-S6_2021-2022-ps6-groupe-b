@@ -25,6 +25,8 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CreateQuizInformationComponent } from './pages/create-quiz-information/create-quiz-information.component';
+import { CreateQuizPageComponent } from './pages/create-quiz-page/create-quiz-page.component';
+import { UpdateQuizzesComponent } from './pages/update-quizzes/update-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { CreateQuizInformationComponent } from './pages/create-quiz-information/
     SignInPageComponent,
     LoginPageComponent,
     CreateQuizInformationComponent,
+    CreateQuizPageComponent,
+    UpdateQuizzesComponent,
   ],
   imports: [
     BrowserModule,

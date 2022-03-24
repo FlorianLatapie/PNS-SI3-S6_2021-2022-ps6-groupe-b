@@ -12,6 +12,8 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {CreateQuizInformationComponent} from './pages/create-quiz-information/create-quiz-information.component';
+import {CreateQuizPageComponent} from './pages/create-quiz-page/create-quiz-page.component';
+import {UpdateQuizzesComponent} from './pages/update-quizzes/update-quizzes.component';
 
 const routes: Routes = [
     {path: 'main-page', component: MainPageComponent},
@@ -23,7 +25,8 @@ const routes: Routes = [
     {path: 'sign-in-page', component: SignInPageComponent},
     {path: 'login-page', component: LoginPageComponent},
     {path: 'information-quiz-page', component: CreateQuizInformationComponent},
-
+    {path: 'create-quiz-page', component: CreateQuizPageComponent},
+    {path: 'update-quizzes', component: UpdateQuizzesComponent},
 
     {path: 'user-list', component: UserListComponent},
     {path: 'quiz-list', component: QuizListComponent},
