@@ -25,6 +25,7 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
 import { QuizListSelectComponent } from './quizzes/quiz-list-select/quiz-list-select.component';
 import { PlayQuizPageComponent } from './pages/play-quiz-page/play-quiz-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonBackgroundQuestionDirective } from './pages/play-quiz-page/button-change-background/button-background-question.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AccountPageComponent,
     QuizListSelectComponent,
     PlayQuizPageComponent,
+    ButtonBackgroundQuestionDirective,
+    
   ],
   imports: [
     BrowserModule,
