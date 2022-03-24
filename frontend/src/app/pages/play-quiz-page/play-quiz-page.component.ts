@@ -34,7 +34,7 @@ export class PlayQuizPageComponent implements OnInit {
   }
 
   nextQuestion(){
-    if(this.quiz.questions.length>this.currentQuestion){
+    if(this.quiz.questions.length-1>this.currentQuestion){
       this.answerSelected = true;
       setTimeout(()=>{
         this.currentQuestion++;
@@ -42,7 +42,9 @@ export class PlayQuizPageComponent implements OnInit {
       }, 1000);
     }
     else{
-      this.endOfQuiz=true;
+      setTimeout(()=>{
+        this.endOfQuiz=true;
+      }, 2000)
     }
   }
 
