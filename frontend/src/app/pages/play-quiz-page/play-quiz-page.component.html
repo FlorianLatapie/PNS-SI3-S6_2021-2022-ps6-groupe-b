@@ -1,17 +1,22 @@
 <p>play-quiz-page works!</p>
 <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
 <ng-template #quiz_play>
-        <div class="card">
-            <p>{{quiz.questions[currentQuestion].label}}</p>
-            <img class="image-question-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/John_Cena_July_2018.jpg/1200px-John_Cena_July_2018.jpg" alt="">
-            <div class="answer" *ngFor="let answer of quiz.questions[currentQuestion].answers">
-                <button class = "answer-button" (click)="onAnswer(answer.isCorrect)" [disabled]="answerSelected" appButtonBackgroundQuestion [correctAnswer] = "answer.isCorrect">
-                    {{answer.value}}
-                </button>
-                    <!-- <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br> -->
+        <div class="card question-card">
+            <div class="question-label">
+                <h1>{{quiz.questions[currentQuestion].label}}</h1>
+                <img class="image-question-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/John_Cena_July_2018.jpg/1200px-John_Cena_July_2018.jpg" alt="">
+            </div>
+            <div class="grid-button-answers">
+                <div *ngFor="let answer of quiz.questions[currentQuestion].answers">
+                    <button class = "button-card button-card-answer" (click)="onAnswer(answer.isCorrect)" [disabled]="answerSelected" appButtonBackgroundQuestion [correctAnswer] = "answer.isCorrect">
+                        {{answer.value}}
+                    </button>
+                        <!-- <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br> -->
                 </div>
             </div>
+            
             <p>{{currentQuestion +1}}/{{quiz.questions.length}}</p>
+        </div>
 </ng-template>
 
 

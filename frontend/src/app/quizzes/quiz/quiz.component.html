@@ -1,9 +1,11 @@
-<div class="card">
+<div class="card quiz-card">
     <h2>
         <i class="fab fa-leanpub"></i>
         {{quiz.name}}
     </h2>
-    <button class="button-card" (click)="selectQuiz()">Select</button>
-    <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
-    <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+    <div class="flex-buttons-quiz">
+        <button class="button-card" (click)="selectQuiz()">Select</button>
+        <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
+        <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+    </div>
 </div>
