@@ -1,6 +1,13 @@
 <div class="card">
   <h2>Create a new question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
+    <br>
+    <div>
+      <input type="file" (change)="onFileSelected($event)" id="upload-image" name="upload-image" class="add-image">
+      <label for="upload-image"><i class="fa fa-plus"></i></label>
+    </div>
+    <br>
+
     <label for="label">
       Title <br>
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
@@ -20,7 +27,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+    <button type="submit" class="button-card" (click)="addQuestion()" (click)="onUpload()">Create</button>
   </form>
 </div>
 

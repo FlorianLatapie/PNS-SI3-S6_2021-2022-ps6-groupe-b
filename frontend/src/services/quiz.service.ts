@@ -5,7 +5,7 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {catchError} from "rxjs/operators";
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +74,11 @@ export class QuizService {
   deleteQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
+  uploadImage(): void {
+    // const imgUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
+    // this.http.post()
   }
 
   // tslint:disable-next-line:typedef

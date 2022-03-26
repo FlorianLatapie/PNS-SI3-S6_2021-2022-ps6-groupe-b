@@ -1,6 +1,16 @@
 @import '../../../styles/card.scss';
+@import '../../../styles/buttons.scss';
 
 .answer-form {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+}
+
+.add-image {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }

@@ -15,6 +15,7 @@ export class QuestionFormComponent implements OnInit {
   quiz: Quiz;
 
   public questionForm: FormGroup;
+  selectedFile = null;
 
   constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
@@ -53,4 +54,13 @@ export class QuestionFormComponent implements OnInit {
       this.initializeQuestionForm();
     }
   }
+
+  onFileSelected(event): void{
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload(): void {
+    this.quizService.uploadImage();
+  }
+
 }
