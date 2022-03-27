@@ -21,9 +21,8 @@ export class PlayQuizPageComponent implements OnInit {
   endOfQuiz = false;
   quiz: Quiz;
 
-  @ContentChild('myContent') content:Quiz;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       
@@ -36,7 +35,6 @@ export class PlayQuizPageComponent implements OnInit {
   }
 
   ngOnInit(): void { // TODO add url path
-    console.log("init");
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
   }
@@ -46,6 +44,14 @@ export class PlayQuizPageComponent implements OnInit {
   onAnswer(option: boolean){
     (option) ? this.correctAnswers ++ : this.incorrectAnswers++;
     this.nextQuestion();
+  }
+
+  reloadQuiz(){
+    let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
+ 
   }
 
   nextQuestion(){
@@ -66,6 +72,8 @@ export class PlayQuizPageComponent implements OnInit {
       }, 2000)
     }
   }
+
+  
 
   shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {

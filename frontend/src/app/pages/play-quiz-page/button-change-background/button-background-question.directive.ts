@@ -11,7 +11,7 @@ export class ButtonBackgroundQuestionDirective {
 
   @HostListener('click') onAnswered(){
     if(this.correctAnswer){
-      this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green');
+      this.renderer.setStyle(this.elRef.nativeElement, 'background-color', '#16a637');
       this.renderer.setStyle(this.elRef.nativeElement, 'color', 'white');
     }
      else{
