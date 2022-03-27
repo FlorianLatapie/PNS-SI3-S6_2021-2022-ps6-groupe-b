@@ -1,9 +1,8 @@
 <div class="card quiz-card">
     <h2>
-        <i class="fa fa-play"></i>
         {{quiz.name}}
     </h2>
-    <p>Catégorie : {{quiz.category}}</p>
+    <p *ngIf="quiz.category">Catégorie : {{quiz.category}}</p>
     <p>{{quiz.description}}</p>
     <div class="flex-buttons-quiz">
         <button class="button-card" (click)="selectQuiz()">Select</button>
