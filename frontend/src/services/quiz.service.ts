@@ -54,6 +54,7 @@ export class QuizService {
       ).subscribe(() => this.retrieveQuizzes());
   }
 
+
   setSelectedQuiz(quizId: string): void {
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {

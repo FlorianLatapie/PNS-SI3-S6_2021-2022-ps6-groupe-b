@@ -27,6 +27,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CreateQuizInformationComponent } from './pages/create-quiz-information/create-quiz-information.component';
 import { CreateQuizPageComponent } from './pages/create-quiz-page/create-quiz-page.component';
 import { UpdateQuizzesComponent } from './pages/update-quizzes/update-quizzes.component';
+import { PlayQuizPageComponent } from './pages/play-quiz-page/play-quiz-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonBackgroundQuestionDirective } from './pages/play-quiz-page/button-change-background/button-background-question.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,12 +57,17 @@ import { UpdateQuizzesComponent } from './pages/update-quizzes/update-quizzes.co
     CreateQuizInformationComponent,
     CreateQuizPageComponent,
     UpdateQuizzesComponent,
+    PlayQuizPageComponent,
+    ButtonBackgroundQuestionDirective,
+    
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,22 +2,37 @@
 
 .card {
   background: $white;
-  border-radius: 2px;
+  border-radius: 20px;
   display: inline-block;
   margin: 1rem;
   position: relative;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-  padding: 0 1em 1em 1em;
+  padding: 1em 2em;
+}
+.card:hover{
+  box-shadow: 6px 10px 12px rgba(0, 0, 0, 0.08), 6px 10px 12px rgba(0, 0, 0, 0.05);
+
 }
 
 .button-card {
   background-color: $white;
   border: solid 1px $blue;
+  border-radius: 8em;
   color: $blue;
-  font-weight: bold;
+  font-weight: light;
   padding: 0.5em 1em;
+  margin: 0.2em;
 }
+
 
 .button-card:hover {
   cursor: pointer;
+  background-color: lightgrey;
+}
+
+button:disabled{
+  background-color: $white;
+  border: solid 1px $blue;
+  color: $blue;
+  font-weight: light;
 }

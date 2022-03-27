@@ -6,4 +6,7 @@ export interface Quiz {
     description: string;
     category: string;
     questions: Question[];
+    correctAnswers?: string;
+    incorrectAnswers?: string;
+
 }

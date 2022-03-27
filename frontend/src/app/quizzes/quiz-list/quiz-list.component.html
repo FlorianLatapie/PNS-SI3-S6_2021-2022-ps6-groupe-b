@@ -1,8 +1,7 @@
 
-<div class="quiz-list">
+<div class="quiz-list" >
     <div class="quiz" *ngFor="let quiz of quizList">
-        <!--Inputs & Output allow communication between parent & child components.-->
-        <!--More information: https://angular.io/guide/component-interaction-->
-        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
+        <app-quiz *ngIf="!displayDeleteButton && !displayEditButton" [quiz]="quiz" [displayDeleteButton]="displayDeleteButton" [displayEditButton]="displayEditButton" (quizSelected)="quizSelected($event)"></app-quiz>
+        <app-quiz *ngIf="displayDeleteButton && displayEditButton" [quiz]="quiz" [displayDeleteButton]="displayEditButton" [displayEditButton]="displayEditButton" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
     </div>
 </div>

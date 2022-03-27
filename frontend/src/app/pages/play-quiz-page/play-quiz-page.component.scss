@@ -1,0 +1,28 @@
+@import '../../../styles/card.scss';
+@import '../../../styles/quiz.scss';
+.image-question-size{
+    width: 300px;
+    height: auto;
+}
+
+.button-quiz-answer{
+    min-width: 6rem;
+    margin: 0 1rem;
+}
+
+.grid-button-answers{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-auto-rows: 3rem;
+    align-items: center;
+}
+
+.question-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+

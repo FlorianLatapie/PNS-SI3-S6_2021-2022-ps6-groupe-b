@@ -1,2 +1,3 @@
-<p>play-page works!</p>
-<app-quiz-list></app-quiz-list>
+<p>play-page</p>
+<app-quiz-list [displayDeleteButton]="false" [displayEditButton]="false" (quizSelectedFromChild)="quizSelected($event)" ></app-quiz-list>
+
