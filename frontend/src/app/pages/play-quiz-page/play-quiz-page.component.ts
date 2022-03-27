@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { promise } from 'protractor';
 import { Question } from 'src/models/question.model';
 import { Quiz } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 
 
 
@@ -11,24 +14,35 @@ import { Quiz } from 'src/models/quiz.model';
 })
 export class PlayQuizPageComponent implements OnInit {
 
-  @Input()
-  quiz : Quiz;
-
   private currentQuestion = 0;
   answerSelected = false;
   private correctAnswers = 0;
   private incorrectAnswers = 0;
   endOfQuiz = false;
+  quiz: Quiz;
 
-  constructor() { }
+  @ContentChild('myContent') content:Quiz;
 
+  constructor(private route: ActivatedRoute, private quizService: QuizService) {
+    this.quizService.quizSelected$.subscribe((quiz) => {
+      this.quiz = quiz;
+      
+      // mélange les questions
+      this.shuffleArray(this.quiz.questions);
+      // ngAfterContentInit utilisation attendre init quiz pour shuffle question
 
-  ngOnInit(): void { // TODO add url path
-    // mélange les questions
-    this.shuffleArray(this.quiz.questions);
-    // this.router.navigate(["play-quiz-page/quiz-id-"+this.quiz.id+"/question-id-"+this.currentQuestion])
+    });
+
   }
 
+  ngOnInit(): void { // TODO add url path
+    console.log("init");
+    const id = this.route.snapshot.paramMap.get('id');
+    this.quizService.setSelectedQuiz(id);
+  }
+  
+  
+  
   onAnswer(option: boolean){
     (option) ? this.correctAnswers ++ : this.incorrectAnswers++;
     this.nextQuestion();

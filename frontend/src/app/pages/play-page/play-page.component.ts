@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 
 @Component({
@@ -10,14 +11,14 @@ export class PlayPageComponent implements OnInit {
   quiz : Quiz;
   isQuizSelected : Boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   quizSelected(quiz : Quiz){
     this.quiz = quiz;
-    this.isQuizSelected = !this.isQuizSelected;
+    this.router.navigate(['/play-quiz-page/' + quiz.id]);    
   }
 
 }

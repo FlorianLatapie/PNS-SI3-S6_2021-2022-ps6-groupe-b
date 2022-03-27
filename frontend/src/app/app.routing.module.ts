@@ -15,7 +15,7 @@ const routes: Routes = [
     // PAGE
     {path: 'main-page', component: MainPageComponent},
     {path: 'play-page', component: PlayPageComponent},
-    {path: 'play-quiz-page/quiz-id-:id/question-id-:id', component: PlayQuizPageComponent},
+    {path: 'play-quiz-page/:id', component: PlayQuizPageComponent},
     {path: 'manage-page', component: ManagePageComponent},
     {path: 'guidelines-page', component: GuidelinesPageComponent},
     {path: 'about-page', component: AboutPageComponent},

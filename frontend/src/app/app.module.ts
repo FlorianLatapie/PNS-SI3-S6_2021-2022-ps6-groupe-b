@@ -22,7 +22,6 @@ import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { GuidelinesPageComponent } from './pages/guidelines-page/guidelines-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
-import { QuizListSelectComponent } from './quizzes/quiz-list-select/quiz-list-select.component';
 import { PlayQuizPageComponent } from './pages/play-quiz-page/play-quiz-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonBackgroundQuestionDirective } from './pages/play-quiz-page/button-change-background/button-background-question.directive';
@@ -47,7 +46,6 @@ import { ButtonBackgroundQuestionDirective } from './pages/play-quiz-page/button
     GuidelinesPageComponent,
     AboutPageComponent,
     AccountPageComponent,
-    QuizListSelectComponent,
     PlayQuizPageComponent,
     ButtonBackgroundQuestionDirective,
     
