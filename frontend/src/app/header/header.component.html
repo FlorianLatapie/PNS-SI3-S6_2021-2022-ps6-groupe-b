@@ -6,15 +6,14 @@
     <a class="navigation" [routerLink]="['/about-page']">A Propos</a>
   </div>
   <div>
-    <a class="navigation" [routerLink]="['/account-page']">
-      Famille de Ginette
+    <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/account-page']">
+      {{username}}
     </a>
-    <a class="navigation" [routerLink]="['/sign-in-page']">
-      S'inscrire
-    </a>
-
-    <a class="navigation" [routerLink]="['/login-page']">
+    <a *ngIf="userSelected == null" class="navigation" [routerLink]="['/login-page']">
       Se connecter
+    </a>
+    <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/login-page']">
+      Changer d'utilisateur
     </a>
   </div>
   <!-- Famille de ginette à remplacer par variable user -->

@@ -31,6 +31,7 @@ export class UserComponent implements OnInit {
   }
 
   select() {
+    console.log('user selected');
     this.selectUser.emit(this.user);
   }
 }

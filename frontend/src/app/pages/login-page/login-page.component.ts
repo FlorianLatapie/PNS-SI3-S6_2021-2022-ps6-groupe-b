@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
 
   selectUser(user: User): void {
     this.userService.setSelectedUser(user.id);
+    console.log('user selected :', user);
   }
 
 }
