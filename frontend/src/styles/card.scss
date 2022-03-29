@@ -29,10 +29,3 @@
   cursor: pointer;
   background-color: lightgrey;
 }
-
-button:disabled{
-  background-color: $white;
-  border: solid 1px $blue;
-  color: $blue;
-  font-weight: light;
-}

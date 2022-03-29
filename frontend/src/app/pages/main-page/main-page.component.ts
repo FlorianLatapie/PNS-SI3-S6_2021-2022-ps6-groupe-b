@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-main-page',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
-  constructor() { }
+  user:User;
+  
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+    });
   }
 
 }

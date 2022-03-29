@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayQuizPageComponent } from './play-quiz-page.component';
+import { PlayQuizPageStade4Component } from './play-quiz-page-stade4.component';
 
 describe('PlayQuizPageComponent', () => {
-  let component: PlayQuizPageComponent;
-  let fixture: ComponentFixture<PlayQuizPageComponent>;
+  let component: PlayQuizPageStade4Component;
+  let fixture: ComponentFixture<PlayQuizPageStade4Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayQuizPageComponent ]
+      declarations: [ PlayQuizPageStade4Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayQuizPageComponent);
+    fixture = TestBed.createComponent(PlayQuizPageStade4Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

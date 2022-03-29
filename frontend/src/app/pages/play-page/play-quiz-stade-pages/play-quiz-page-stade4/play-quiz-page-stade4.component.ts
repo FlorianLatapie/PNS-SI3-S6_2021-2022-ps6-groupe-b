@@ -8,11 +8,11 @@ import { QuizService } from 'src/services/quiz.service';
 
 
 @Component({
-  selector: 'app-play-quiz-page',
-  templateUrl: './play-quiz-page.component.html',
-  styleUrls: ['./play-quiz-page.component.scss']
+  selector: 'app-play-quiz-page-stade4',
+  templateUrl: './play-quiz-page-stade4.component.html',
+  styleUrls: ['./play-quiz-page-stade4.component.scss']
 })
-export class PlayQuizPageComponent implements OnInit {
+export class PlayQuizPageStade4Component implements OnInit {
 
   private currentQuestion = 0;
   answerSelected = false;
@@ -72,8 +72,6 @@ export class PlayQuizPageComponent implements OnInit {
       }, 2000)
     }
   }
-
-  
 
   shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
