@@ -31,6 +31,9 @@ import { PlayQuizPageComponent } from './pages/play-quiz-page/play-quiz-page.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonBackgroundQuestionDirective } from './pages/play-quiz-page/button-change-background/button-background-question.directive';
 import { CommonModule } from '@angular/common';
+import { StatsPageComponent } from './pages/stats-page/stats-page.component';
+import { StatsQuizPageComponent } from './pages/stats-quiz-page/stats-quiz-page.component';
+import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/update-category-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,10 @@ import { CommonModule } from '@angular/common';
     UpdateQuizzesComponent,
     PlayQuizPageComponent,
     ButtonBackgroundQuestionDirective,
-    
+    StatsPageComponent,
+    StatsQuizPageComponent,
+    UpdateCategoryQuizzesComponent,
+
   ],
   imports: [
     BrowserModule,

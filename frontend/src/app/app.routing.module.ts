@@ -15,6 +15,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {CreateQuizInformationComponent} from './pages/create-quiz-information/create-quiz-information.component';
 import {CreateQuizPageComponent} from './pages/create-quiz-page/create-quiz-page.component';
 import {UpdateQuizzesComponent} from './pages/update-quizzes/update-quizzes.component';
+import {StatsPageComponent} from "./pages/stats-page/stats-page.component";
+import {StatsQuizPageComponent} from "./pages/stats-quiz-page/stats-quiz-page.component";
 
 const routes: Routes = [
     // PAGES
@@ -26,6 +28,8 @@ const routes: Routes = [
     {path: 'about-page', component: AboutPageComponent},
     {path: 'account-page', component: AccountPageComponent},
     {path: 'sign-in-page', component: SignInPageComponent},
+    {path: 'stats-page', component: StatsPageComponent},
+    {path: 'stats-quiz-page/:id', component: StatsQuizPageComponent},
     {path: 'login-page', component: LoginPageComponent},
     {path: 'information-quiz-page', component: CreateQuizInformationComponent},
     {path: 'create-quiz-page', component: CreateQuizPageComponent},

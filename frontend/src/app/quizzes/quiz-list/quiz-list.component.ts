@@ -19,6 +19,9 @@ export class QuizListComponent implements OnInit {
   }
 
   @Input()
+  displaySelectButton: boolean;
+
+  @Input()
   displayEditButton: boolean;
 
   @Input()
@@ -33,7 +36,7 @@ export class QuizListComponent implements OnInit {
 
   quizSelected(selected: Quiz): void {
     // console.log(selected);
-    this.quizSelectedFromChild.emit(selected);    
+    this.quizSelectedFromChild.emit(selected);
   }
 
   editQuiz(quiz: Quiz): void {

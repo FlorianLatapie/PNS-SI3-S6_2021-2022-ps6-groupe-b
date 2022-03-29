@@ -8,17 +8,19 @@ import { Quiz } from 'src/models/quiz.model';
   styleUrls: ['./play-page.component.scss']
 })
 export class PlayPageComponent implements OnInit {
-  quiz : Quiz;
-  isQuizSelected : Boolean = false;
+  quiz: Quiz;
+  // tslint:disable-next-line:ban-types
+  isQuizSelected: Boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  quizSelected(quiz : Quiz){
+  // tslint:disable-next-line:typedef
+  quizSelected(quiz: Quiz){
     this.quiz = quiz;
-    this.router.navigate(['/play-quiz-page/' + quiz.id]);    
+    this.router.navigate(['/play-quiz-page/' + quiz.id]);
   }
 
 }

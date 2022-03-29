@@ -12,11 +12,14 @@ export class QuizComponent implements OnInit {
   quiz: Quiz;
 
   @Input()
+  displaySelectButton: boolean;
+
+  @Input()
   displayEditButton: boolean;
 
   @Input()
   displayDeleteButton: boolean;
-  
+
   @Output()
   quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
