@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../../models/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInPageComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user: User;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  whenUserCreated($event: User) {
+    console.log("coucou");
+    this.router.navigate(['/login-page']);
+  }
 }

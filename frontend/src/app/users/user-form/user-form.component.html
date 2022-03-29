@@ -1,13 +1,13 @@
 <div class="card">
-  <h2>Create a new user</h2>
+  <h2>Créer un nouvel utilisateur</h2>
   <form class="user-form" [formGroup]="userForm">
     <label for="firstName">
-      First name <br>
+      Prénom<br>
       <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
     </label>
     <br>
     <label for="lastName">
-      Last name <br>
+      Nom de famille<br>
       <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
     </label>
     <br>
@@ -16,6 +16,6 @@
       <input class="input-custom" type="number" id="stade" [formControlName]="'stade'">
     </label>
     <br>
-    <button type="submit" class="button-card" (click)="addUser()">Create</button>
+    <button type="submit" class="button-card" (click)="addUser()">Créer</button>
   </form>
 </div>
