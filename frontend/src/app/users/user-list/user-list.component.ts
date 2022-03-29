@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 
 import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
@@ -12,16 +12,24 @@ export class UserListComponent implements OnInit {
 
   public userList: User[] = [];
 
+  @Input()
+  displayDeleteButton: boolean;
+  
   constructor(private userService: UserService) {
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
     });
   }
+  
 
   ngOnInit(): void {
   }
 
   deleteUser(user: User): void {
     this.userService.deleteUser(user);
+  }
+
+  selectUser(user: User): void {
+    this.userService.setSelectedUser(user.id);
   }
 }

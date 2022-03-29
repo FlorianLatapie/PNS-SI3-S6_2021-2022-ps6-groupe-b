@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from 'rxjs';
+import {User} from '../../models/user.model';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public userSelected: User;
+  private username: string;
+
+  constructor(private userService: UserService) {
+    userService.userSelected$.subscribe(event => {
+      this.userSelected = event;
+      if (this.userSelected != null) {
+        this.username = this.userSelected.firstName + this.userSelected.lastName;
+      } else {
+        this.username = 'Connectez vous';
+      }
+    });
+  }
 
   ngOnInit(): void {
   }

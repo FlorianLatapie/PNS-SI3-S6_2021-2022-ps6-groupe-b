@@ -12,16 +12,26 @@ export class UserComponent implements OnInit {
   @Input()
   user: User;
 
+  @Input()
+  displayDeleteButton: boolean;
+
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
+  @Output()
+  selectUser: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.displayDeleteButton);
   }
 
   delete() {
     this.deleteUser.emit(this.user);
   }
 
+  select() {
+    console.log('user selected');
+    this.selectUser.emit(this.user);
+  }
 }
