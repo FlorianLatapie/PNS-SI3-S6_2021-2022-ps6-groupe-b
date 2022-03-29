@@ -10,7 +10,11 @@ body {
   background-color: $app-background-color;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 td,
 th {
-    border: 5px solid #000000;
+    border: solid #000000;
 }
