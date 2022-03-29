@@ -1,2 +1,10 @@
 <p>account-page works!</p>
 <a class="navigation" [routerLink]="['/user-list']">Manage users</a>
+<div *ngIf="userSelected != null">
+  <h1>Informations de l'utilisateur</h1>
+
+
+  <p>{{userSelected.firstName}}</p>
+  <p>{{userSelected.lastName}}</p>
+  <p>{{userSelected.id}}</p>
+</div>

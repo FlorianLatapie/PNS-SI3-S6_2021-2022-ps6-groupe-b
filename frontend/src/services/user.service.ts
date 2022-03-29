@@ -19,7 +19,7 @@ export class UserService {
   public users$: BehaviorSubject<User[]>
     = new BehaviorSubject([]);
 
-  public userSelected$: Subject<User> = new Subject();
+  public userSelected$: BehaviorSubject<User> = new BehaviorSubject(undefined);
 
   private userUrl = serverUrl + '/users';
 
@@ -44,6 +44,7 @@ export class UserService {
     const urlWithId = this.userUrl + '/' + userId;
     this.http.get<User>(urlWithId).subscribe((user) => {
       this.userSelected$.next(user);
+      console.log("user :",user);
     });
   }
 
