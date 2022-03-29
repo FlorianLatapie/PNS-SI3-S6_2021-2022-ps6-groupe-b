@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Question } from 'src/models/question.model';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
 
 
+
 @Component({
-  selector: 'app-play-quiz-page-stade4',
-  templateUrl: './play-quiz-page-stade4.component.html',
-  styleUrls: ['./play-quiz-page-stade4.component.scss']
+  selector: 'app-play-quiz-page-stade5',
+  templateUrl: './play-quiz-page-stade5.component.html',
+  styleUrls: ['./play-quiz-page-stade5.component.scss']
 })
-export class PlayQuizPageStade4Component implements OnInit {
+export class PlayQuizPageStade5Component implements OnInit {
 
   private currentQuestion = 0;
   answerSelected = false;
@@ -21,15 +21,14 @@ export class PlayQuizPageStade4Component implements OnInit {
   private incorrectQuestions=0;
   endOfQuiz = false;
   quiz: Quiz;
-  private questions: Question[];
+
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
-      this.questions = this.quiz.questions;
+      
       // mélange les questions
-      this.shuffleArray(this.questions);
-
+      this.shuffleArray(this.quiz.questions);
       // ngAfterContentInit utilisation attendre init quiz pour shuffle question
 
     });
@@ -44,15 +43,7 @@ export class PlayQuizPageStade4Component implements OnInit {
   
   
   onAnswer(option: boolean){
-    if(option){
-      this.correctQuestions++;
-      this.questions[this.currentQuestion].correctAnswers = ""+this.correctAnswers++
-    } 
-    else{
-      this.incorrectQuestions++;
-      this.questions[this.currentQuestion].incorrectAnswers = ""+this.incorrectAnswers++
-    }
-    this.readdQuestionIntoQuiz(this.questions[this.currentQuestion]);
+    (option) ? this.correctQuestions ++ : this.incorrectQuestions++;
     this.nextQuestion();
   }
 
@@ -65,11 +56,11 @@ export class PlayQuizPageStade4Component implements OnInit {
   }
 
   nextQuestion(){
-    if(this.questions.length-1>this.currentQuestion){
+    if(this.quiz.questions.length-1>this.currentQuestion){
       this.answerSelected = true;
       setTimeout(()=>{
         //mélange les réponses
-        this.shuffleArray(this.questions[this.currentQuestion+1].answers);
+        this.shuffleArray(this.quiz.questions[this.currentQuestion+1].answers);
         this.currentQuestion++;
         this.answerSelected = false;
       }, 1000);
@@ -83,9 +74,6 @@ export class PlayQuizPageStade4Component implements OnInit {
     }
   }
 
-  readdQuestionIntoQuiz(question : Question){
-  }
-  
   shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));

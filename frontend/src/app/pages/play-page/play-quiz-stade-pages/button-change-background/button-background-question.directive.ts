@@ -13,7 +13,7 @@ export class ButtonBackgroundQuestionDirective {
     if(this.correctAnswer){
       this.renderer.setStyle(this.elRef.nativeElement, 'background-color', '#16a637');
       this.renderer.setStyle(this.elRef.nativeElement, 'color', 'white');
-    }
+    } 
      else{
        this.renderer.setStyle(this.elRef.nativeElement, 'background-color', '#997387');
        this.renderer.setStyle(this.elRef.nativeElement, 'color', 'white');
