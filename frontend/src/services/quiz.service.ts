@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import { Quiz } from '../models/quiz.model';
-import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {catchError} from 'rxjs/operators';
@@ -20,7 +19,7 @@ export class QuizService {
    The list of quiz.
    The list is retrieved from the mock.
    */
-  private quizzes: Quiz[] = QUIZ_LIST;
+  private quizzes: Quiz[] = [];
 
   /*
    Observable which contains the list of the quiz.

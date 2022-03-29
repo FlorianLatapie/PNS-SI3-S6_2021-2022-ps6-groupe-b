@@ -15,7 +15,6 @@ export class QuestionFormComponent implements OnInit {
   quiz: Quiz;
 
   public questionForm: FormGroup;
-  selectedFile = null;
 
   constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
@@ -25,6 +24,7 @@ export class QuestionFormComponent implements OnInit {
   private initializeQuestionForm(): void {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
+      imageUrls: this.formBuilder.array([]),
       answers: this.formBuilder.array([])
     });
   }
@@ -50,17 +50,24 @@ export class QuestionFormComponent implements OnInit {
   addQuestion(): void {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
+      // @ts-ignore
+      question.imageUrls = question.imageUrls.map(e => e.url);
       this.quizService.addQuestion(this.quiz, question);
       this.initializeQuestionForm();
     }
   }
 
-  onFileSelected(event): void{
-    this.selectedFile = event.target.files[0];
+  addImage(): void {
+    this.imageLinks.push(this.createImageLink());
   }
 
-  onUpload(): void {
-    this.quizService.uploadImage();
+  get imageLinks(): FormArray {
+    return this.questionForm.get('imageUrls') as FormArray;
   }
 
+  private createImageLink(): FormGroup {
+    return this.formBuilder.group({
+      url: ''
+    });
+  }
 }
