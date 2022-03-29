@@ -1,10 +1,27 @@
 <p>account-page works!</p>
 <a class="navigation" [routerLink]="['/user-list']">Manage users</a>
+
+
+
 <div *ngIf="userSelected != null">
   <h1>Informations de l'utilisateur</h1>
 
-
-  <p>{{userSelected.firstName}}</p>
-  <p>{{userSelected.lastName}}</p>
-  <p>{{userSelected.id}}</p>
+  <table>
+    <tr>
+      <td>Identifiant unique</td>
+      <td>{{userSelected.id}}</td>
+    </tr>
+    <tr>
+      <td>Prénom</td>
+      <td>{{userSelected.firstName}}</td>
+    </tr>
+    <tr>
+      <td>Nom de famille</td>
+      <td>{{userSelected.lastName}}</td>
+    </tr>
+    <tr>
+      <td>Stade</td>
+      <td>{{userSelected.stade}}</td>
+    </tr>
+  </table>
 </div>

@@ -1,7 +1,5 @@
 @import './styles/variables.scss';
 
-
-
 /* You can add global styles to this file, and also import other style files */
 html {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
@@ -12,5 +10,7 @@ body {
   background-color: $app-background-color;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+td,
+th {
+    border: 5px solid #000000;
+}
