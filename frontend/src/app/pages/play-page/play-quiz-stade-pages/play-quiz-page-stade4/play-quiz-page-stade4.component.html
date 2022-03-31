@@ -5,20 +5,19 @@
     <ng-template #quiz_play>
             <div class="card question-card">
                 <div class="quiz-question-layout">
-                    <img class="image-question-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/John_Cena_July_2018.jpg/1200px-John_Cena_July_2018.jpg" alt="">
-                    <h1 class="quiz-question-label">{{quiz.questions[currentQuestion].label}}</h1>
+                    <img class="image-question-size" src="{{currentQuestion.imageUrls[currentQuestion.currentImage]}}" alt="">
+                    <h1 class="quiz-question-label">{{currentQuestion.label}}</h1>
                 </div>
                 <div class="grid-button-answers">
-                    <div *ngFor="let answer of quiz.questions[currentQuestion].answers">
-                        <button class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect)" [disabled]="answerSelected" appButtonBackgroundQuestion [correctAnswer] = "answer.isCorrect">
+                    <div *ngFor="let answer of currentQuestion.answers">
+                        <button class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect)" [ngClass]="{'button-green': changeColor, 'button-red': !changeColor}">
                             {{answer.value}}
                         </button>
                             <!-- <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br> -->
                     </div>
                 </div>
-
-                <p>{{currentQuestion +1}}/{{quiz.questions.length}}</p>
             </div>
+            <p>{{questionsCounter}}/{{questions.length}}</p>
     </ng-template>
 
     <ng-template #quiz_end>

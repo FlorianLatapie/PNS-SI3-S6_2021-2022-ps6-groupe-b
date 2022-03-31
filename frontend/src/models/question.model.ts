@@ -9,7 +9,7 @@ export interface Question {
     label: string;
     imageUrls: string[];
     answers: Answer[];
-    correctAnswers?: string;
-    incorrectAnswers?: string;
-    currentImage?: string;
+    correctAnswers?: number;
+    incorrectAnswers?: number;
+    currentImage?: number;
 }
