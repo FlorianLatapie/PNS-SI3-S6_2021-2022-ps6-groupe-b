@@ -14,8 +14,6 @@ import { QuizService } from 'src/services/quiz.service';
 export class PlayQuizPageStade5Component implements OnInit {
 
   currentImage: number;
-  private correctQuestions = 0;
-  private incorrectQuestions=0;
   endOfQuiz = false;
   quiz: Quiz;
   currentQuestion: Question;
@@ -24,6 +22,8 @@ export class PlayQuizPageStade5Component implements OnInit {
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
+      this.quiz.correctQuestions=0;
+      this.quiz.incorrectQuestions=0;
       this.questions = this.quiz.questions;
       
       console.log(this.questions);
@@ -52,12 +52,12 @@ export class PlayQuizPageStade5Component implements OnInit {
   
   onAnswer(option: boolean){
     if(option){
-      this.correctQuestions++;
+      this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
       
     } 
     else{
-      this.incorrectQuestions++;
+      this.quiz.incorrectQuestions++;
       this.currentQuestion.incorrectAnswers++;
     }
     this.nextQuestion();
@@ -76,8 +76,7 @@ export class PlayQuizPageStade5Component implements OnInit {
     }
     else{
       setTimeout(()=>{
-        this.quiz.correctQuestions=""+this.correctQuestions;
-        this.quiz.incorrectQuestions=""+this.incorrectQuestions;
+        
         this.endOfQuiz=true;
       }, 2000)
     }
