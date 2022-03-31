@@ -1,0 +1,36 @@
+.add-question {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 24px 32px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.add-question:hover {
+  background-color: RoyalBlue;
+}
+
+.add-image {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.add-image + label{
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 24px 32px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.add-image:hover + label {
+  background-color: RoyalBlue;
+}
+
+

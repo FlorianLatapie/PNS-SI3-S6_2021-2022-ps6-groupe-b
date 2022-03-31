@@ -24,7 +24,7 @@ export class QuizFormComponent implements OnInit {
     this.quizForm = this.formBuilder.group({
       name: [''],
       description: [''],
-      category: ['people']
+      category: ['Personnes']
     });
   }
 
