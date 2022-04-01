@@ -24,7 +24,7 @@ export class PlayQuizPageStade5Component implements OnInit {
       this.quiz = quiz;
       this.quiz.correctQuestions=0;
       this.quiz.incorrectQuestions=0;
-      this.questions = this.quiz.questions;
+      this.questions = [...this.quiz.questions];
       
       for(var q of this.questions){
         q.correctAnswers=0;
@@ -118,7 +118,6 @@ reloadQuiz(){
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
-
 }
 
 
