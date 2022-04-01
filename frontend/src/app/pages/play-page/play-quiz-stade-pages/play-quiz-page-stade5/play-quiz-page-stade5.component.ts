@@ -26,8 +26,6 @@ export class PlayQuizPageStade5Component implements OnInit {
       this.quiz.incorrectQuestions=0;
       this.questions = this.quiz.questions;
       
-      console.log(this.questions);
-      //to del
       for(var q of this.questions){
         q.correctAnswers=0;
         q.incorrectAnswers=0;
@@ -65,26 +63,24 @@ export class PlayQuizPageStade5Component implements OnInit {
 
 
   nextQuestion(){
-    if(this.questions.length-1){
       setTimeout(()=>{
-        if(this.reAddQuestionIntoQuiz(this.currentQuestion)){
-          this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1)%3;
+        if(this.reAddQuestionIntoQuiz(this.currentQuestion))
+        {
+          this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1)%3; //inutile si 3 images
         }
-        this.shuffleArray(this.questions);
+        else if(this.questions.length<=0)
+        {
+            this.endOfQuiz=true;
+            return;
+        }        
         this.initNextQuestion();
       }, 1000);
     }
-    else{
-      setTimeout(()=>{
-        
-        this.endOfQuiz=true;
-      }, 2000)
-    }
-  }
+
 
   reAddQuestionIntoQuiz(question : Question): boolean{
     if(question.imageUrls.length> this.currentQuestion.currentImage){
-      if((question.incorrectAnswers<3 && question.correctAnswers<2)){ //si trop de mauvaises réponses : oublit, si au moins deux bonnes réponses : on sait
+      if((question.incorrectAnswers<3 && question.correctAnswers<1)){ //si trop de mauvaises réponses : oublit, si au moins deux bonnes réponses : on sait
         console.log("readdquestionIntoQuiz: "+this.currentQuestion.id);
         console.log("bonne réponses : "+this.currentQuestion.correctAnswers);
         console.log("mauvaise réponses : "+this.currentQuestion.incorrectAnswers);
@@ -92,17 +88,17 @@ export class PlayQuizPageStade5Component implements OnInit {
         return true;
       }
       this.questions.splice(this.questions.indexOf(question),1);
-      console.log("removing :"+ this.currentQuestion.id);
+      console.log("\nremoving :"+ this.currentQuestion.id);
       console.log("question.incorrectAnswers : "+ question.incorrectAnswers +" question.correctAnswers : "+question.correctAnswers);
       return false;
     }
-      console.log("plus d'image à afficher pour "+ this.currentQuestion.label);
     return false;
   }
 
 
 
   initNextQuestion(){
+    this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
      //mélange les réponses
     this.shuffleArray(this.currentQuestion.answers);
