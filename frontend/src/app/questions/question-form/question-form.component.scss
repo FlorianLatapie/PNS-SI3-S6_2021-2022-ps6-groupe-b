@@ -1,9 +1,41 @@
 @import '../../../styles/card.scss';
 @import '../../../styles/buttons.scss';
 
+h2 {
+  text-align: center;
+}
+
+form, .image-section, .answer-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .button-card{
+    margin: 0 auto;
+  }
+}
+
+.question-section{
+  margin-bottom: 15px;
+}
+
+.image-section {
+  .button-card{
+    margin-top: -10px;
+    margin-bottom: 5px;
+  }
+}
+
+.answer-section{
+  margin: 15px auto;
+}
+
 .answer-form {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+}
+
+#submit-button {
+  margin: 0 auto;
 }
 
 .add-image {

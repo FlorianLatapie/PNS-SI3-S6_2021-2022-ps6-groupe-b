@@ -1,44 +1,50 @@
 <div class="card">
   <h2>Créer une nouvelle question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
-    <label for="label">
-      Question <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'">
-    </label>
-    <br>
 
-    <label for="url">
-      Lien de l'image<br>
-      <p>Vous devez ajouter au moins une image.</p>
+    <div class="question-section">
+      <label for="label">
+        Question <br>
+        <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      </label>
+    </div>
+
+    <div class="image-section">
+      <label for="url">
+        Lien de l'image<br>
+        <p>Vous devez ajouter au moins une image.</p>
+      </label>
       <button class="button-card" (click)="addImage()">Ajouter une image</button>
-    </label>
-    <div class="imageUrls" formArrayName="imageUrls">
-      <div *ngFor="let address of imageLinks.controls; let i=index">
-        <div class="answer-form" [formGroupName]="i">
-          <label for="url">
-            Lien de l'image :
-            <input type="text" id="url" [formControlName]="'url'">
-          </label>
+      <div class="imageUrls" formArrayName="imageUrls">
+        <div *ngFor="let address of imageLinks.controls; let i=index">
+          <div class="answer-form" [formGroupName]="i">
+            <label for="url">
+              Lien de l'image n°{{i+1}}:
+              <input type="text" id="url" [formControlName]="'url'">
+            </label>
+          </div>
         </div>
       </div>
     </div>
 
-    <br>
-    <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
-    <div class="answer" formArrayName="answers">
-      <div *ngFor="let address of answers.controls; let i=index">
-        <div class="answer-form" [formGroupName]="i">
-          <label>
-            Réponse
-            <input type="text" [formControlName]="'value'">
-            <br>
-            Correct
-            <input type="checkbox" [formControlName]="'isCorrect'">
-          </label>
+    <div class="answer-section">
+      <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
+      <div class="answer" formArrayName="answers">
+        <div *ngFor="let address of answers.controls; let i=index">
+          <div class="answer-form" [formGroupName]="i">
+            <label>
+              Réponse
+              <input type="text" [formControlName]="'value'">
+              <br>
+              Correct
+              <input type="checkbox" [formControlName]="'isCorrect'">
+            </label>
+          </div>
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
+
+    <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()">Valider</button>
   </form>
 </div>
 
