@@ -1,1 +1,35 @@
 @import '../../../styles/card.scss';
+
+.card {
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+}
+
+h2 {
+  text-align: center;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+img {
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+  vertical-align:middle;
+  width:200px;
+  margin: 5px;
+}
+
+.answers {
+  margin: 10px auto 0;
+}
+
+.button-card {
+  margin: 10px auto;
+}

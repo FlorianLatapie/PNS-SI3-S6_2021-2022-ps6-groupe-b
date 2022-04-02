@@ -17,6 +17,7 @@ export class QuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   delete(): void {
