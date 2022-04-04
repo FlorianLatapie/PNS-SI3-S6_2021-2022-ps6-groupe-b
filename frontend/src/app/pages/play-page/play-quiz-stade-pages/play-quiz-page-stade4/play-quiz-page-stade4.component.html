@@ -5,8 +5,8 @@
     <ng-template #quiz_play>
             <div class="card question-card">
                 <div class="quiz-question-layout">
-                    <img class="image-question-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/John_Cena_July_2018.jpg/1200px-John_Cena_July_2018.jpg" alt="">
-                    <h1 class="quiz-question-label">{{quiz.questions[currentQuestion].label}}</h1>
+                    <img src="{{quiz.questions[currentQuestion].imageUrls[0]}}" class="image-question-size">
+                  <h1 class="quiz-question-label">{{quiz.questions[currentQuestion].label}}</h1>
                 </div>
                 <div class="grid-button-answers">
                     <div *ngFor="let answer of quiz.questions[currentQuestion].answers">
