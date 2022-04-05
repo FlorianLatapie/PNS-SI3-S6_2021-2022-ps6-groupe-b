@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,7 +21,7 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(private router: Router,  public formBuilder: FormBuilder, public quizService: QuizService) {
     this.quizForm = this.formBuilder.group({
       name: [''],
       description: [''],
@@ -35,7 +36,11 @@ export class QuizFormComponent implements OnInit {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     this.quizService.addQuiz(quizToCreate);
-
+    this.quizService.quizSelectedId$.subscribe(quizId => {
+      if(quizId != undefined){
+        this.router.navigate(['/edit-quiz/' + quizId]);
+      }
+    });
   }
 
 }

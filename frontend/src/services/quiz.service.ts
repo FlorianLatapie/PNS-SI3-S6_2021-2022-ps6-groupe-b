@@ -28,7 +28,8 @@ export class QuizService {
   public quizzes$: BehaviorSubject<Quiz[]>
     = new BehaviorSubject(this.quizzes);
 
-  public quizSelected$: Subject<Quiz> = new Subject();
+  public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(undefined);
+  public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
@@ -47,12 +48,11 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz): void {
-    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions)
-      .pipe(
-        catchError(this.handleError<Quiz>('addQuiz'))
-      ).subscribe(() => this.retrieveQuizzes());
+    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
+      this.retrieveQuizzes();
+      this.quizSelectedId$.next(quiz.id);
+    });
   }
-
 
   setSelectedQuiz(quizId: string): void {
     const urlWithId = this.quizUrl + '/' + quizId;
@@ -76,10 +76,6 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  uploadImage(): void {
-    // const imgUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-    // this.http.post()
-  }
 
   // tslint:disable-next-line:typedef
   private handleError<T>(operation = 'operation', result?: T) {
