@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,7 @@ export class LoginPageComponent implements OnInit {
 
   public userList: User[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
     });
@@ -27,6 +28,6 @@ export class LoginPageComponent implements OnInit {
   selectUser(user: User): void {
     this.userService.setSelectedUser(user.id);
     console.log('user selected :', user);
+    this.router.navigate(['/main-page']);
   }
-
 }

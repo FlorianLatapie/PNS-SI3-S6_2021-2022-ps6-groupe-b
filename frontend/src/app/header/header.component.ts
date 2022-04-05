@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     userService.userSelected$.subscribe(event => {
       this.userSelected = event;
       if (this.userSelected != null) {
-        this.username = this.userSelected.firstName + this.userSelected.lastName;
+        this.username = this.userSelected.firstName + ' ' + this.userSelected.lastName;
       } else {
         this.username = 'Connectez vous';
       }
