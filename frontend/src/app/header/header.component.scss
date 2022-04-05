@@ -5,7 +5,7 @@
  #0f0c29, #302b63, #24243e linear-gradient(to right,#302b63, #0f0c29, #302b63);
  */
 :host {
-
+  font-size: 1.5rem;
   color: $white;
 }
 
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   background: $blue;
-  font-size: 15px;
+  font-size: 1.5rem;
 
   padding: 0.5em;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
@@ -24,9 +24,11 @@
 .navigation {
   padding-left: 0.5em;
   color: white;
+  text-decoration: none;
 }
 
 .useful-links>a{
   margin: .5rem;
+  text-decoration: none;
 }
 
