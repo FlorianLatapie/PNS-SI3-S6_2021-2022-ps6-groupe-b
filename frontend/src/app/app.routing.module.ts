@@ -17,6 +17,7 @@ import {CreateQuizPageComponent} from './pages/create-quiz-page/create-quiz-page
 import {UpdateQuizzesComponent} from './pages/update-quizzes/update-quizzes.component';
 import {StatsPageComponent} from "./pages/stats-page/stats-page.component";
 import {StatsQuizPageComponent} from "./pages/stats-quiz-page/stats-quiz-page.component";
+import {UpdateCategoryQuizzesComponent} from "./pages/update-category-quizzes/update-category-quizzes.component";
 
 const routes: Routes = [
     // PAGES
@@ -34,6 +35,7 @@ const routes: Routes = [
     {path: 'information-quiz-page', component: CreateQuizInformationComponent},
     {path: 'create-quiz-page', component: CreateQuizPageComponent},
     {path: 'update-quizzes', component: UpdateQuizzesComponent},
+    {path: 'update-category-quizzes', component: UpdateCategoryQuizzesComponent},
 
     {path: '', redirectTo: '/main-page', pathMatch: 'full'},
 

@@ -27,7 +27,10 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "scripts": []
+            "scripts": [],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,7 +90,10 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "scripts": []
+            "scripts": [],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ]
           }
         },
         "lint": {

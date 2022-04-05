@@ -21,7 +21,7 @@ export const QUIZ_LIST: Quiz[] = [
         id: '1',
         name: 'Quiz 1',
         description: 'Ceci est un quiz d\'exemple, démarrez le backend pour voir les quiz', // What's happening if I change this value..?
-        category: 'Personnes',
+        category: {id: 1, name: 'Personnes'},
         questions: [],
     }
 ];

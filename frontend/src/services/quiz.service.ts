@@ -5,7 +5,8 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {catchError} from "rxjs/operators";
+import {catchError} from 'rxjs/operators';
+import {Category} from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,9 @@ export class QuizService {
     = new BehaviorSubject(this.quizzes);
 
   public quizSelected$: Subject<Quiz> = new Subject();
+  public categorySelected$: Subject<Category> = new Subject();
 
+  private categoryUrl = serverUrl + '/categories';
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
 
@@ -40,6 +43,13 @@ export class QuizService {
     this.retrieveQuizzes();
   }
 
+  setSelectedCategory(categoryId: number): void {
+    const urlWithId = this.categoryUrl + '/' + categoryId;
+    this.http.get<Category>(urlWithId).subscribe((category) => {
+      this.categorySelected$.next(category);
+    });
+  }
+
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;
@@ -47,7 +57,7 @@ export class QuizService {
     });
   }
 
-  addQuiz(quiz: Quiz): void {
+  addQuiz(quiz: Quiz, categoryId: number): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions)
       .pipe(
         catchError(this.handleError<Quiz>('addQuiz'))
@@ -65,6 +75,8 @@ export class QuizService {
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+    const urlWithCategoryId = this.quizUrl + '/' + quiz.id;
+    this.http.delete<Quiz>(urlWithCategoryId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
   addQuestion(quiz: Quiz, question: Question): void {

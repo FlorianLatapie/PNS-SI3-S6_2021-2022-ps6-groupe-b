@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from '../../../models/quiz.model';
+import {QuizService} from '../../../services/quiz.service';
+import {Quiz} from '../../../models/quiz.model';
+import {Category} from '../../../models/category.model';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-quiz-form',
@@ -19,12 +21,17 @@ export class QuizFormComponent implements OnInit {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
+  selectedCategory: Category;
+  categoryList: Category[];
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(public formBuilder: FormBuilder, public quizService: QuizService, public categoryService: CategoryService) {
+    this.categoryService.categories$.subscribe((categories: Category[]) => {
+      this.categoryList = categories;
+    });
     this.quizForm = this.formBuilder.group({
       name: [''],
       description: [''],
-      category: ['people']
+      category: ['']
     });
   }
 
@@ -34,8 +41,8 @@ export class QuizFormComponent implements OnInit {
   addQuiz(): void {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-    this.quizService.addQuiz(quizToCreate);
+    console.log(quizToCreate);
+    this.quizService.addQuiz(quizToCreate, quizToCreate.category.id);
 
   }
-
 }
