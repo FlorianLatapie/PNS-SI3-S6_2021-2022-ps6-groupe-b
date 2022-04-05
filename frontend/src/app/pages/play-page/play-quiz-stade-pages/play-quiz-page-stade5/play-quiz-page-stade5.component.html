@@ -1,21 +1,23 @@
 <ng-container *ngIf="quiz">
+    <!-- {{shuffleArray(quiz.questions)}} -->
+
     <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
     <ng-template #quiz_play>
             <div class="card question-card">
                 <div class="quiz-question-layout">
-                    <img class="image-question-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/John_Cena_July_2018.jpg/1200px-John_Cena_July_2018.jpg" alt="">
-                    <h1 class="quiz-question-label">{{quiz.questions[currentQuestion].label}}</h1>
+                    <img class="image-question-size" src="{{currentQuestion.imageUrls[currentQuestion.currentImage]}}" alt="">
+                    <h1 class="quiz-question-label">{{currentQuestion.label}}</h1>
                 </div>
                 <div class="grid-button-answers">
-                    <div *ngFor="let answer of quiz.questions[currentQuestion].answers">
-                        <button class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect)" [disabled]="answerSelected" appButtonBackgroundQuestion [correctAnswer] = "answer.isCorrect">
+                    <div *ngFor="let answer of currentQuestion.answers">
+                        <button class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect)" [ngClass]="{'button-green': changeColor, 'button-red': !changeColor}">
                             {{answer.value}}
                         </button>
+                            <!-- <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br> -->
                     </div>
                 </div>
-
-                <p>{{currentQuestion +1}}/{{quiz.questions.length}}</p>
             </div>
+            <p>{{questionsCounter}}/{{questions.length}}</p>
     </ng-template>
 
     <ng-template #quiz_end>
@@ -24,6 +26,19 @@
             <p>Merci d'avoir joué !</p>
             <button class="button-card" [routerLink]="['/play-page']">Retour</button>
             <button class="button-card" (click)="reloadQuiz()">Rejouer</button>
+        </div>
+        <div class="stats-quiz-layout">
+            <div class="stats-quiz-questions">
+                <h1>Stats quiz</h1>
+                <p>Correct questions : {{quiz.correctQuestions}}</p>
+                <p>Incorrect questions : {{quiz.incorrectQuestions}}</p>
+            </div>
+        
+            <div class="stats-quiz-questions-answers" *ngFor="let question of quiz.questions">
+                <p>{{question.label}} - {{question.id}}<br></p>
+                    <p>Correct Answers: {{question.correctAnswers}}/{{question.answers.length}}</p>
+                    <p>Incorrect Answers: {{question.incorrectAnswers}}/{{question.answers.length}}</p>
+            </div>
         </div>
     </ng-template>
 

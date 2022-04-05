@@ -13,23 +13,29 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class PlayQuizPageStade4Component implements OnInit {
 
-  private currentQuestion = 0;
-  answerSelected = false;
-  private correctAnswers = 0;
-  private incorrectAnswers = 0;
-  private correctQuestions = 0;
-  private incorrectQuestions=0;
+  imagesToDisplay: number;
+  changeBtnToGreen=false;
+  changeBtnToRed=false;
   endOfQuiz = false;
   quiz: Quiz;
+  currentQuestion: Question;
   private questions: Question[];
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
+      this.quiz.correctQuestions=0;
+      this.quiz.incorrectQuestions=0;
       this.questions = this.quiz.questions;
+      //to del
+      for(var q of this.questions){
+        q.correctAnswers=0;
+        q.incorrectAnswers=0;
+      }
+      this.imagesToDisplay = 1;
       // mélange les questions
       this.shuffleArray(this.questions);
-
+      this.currentQuestion = this.questions[0];
       // ngAfterContentInit utilisation attendre init quiz pour shuffle question
 
     });
@@ -45,45 +51,50 @@ export class PlayQuizPageStade4Component implements OnInit {
   
   onAnswer(option: boolean){
     if(option){
-      this.correctQuestions++;
-      this.questions[this.currentQuestion].correctAnswers = ""+this.correctAnswers++
+      this.changeBtnToGreen = true;
+      this.quiz.correctQuestions++;
+      this.currentQuestion.correctAnswers++;
+      this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
+      this.nextQuestion();
     } 
     else{
-      this.incorrectQuestions++;
-      this.questions[this.currentQuestion].incorrectAnswers = ""+this.incorrectAnswers++
+      this.changeBtnToRed = true;
+      this.quiz.incorrectQuestions++;
+      this.currentQuestion.incorrectAnswers++;
+      if(this.currentQuestion.incorrectAnswers<3){
+        this.imagesToDisplay++;
+        this.shuffleArray(this.currentQuestion.answers);
+        
+      }else{
+        this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
+        this.nextQuestion();
+      }
     }
-    this.readdQuestionIntoQuiz(this.questions[this.currentQuestion]);
-    this.nextQuestion();
   }
 
-  reloadQuiz(){
-    let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
- 
-  }
 
   nextQuestion(){
-    if(this.questions.length-1>this.currentQuestion){
-      this.answerSelected = true;
+    if(this.questions.length>=1){
       setTimeout(()=>{
-        //mélange les réponses
-        this.shuffleArray(this.questions[this.currentQuestion+1].answers);
-        this.currentQuestion++;
-        this.answerSelected = false;
+        this.changeBtnToGreen = false;
+        this.changeBtnToRed = false;
+        this.initNextQuestion();
       }, 1000);
     }
     else{
       setTimeout(()=>{
-        this.quiz.correctQuestions=""+this.correctQuestions;
-        this.quiz.incorrectQuestions=""+this.incorrectQuestions;
         this.endOfQuiz=true;
       }, 2000)
     }
   }
 
-  readdQuestionIntoQuiz(question : Question){
+
+  initNextQuestion(){
+    this.imagesToDisplay=1;
+    console.log(this.imagesToDisplay);
+    this.currentQuestion = this.questions[0];
+     //mélange les réponses
+    this.shuffleArray(this.currentQuestion.answers);
   }
   
   shuffleArray(array) {
@@ -94,5 +105,14 @@ export class PlayQuizPageStade4Component implements OnInit {
         array[j] = temp;
     }
 }
+
+reloadQuiz(){
+  let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+
+}
+
 
 }

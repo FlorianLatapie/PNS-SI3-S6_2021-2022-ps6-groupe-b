@@ -2,8 +2,8 @@
 @import '../../../../../styles/card.scss';
 
 .image-question-size{
-    width: 300px;
-    height: auto;
+    max-width: 30vw;
+    max-height: 40vh;
 }
 
 .button-quiz-answer{
@@ -26,4 +26,17 @@
     margin: 1rem 0;
 }
 
+.quiz-question-images-layout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
+.button-green{
+    background-color: #16a637;
+}
+
+.button-red{
+    background-color: #997387;
+}
