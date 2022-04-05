@@ -1,14 +1,16 @@
-
 <div *ngIf="user; then connect; else ask_to_connect"></div>
-    <ng-template #connect>
-        <div class="body-main-page">
-            <h1>Quiz Groupe B</h1>
-            <div class="buttons-placement">
-                <button class="navigation" [routerLink]="['/play-page']">Jouer</button>
-                <button class="navigation" [routerLink]="['/manage-page']">Gérer les quiz</button>
-            </div>
-        </div>
-    </ng-template>
-    <ng-template #ask_to_connect>
-        <h1>Please Connect</h1>
-    </ng-template>
+<ng-template #connect>
+  <div class="body-main-page">
+    <h1>Quiz Groupe B</h1>
+    <div class="buttons-placement">
+      <button class="navigation" [routerLink]="['/play-page']">Jouer</button>
+      <button class="navigation" [routerLink]="['/manage-page']">Gérer les quiz</button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #ask_to_connect>
+  <h1>Connectez vous</h1>
+  <button [routerLink]="['/login-page']">
+    Se connecter
+  </button>
+</ng-template>
