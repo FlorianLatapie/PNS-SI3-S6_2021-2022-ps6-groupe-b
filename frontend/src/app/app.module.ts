@@ -31,7 +31,6 @@ import { PlayQuizPageStade4Component } from './pages/play-page/play-quiz-stade-p
 import { PlayQuizPageStade5Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade5/play-quiz-page-stade5.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonBackgroundQuestionDirective } from './pages/play-page/play-quiz-stade-pages/button-change-background/button-background-question.directive';
 import { CommonModule } from '@angular/common';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { StatsQuizPageComponent } from './pages/stats-quiz-page/stats-quiz-page.component';
@@ -64,7 +63,6 @@ import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/
     UpdateQuizzesComponent,
     PlayQuizPageStade4Component,
     PlayQuizPageStade5Component,
-    ButtonBackgroundQuestionDirective,
     StatsPageComponent,
     StatsQuizPageComponent,
     UpdateCategoryQuizzesComponent,

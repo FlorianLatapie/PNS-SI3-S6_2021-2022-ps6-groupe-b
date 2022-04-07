@@ -1,9 +1,11 @@
 @import './styles/variables.scss';
+@import "./styles/card.scss";
+
 
 /* You can add global styles to this file, and also import other style files */
-html {
+/*html {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-}
+}*/
 
 body {
   margin: 0;
@@ -17,4 +19,12 @@ table {
 td,
 th {
     border: solid #000000;
+}
+
+a{
+  font-size: 1.7em;
+}
+
+button{
+  font-size: large;
 }
