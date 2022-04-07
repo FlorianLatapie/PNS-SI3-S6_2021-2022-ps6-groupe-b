@@ -66,7 +66,7 @@ export class PlayQuizPageStade5Component implements OnInit {
       setTimeout(()=>{
         if(this.reAddQuestionIntoQuiz(this.currentQuestion))
         {
-          this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1)%3; //inutile si 3 images
+          this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1)%this.currentQuestion.imageUrls.length; //inutile si 3 images
         }
         else if(this.questions.length<=0)
         {
