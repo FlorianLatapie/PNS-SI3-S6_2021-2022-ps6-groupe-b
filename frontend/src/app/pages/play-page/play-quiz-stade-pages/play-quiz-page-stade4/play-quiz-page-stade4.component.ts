@@ -83,7 +83,6 @@ export class PlayQuizPageStade4Component implements OnInit {
     }
     else{
       setTimeout(()=>{
-        this.quizService.updateQuiz(this.quiz);
         this.endOfQuiz=true;
       }, 3000)
     }

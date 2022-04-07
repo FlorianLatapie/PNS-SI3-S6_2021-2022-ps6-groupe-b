@@ -6,11 +6,11 @@ import {QuizService} from 'src/services/quiz.service';
 
 
 @Component({
-  selector: 'app-play-quiz-page-stade5',
-  templateUrl: './play-quiz-page-stade5.component.html',
-  styleUrls: ['./play-quiz-page-stade5.component.scss']
+  selector: 'app-play-quiz-page-stade6',
+  templateUrl: './play-quiz-page-stade6.component.html',
+  styleUrls: ['./play-quiz-page-stade6.component.scss']
 })
-export class PlayQuizPageStade5Component implements OnInit {
+export class PlayQuizPageStade6Component implements OnInit {
 
   currentImage: number;
   endOfQuiz = false;
@@ -19,6 +19,9 @@ export class PlayQuizPageStade5Component implements OnInit {
   private questions: Question[];
   currentAnswerId: string;
   isCurrentAnswerCorrect: boolean;
+  randomImages: string[];
+  currentRandomImage: number;
+  randomImageToleft: boolean;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
@@ -26,13 +29,16 @@ export class PlayQuizPageStade5Component implements OnInit {
       this.quiz.correctQuestions = 0;
       this.quiz.incorrectQuestions = 0;
       this.questions = [...this.quiz.questions];
-
       for (var q of this.questions) {
         q.correctAnswers = 0;
         q.incorrectAnswers = 0;
         q.currentImage = 0;
       }
-
+      this.randomImageToleft=false;
+      this.currentRandomImage=0;
+      this.randomImages = [];
+      this.randomImages.push("https://resize-public.ladmedia.fr/img/var/public/storage/images/toutes-les-photos/j-en-ai-assez-fait-apres-bruce-willis-jim-carrey-souhaite-aussi-arreter-sa-carriere-1704345/45046100-1-fre-FR/J-en-ai-assez-fait-Apres-Bruce-Willis-Jim-Carrey-souhaite-aussi-arreter-sa-carriere.jpg");
+      this.randomImages.push("https://static.cnews.fr/sites/default/files/styles/image_640_360/public/jim_carrey_6246cc9c0cebc_0.jpg?itok=uHABiK82");
       // mélange les questions
       this.shuffleArray(this.questions);
       this.currentQuestion = this.questions[0];
@@ -72,6 +78,7 @@ export class PlayQuizPageStade5Component implements OnInit {
         this.endOfQuiz = true;
         return;
       }
+      this.currentRandomImage =(Math.floor(Math.random()*10))%this.randomImages.length;
       this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
       this.initNextQuestion();
     }, 1000);
@@ -90,12 +97,14 @@ export class PlayQuizPageStade5Component implements OnInit {
     return false;
   }
 
+  randomImageSide(){
+    this.randomImageToleft = Boolean(Math.round(Math.random()));
+  }
 
   initNextQuestion() {
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
-    // mélange les réponses
-    this.shuffleArray(this.currentQuestion.answers);
+    this.randomImageSide();    
   }
 
   shuffleArray(array) {

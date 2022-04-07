@@ -33,7 +33,7 @@ export class PlayPageComponent implements OnInit {
     if(this.user.stade=="5"){
       this.router.navigate(['/play-quiz-page-stade5/' + this.quiz.id]);
     }else if(this.user.stade=="6"){
-      this.router.navigate(['/play-quiz-page/' + this.quiz.id]);
+      this.router.navigate(['/play-quiz-page-stade6/' + this.quiz.id]);
     }else{
       this.router.navigate(['/play-quiz-page-stade4/' + this.quiz.id]);
     }

@@ -29,6 +29,7 @@ import { CreateQuizPageComponent } from './pages/create-quiz-page/create-quiz-pa
 import { UpdateQuizzesComponent } from './pages/update-quizzes/update-quizzes.component';
 import { PlayQuizPageStade4Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade4/play-quiz-page-stade4.component';
 import { PlayQuizPageStade5Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade5/play-quiz-page-stade5.component';
+import { PlayQuizPageStade6Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade6/play-quiz-page-stade6.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -63,6 +64,7 @@ import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/
     UpdateQuizzesComponent,
     PlayQuizPageStade4Component,
     PlayQuizPageStade5Component,
+    PlayQuizPageStade6Component,
     StatsPageComponent,
     StatsQuizPageComponent,
     UpdateCategoryQuizzesComponent,

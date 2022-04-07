@@ -1,0 +1,49 @@
+@import '../../../../../styles/quiz.scss';
+@import '../../../../../styles/card.scss';
+
+.image-question-size-stade6{
+    max-width: 30vw;
+    max-height: 40vh;
+    margin: 0, 1rem;
+}
+
+.question-card-stade6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 1rem;
+}
+
+.stade6-layout{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stats-quiz-layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+li{
+    text-decoration: none;
+}
+
+
+
+.button-green{
+    border:solid #16a637;
+}
+.button-green:hover{
+    border:solid #16a637;
+}
+
+.button-red{
+    border:solid #997387;
+}
+.button-red:hover{
+    border:solid #997387;
+}
