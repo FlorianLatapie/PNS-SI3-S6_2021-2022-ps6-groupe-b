@@ -48,9 +48,17 @@ export class QuizService {
 
   addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions)
-      .pipe(
-        catchError(this.handleError<Quiz>('addQuiz'))
+    .pipe(
+      catchError(this.handleError<Quiz>('addQuiz'))
       ).subscribe(() => this.retrieveQuizzes());
+    }
+    
+  updateQuiz(quiz: Quiz): void{
+    console.log("updateQuiz");
+    this.http.put<Quiz>(this.quizUrl, quiz, this.httpOptions)
+    .pipe(
+      catchError(this.handleError<Quiz>('updateQuiz'))
+    ).subscribe(() => this.retrieveQuizzes());
   }
 
 

@@ -14,8 +14,6 @@ import { QuizService } from 'src/services/quiz.service';
 export class PlayQuizPageStade4Component implements OnInit {
 
   imagesToDisplay: number;
-  changeBtnToGreen=false;
-  changeBtnToRed=false;
   endOfQuiz = false;
   quiz: Quiz;
   currentQuestion: Question;
@@ -49,21 +47,23 @@ export class PlayQuizPageStade4Component implements OnInit {
   
   
   
-  onAnswer(option: boolean){
+  onAnswer(option: boolean, idAnswer: string){
+    this.changeBtnColor(option,idAnswer);
     if(option){
-      this.changeBtnToGreen = true;
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
       this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
       this.nextQuestion();
     } 
     else{
-      this.changeBtnToRed = true;
       this.quiz.incorrectQuestions++;
       this.currentQuestion.incorrectAnswers++;
       if(this.currentQuestion.incorrectAnswers<3){
+        setTimeout(()=>{
+        this.disableChangeBtnColor(option,idAnswer);
         this.imagesToDisplay++;
         this.shuffleArray(this.currentQuestion.answers);
+        }, 2000);
         
       }else{
         this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
@@ -74,20 +74,40 @@ export class PlayQuizPageStade4Component implements OnInit {
 
 
   nextQuestion(){
+    console.log("next question");
     if(this.questions.length>=1){
       setTimeout(()=>{
-        this.changeBtnToGreen = false;
-        this.changeBtnToRed = false;
         this.initNextQuestion();
-      }, 1000);
+      }, 2000);
+      
     }
     else{
       setTimeout(()=>{
+        this.quizService.updateQuiz(this.quiz);
         this.endOfQuiz=true;
-      }, 2000)
+      }, 3000)
+    }
+
+  }
+
+  changeBtnColor(option: boolean, id :string){
+    console.log("change btn color");
+    var btn = document.getElementById(id);
+    if(option){
+      btn.classList.add("button-green");
+    }else{
+      btn.classList.add("button-red");
     }
   }
 
+  disableChangeBtnColor(option: boolean, id :string){
+    var btn = document.getElementById(id);
+    if(option){
+      btn.classList.remove("button-green");
+    }else{
+      btn.classList.remove("button-red");
+    }
+  }
 
   initNextQuestion(){
     this.imagesToDisplay=1;

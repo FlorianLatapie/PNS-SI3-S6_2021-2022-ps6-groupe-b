@@ -17,6 +17,8 @@ export class PlayQuizPageStade5Component implements OnInit {
   quiz: Quiz;
   currentQuestion: Question;
   private questions: Question[];
+  currentAnswerId: string;
+  isCurrentAnswerCorrect: boolean;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
@@ -46,7 +48,9 @@ export class PlayQuizPageStade5Component implements OnInit {
   }
 
 
-  onAnswer(option: boolean) {
+  onAnswer(option: boolean, answerId: string) {
+    this.currentAnswerId = answerId;
+    this.isCurrentAnswerCorrect = option;
     if (option) {
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
@@ -60,6 +64,7 @@ export class PlayQuizPageStade5Component implements OnInit {
 
 
   nextQuestion() {
+    this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     setTimeout(() => {
       if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
         this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % 3; //inutile si 3 images
@@ -67,6 +72,7 @@ export class PlayQuizPageStade5Component implements OnInit {
         this.endOfQuiz = true;
         return;
       }
+      this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
       this.initNextQuestion();
     }, 1000);
   }
@@ -76,15 +82,9 @@ export class PlayQuizPageStade5Component implements OnInit {
     if (question.imageUrls.length > this.currentQuestion.currentImage) {
       if ((question.incorrectAnswers < 3 && question.correctAnswers < 1)) {
         // si trop de mauvaises réponses : oublie, si au moins deux bonnes réponses : on sait
-        console.log('readdquestionIntoQuiz: ' + this.currentQuestion.id);
-        console.log('bonnes réponses : ' + this.currentQuestion.correctAnswers);
-        console.log('mauvaise réponses : ' + this.currentQuestion.incorrectAnswers);
-        console.log('');
         return true;
       }
       this.questions.splice(this.questions.indexOf(question), 1);
-      console.log('\nremoving :' + this.currentQuestion.id);
-      console.log('question.incorrectAnswers : ' + question.incorrectAnswers + ' question.correctAnswers : ' + question.correctAnswers);
       return false;
     }
     return false;
@@ -114,5 +114,22 @@ export class PlayQuizPageStade5Component implements OnInit {
     this.router.navigate([currentUrl]);
   }
 
+  changeBtnColor(option: boolean, id :string){
+    var btn = document.getElementById(id);
+    if(option){
+      btn.classList.add("button-green");
+    }else{
+      btn.classList.add("button-red");
+    }
+  }
+
+  disableChangeBtnColor(option: boolean, id :string){
+    var btn = document.getElementById(id);
+    if(option){
+      btn.classList.remove("button-green");
+    }else{
+      btn.classList.remove("button-red");
+    }
+  }
 
 }
