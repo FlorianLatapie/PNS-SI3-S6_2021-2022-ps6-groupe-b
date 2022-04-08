@@ -1,3 +1,7 @@
+@import '../../../../src/styles/buttons.scss';
+@import '../../../../src/styles/variables.scss';
+
+
 .body-main-page{
     display: flex;
     align-items: center;
@@ -11,11 +15,14 @@
     align-items: center;
     flex-direction: row;
 }
+.connect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
 
-button{
-    margin: 1rem;
-    padding: 2rem;
-    width: auto;
-    height: auto;
-    text-align: center;
+.connect-button{
+    padding: 2rem 3rem;
+
 }

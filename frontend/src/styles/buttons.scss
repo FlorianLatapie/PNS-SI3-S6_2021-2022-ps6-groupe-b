@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .add-question {
   background-color: DodgerBlue;
   border: none;
@@ -34,3 +36,30 @@
 }
 
 
+.main-button {
+  font-size: 1.5rem;
+  color: $darkblue;
+  border: $darkblue solid 3px;
+}
+
+.main-button:hover {
+  background-color: $darkblue;
+}
+
+.button{
+  display: inline-flex;
+  justify-content: center;
+  margin: 0.1em;
+  border-radius: 100px;
+  font-family: "Inria Sans", sans-serif;
+  cursor: pointer;
+  background-color: $lightwhite;
+  padding: 0.5em 1.5em;
+  transition: all 0.4s;
+}
+
+.button:hover {
+  border: $lightwhite solid 3px;
+  color: $lightwhite;
+  box-shadow: black .5px 0 10px;
+}
