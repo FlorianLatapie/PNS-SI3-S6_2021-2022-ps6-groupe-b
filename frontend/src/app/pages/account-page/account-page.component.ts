@@ -16,11 +16,13 @@ export class AccountPageComponent implements OnInit {
       console.log('il y a un utilisateur :', this.userSelected);
     });
     console.log(this.userSelected);
-
   }
 
   ngOnInit(): void {
     console.log(this.userSelected);
     }
 
+  logoutAccount(){
+    this.userService.logoutUser();
+  }
 }

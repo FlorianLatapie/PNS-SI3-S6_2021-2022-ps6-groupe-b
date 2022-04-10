@@ -1,16 +1,16 @@
 @import './variables.scss';
 
 .add-question {
-  background-color: DodgerBlue;
+  background-color: $blue;
   border: none;
-  color: white;
+  color: $white;
   padding: 24px 32px;
   font-size: 32px;
   cursor: pointer;
 }
 
 .add-question:hover {
-  background-color: RoyalBlue;
+  background-color: $darkblue;
 }
 
 .add-image {
@@ -23,16 +23,16 @@
 }
 
 .add-image + label{
-  background-color: DodgerBlue;
+  background-color: $blue;
   border: none;
-  color: white;
+  color: $white;
   padding: 24px 32px;
   font-size: 32px;
   cursor: pointer;
 }
 
 .add-image:hover + label {
-  background-color: RoyalBlue;
+  background-color: $blue;
 }
 
 
@@ -45,15 +45,6 @@
 .main-button:hover {
   background-color: $darkblue;
 }
-.main-button-white {
-  font-size: 1.5rem;
-  color: $darkblue;
-  border: $darkblue solid 3px;
-}
-
-.main-button-white:hover {
-  background-color: $darkblue;
-}
 
 .button{
   display: inline-flex;
@@ -62,13 +53,13 @@
   border-radius: 100px;
   font-family: "Inria Sans", sans-serif;
   cursor: pointer;
-  background-color: $lightwhite;
+  background-color: $white;
   padding: 0.5em 1.5em;
   transition: all 0.4s;
 }
 
 .button:hover {
-  border: $lightwhite solid 3px;
-  color: $lightwhite;
+  border: $white solid 3px;
+  color: $white;
   box-shadow: black .5px 0 10px;
 }

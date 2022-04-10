@@ -44,8 +44,11 @@ export class UserService {
     const urlWithId = this.userUrl + '/' + userId;
     this.http.get<User>(urlWithId).subscribe((user) => {
       this.userSelected$.next(user);
-      console.log("user :",user);
     });
+  }
+
+  logoutUser(): void{
+    this.userSelected$.next(null);
   }
 
   deleteUser(user: User): void {

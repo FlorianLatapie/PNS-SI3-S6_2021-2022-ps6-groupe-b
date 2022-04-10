@@ -7,17 +7,22 @@
   flex-direction: column;
 }
 
-.button-placement{
+.buttons-placement{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-button{
+.button{
   margin: 1rem;
-  padding: 2rem;
   width: auto;
   height: auto;
   text-align: center;
+}
+.manage-page-title{
+  margin: 3rem;
+  font-size: 3rem;
+  color: $blue;
+  font-weight: bold;
 }

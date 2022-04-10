@@ -1,24 +1,28 @@
-<button class="navigation" [routerLink]="['/user-list']">Manage users</button>
 
-<div *ngIf="userSelected != null">
-  <h1>Informations de l'utilisateur</h1>
-
+<div *ngIf="userSelected != null" class="account-page-layout">
+  <h1 class="account-page-title">Page utilisateur</h1>
+  
   <table>
     <tr>
       <td>Identifiant unique</td>
       <td>{{userSelected.id}}</td>
+      <button class="modify-button button-card" (click)="modifyId()">Modifier</button>
     </tr>
     <tr>
       <td>Prénom</td>
       <td>{{userSelected.firstName}}</td>
+      <button class="modify-button button-card" (click)="modifyFirstName()">Modifier</button>
     </tr>
     <tr>
       <td>Nom de famille</td>
       <td>{{userSelected.lastName}}</td>
+      <button class="modify-button button-card" (click)="modifyLastName()">Modifier</button>
     </tr>
     <tr>
       <td>Stade</td>
       <td>{{userSelected.stade}}</td>
+      <button class="modify-button button-card" (click)="modifyStade()">Modifier</button>
     </tr>
   </table>
+  <button class="navigation main-button button logout-button" [routerLink]="['/main-page']" (click)="logoutAccount()">Logout</button>
 </div>

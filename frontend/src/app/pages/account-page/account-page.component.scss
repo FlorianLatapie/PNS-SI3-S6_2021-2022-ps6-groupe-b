@@ -1,0 +1,32 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/buttons.scss";
+
+.account-page-layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-page-title{
+    margin: 2rem;
+    font-size: 2rem;
+    color: $blue;
+    font-weight: bold;
+}
+
+.logout-button{
+    margin: 1rem;
+}
+
+table{
+    border-collapse: collapse;
+}
+table>td{
+    background: $white;
+    color: $darkblue;
+}
+td{
+    border: 1px solid black;
+    padding: 10px;
+}

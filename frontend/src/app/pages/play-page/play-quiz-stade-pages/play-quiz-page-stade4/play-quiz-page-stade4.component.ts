@@ -74,7 +74,6 @@ export class PlayQuizPageStade4Component implements OnInit {
 
 
   nextQuestion(){
-    console.log("next question");
     if(this.questions.length>=1){
       setTimeout(()=>{
         this.initNextQuestion();
@@ -90,7 +89,6 @@ export class PlayQuizPageStade4Component implements OnInit {
   }
 
   changeBtnColor(option: boolean, id :string){
-    console.log("change btn color");
     var btn = document.getElementById(id);
     if(option){
       btn.classList.add("button-green");
@@ -110,7 +108,6 @@ export class PlayQuizPageStade4Component implements OnInit {
 
   initNextQuestion(){
     this.imagesToDisplay=1;
-    console.log(this.imagesToDisplay);
     this.currentQuestion = this.questions[0];
      //mélange les réponses
     this.shuffleArray(this.currentQuestion.answers);

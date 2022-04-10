@@ -2,25 +2,17 @@
   <a class="navigation header-title" [routerLink]="['/main-page']">
     Groupe B
   </a>
-  <div class="useful-links">
-    <a class="navigation" [routerLink]="['/main-page']">Accueil</a>
-    <a class="navigation" [routerLink]="['/manage-page']">Gérer les quiz</a>
-    <a class="navigation" [routerLink]="['/guidelines-page']">Notice</a>
-    <a class="navigation" [routerLink]="['/about-page']">A Propos</a>
-  </div>
   <div class="connection-parameters">
+    <a class="navigation" [routerLink]="['/guidelines-page']">Notice</a>
+    <a class="navigation" [routerLink]="['/about-page']">A Propos |</a>
     <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/account-page']">
       {{username}}
     </a>
-    <a *ngIf="userSelected == null" class="navigation" [routerLink]="['/login-page']">
-      Se connecter
-    </a>
-    <a *ngIf="userSelected == null" class="navigation" [routerLink]="['/sign-in-page']">
-      S'inscrire
-    </a>
-    <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/login-page']">
-      Changer d'utilisateur
-    </a>
+    <div *ngIf="userSelected == null">
+      <a class="connect-navigation navigation " [routerLink]="['/login-page']"> Se connecter</a>
+      <a class="connect-navigation navigation">/</a>
+      <a class="connect-navigation navigation" [routerLink]="['/sign-in-page']">S'inscrire</a>
+    </div>
   </div>
   <!-- Famille de ginette à remplacer par variable user -->
 </div>

@@ -1,6 +1,4 @@
 <ng-container *ngIf="quiz">
-    <!-- {{shuffleArray(quiz.questions)}} -->
-
     <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
     <ng-template #quiz_play>
             <div class="card question-card">
@@ -21,7 +19,6 @@
                     </div>
                 </div>
             </div>
-            <p>{{questionsCounter}}/{{questions.length}}</p>
     </ng-template>
 
     <ng-template #quiz_end>
