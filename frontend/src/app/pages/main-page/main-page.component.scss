@@ -11,6 +11,8 @@
 }
 
 .buttons-placement{
+    display: flex;
+    flex-direction: column;
     margin-top: 2rem;
 }
 
@@ -28,8 +30,6 @@
 }
 
 .title-main-page{
-    font-size: 3rem;
-    font-size: bold;
 }
 
 .brain-img{
@@ -37,3 +37,35 @@
     margin-left: 4rem;
     opacity: 12%;
 }
+
+.svg{
+
+}
+
+svg text {
+    font-family: Lora;
+    letter-spacing: 2px;
+    font-size: 5rem;
+    stroke: $darkblue;
+    stroke-width: 3px;
+    animation: textAnimate 5s infinite alternate;
+    
+  }
+  
+  @keyframes textAnimate {
+    0% {
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset:  20%;
+      fill: $blue;
+    }
+    
+    100% {
+      stroke-dasharray: 50% 0;
+      stroke-dashoffstet: -20%;
+      fill: $blue;
+    //   hsla(189, 68%, 75%,0%)
+    }
+    
+  }
+
+ 

@@ -1,7 +1,9 @@
 <div *ngIf="user; then connect; else ask_to_connect"></div>
 <ng-template #connect>
   <div class="body-main-page">
-    <h1 class="title-main-page">Quiz Groupe B</h1>
+    <svg class="svg" width="100%" height="100%">
+      <text class="title-main-page" x="50%" y="60%"  text-anchor="middle">Quiz Groupe B</text>
+    </svg>
     <div class="buttons-placement">
       <button class="button main-button" [routerLink]="['/play-page']">Jouer</button>
       <button class="button main-button" [routerLink]="['/manage-page']">Gérer les quiz</button>
