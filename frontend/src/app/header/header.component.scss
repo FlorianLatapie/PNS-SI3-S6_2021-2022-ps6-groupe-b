@@ -24,6 +24,13 @@
   padding-left: 0.5em;
   color: white;
   text-decoration: none;
+  transition: all 0.4s;
+
+}
+
+.navigation:hover{
+  text-shadow: black 1px 0 10px;
+  cursor: pointer;
 }
 
 .useful-links>a{

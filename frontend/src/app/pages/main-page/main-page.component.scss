@@ -6,23 +6,34 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
-}
-
-.button-placement{
-    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    height: 60vh;
 }
+
+.buttons-placement{
+    margin-top: 2rem;
+}
+
 .connect{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    height: 80vh;
+    align-items: center;
 }
 
 .connect-button{
-    padding: 2rem 3rem;
+    padding: 1rem 1.5rem;
+    margin: .5rem;
 
+}
+
+.title-main-page{
+    font-size: 3rem;
+    font-size: bold;
+}
+
+.brain-img{
+    height: 20rem;
+    margin-left: 4rem;
+    opacity: 12%;
 }

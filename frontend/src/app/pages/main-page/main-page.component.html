@@ -1,7 +1,7 @@
 <div *ngIf="user; then connect; else ask_to_connect"></div>
 <ng-template #connect>
   <div class="body-main-page">
-    <h1>Quiz Groupe B</h1>
+    <h1 class="title-main-page">Quiz Groupe B</h1>
     <div class="buttons-placement">
       <button class="button main-button" [routerLink]="['/play-page']">Jouer</button>
       <button class="button main-button" [routerLink]="['/manage-page']">Gérer les quiz</button>
@@ -11,8 +11,11 @@
 <ng-template #ask_to_connect>
   <div class="connect">
     <button class="button main-button connect-button" [routerLink]="['/login-page']">
-
       Se connecter
     </button>
+    <button class="button main-button connect-button" [routerLink]="['/sign-in-page']">
+      S'inscrire
+    </button>
   </div>
+  <img class="brain-img" src="../../../assets/cerveau.png" alt="">
 </ng-template>

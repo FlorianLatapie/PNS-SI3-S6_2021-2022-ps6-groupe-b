@@ -1,5 +1,5 @@
 <div class="header">
-  <a class="navigation">
+  <a class="navigation header-title" [routerLink]="['/main-page']">
     Groupe B
   </a>
   <div class="useful-links">
@@ -8,12 +8,15 @@
     <a class="navigation" [routerLink]="['/guidelines-page']">Notice</a>
     <a class="navigation" [routerLink]="['/about-page']">A Propos</a>
   </div>
-  <div>
+  <div class="connection-parameters">
     <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/account-page']">
       {{username}}
     </a>
     <a *ngIf="userSelected == null" class="navigation" [routerLink]="['/login-page']">
       Se connecter
+    </a>
+    <a *ngIf="userSelected == null" class="navigation" [routerLink]="['/sign-in-page']">
+      S'inscrire
     </a>
     <a *ngIf="userSelected != null" class="navigation" [routerLink]="['/login-page']">
       Changer d'utilisateur

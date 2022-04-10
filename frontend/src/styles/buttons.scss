@@ -45,6 +45,15 @@
 .main-button:hover {
   background-color: $darkblue;
 }
+.main-button-white {
+  font-size: 1.5rem;
+  color: $darkblue;
+  border: $darkblue solid 3px;
+}
+
+.main-button-white:hover {
+  background-color: $darkblue;
+}
 
 .button{
   display: inline-flex;

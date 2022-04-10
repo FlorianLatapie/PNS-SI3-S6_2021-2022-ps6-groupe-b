@@ -1,6 +1,3 @@
-<button class="button-card" [routerLink]="['/sign-in-page']">
-  Créer un compte
-</button>
 <div class="user-list">
   <div class="user" *ngFor="let user of userList">
       <app-user [user]="user" [displayDeleteButton]="false" (deleteUser)="deleteUser($event)" (selectUser)="selectUser($event)"></app-user>
