@@ -46,11 +46,15 @@ router.put('/:quizInstanceId', (req, res) => {
 })
 
 router.delete('/:quizInstanceId', (req, res) => {
+  logger.info('oui delete')
+
   try {
+    logger.info('try delete')
     QuizInstance.delete(req.params.quizInstanceId)
     res.status(204)
       .end()
   } catch (err) {
+    logger.info('catch delete')
     manageAllErrors(res, err)
   }
 })
