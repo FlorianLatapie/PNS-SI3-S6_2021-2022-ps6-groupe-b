@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
+import {Category} from '../../../models/category.model';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-play-page',
@@ -11,8 +13,11 @@ export class PlayPageComponent implements OnInit {
   quiz: Quiz;
   // tslint:disable-next-line:ban-types
   isQuizSelected: Boolean = false;
+  categorySelected: Category;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public categoryService: CategoryService) {
+    this.categoryService.categorySelected$.subscribe(category => this.categorySelected = category);
+  }
 
   ngOnInit(): void {
   }

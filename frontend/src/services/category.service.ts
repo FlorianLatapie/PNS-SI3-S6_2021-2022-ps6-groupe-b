@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {Category} from '../models/category.model';
 import {CATEGORY_LIST} from '../mocks/categories-list.mock';
+import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,14 @@ export class CategoryService {
   public categories$: BehaviorSubject<Category[]>
     = new BehaviorSubject(this.categories);
 
-  public categorySelected$: Subject<Category> = new Subject();
+  public categorySelected: Category = null;
+  public categorySelected$: BehaviorSubject<Category> = new BehaviorSubject<Category>(this.categorySelected);
 
   constructor() {
+  }
+
+  setSelectedCategory(category: Category): void {
+    this.categorySelected = category;
+    this.categorySelected$.next(category);
   }
 }

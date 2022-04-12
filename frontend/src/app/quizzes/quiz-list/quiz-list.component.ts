@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import {Category} from "../../../models/category.model";
 
 @Component({
   selector: 'app-quiz-list',
@@ -26,6 +27,9 @@ export class QuizListComponent implements OnInit {
 
   @Input()
   displayDeleteButton: boolean;
+
+  @Input()
+  categorySelected: Category;
 
   @Output()
   quizSelectedFromChild: EventEmitter<Quiz> = new EventEmitter<Quiz>();

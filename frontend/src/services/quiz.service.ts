@@ -43,13 +43,6 @@ export class QuizService {
     this.retrieveQuizzes();
   }
 
-  setSelectedCategory(categoryId: number): void {
-    const urlWithId = this.categoryUrl + '/' + categoryId;
-    this.http.get<Category>(urlWithId).subscribe((category) => {
-      this.categorySelected$.next(category);
-    });
-  }
-
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;

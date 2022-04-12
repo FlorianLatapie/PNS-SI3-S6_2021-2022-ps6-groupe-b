@@ -20,11 +20,9 @@
         </mat-select>
       </mat-label>
     </mat-form-field>
-    {{selectedCategory|json}}
     <br>
     <p><i>* : Champs obligatoires</i></p>
     <br>
-    category choisie : {{quizForm.value | json}}
     <div class="align-button">
       <button type="cancel" class="button-card" [routerLink]="['/manage-page']">Annuler</button>
       <button type="submit" class="button-card" (click)="addQuiz()" [routerLink]="['/manage-page']">Valider</button>
