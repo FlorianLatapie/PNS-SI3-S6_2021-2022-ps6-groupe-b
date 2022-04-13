@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+.body-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-title{
+  margin: 3rem;
+  font-size: 3rem;
+  color: $blue;
+  font-weight: bold;
+}
