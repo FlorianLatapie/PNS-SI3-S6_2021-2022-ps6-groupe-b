@@ -1,2 +1,20 @@
 @import '../../../styles/card.scss';
 @import '../../../styles/align-buttons.scss';
+
+.input-custom[type=text] {
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.name {
+  margin-bottom: 0.5em;
+}
+
+#submit-button:disabled,
+#submit-button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

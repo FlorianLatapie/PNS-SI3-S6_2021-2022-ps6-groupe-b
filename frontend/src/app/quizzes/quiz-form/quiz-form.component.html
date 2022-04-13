@@ -1,19 +1,22 @@
 <div class="card">
-  <form class="quiz-form" [formGroup]="quizForm">
-    <label for="name">
-      Nom du Quiz *<br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-    </label>
-    <br>
-    <label for="description">
-      Description *<br>
-      <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'"></textarea>
-    </label>
+  <form class="quiz-form" [formGroup]="quizForm" #formcontrol="ngForm">
+    <div class="name">
+      <label for="name">
+        Nom du Quiz *<br>
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="Quiz pour Ginette" required>
+      </label>
+    </div>
+    <div class="description">
+      <label for="description">
+        Description *<br>
+        <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'" placeholder="Photos de vacances de 1995" required></textarea>
+      </label>
+    </div>
     <br>
     <mat-form-field>
       <mat-label for="category">
         Catégorie *<br>
-        <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory>
+        <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory required>
           <mat-option *ngFor="let category of categoryList" [value]=category>
             {{category.name}}
           </mat-option>
@@ -25,9 +28,7 @@
     <br>
     <div class="align-button">
       <button type="cancel" class="button-card" [routerLink]="['/manage-page']">Annuler</button>
-      <button type="submit" class="button-card" (click)="addQuiz()">Valider</button>
+      <button type="submit" class="button-card" id="submit-button" (click)="addQuiz()" [disabled]="!formcontrol.form.valid">Valider</button>
     </div>
   </form>
 </div>
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->
