@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from '../../../models/quiz.model';
-import { Router } from '@angular/router';
+import {QuizService} from '../../../services/quiz.service';
+import {Quiz} from '../../../models/quiz.model';
+import {Category} from '../../../models/category.model';
+import {CategoryService} from '../../../services/category.service';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,12 +23,17 @@ export class QuizFormComponent implements OnInit {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
+  selectedCategory: Category;
+  categoryList: Category[];
 
-  constructor(private router: Router,  public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(private router: Router, public formBuilder: FormBuilder, public quizService: QuizService, public categoryService: CategoryService) {
+    this.categoryService.categories$.subscribe((categories: Category[]) => {
+      this.categoryList = categories;
+    });
     this.quizForm = this.formBuilder.group({
       name: [''],
       description: [''],
-      category: ['Personnes']
+      category: ['']
     });
   }
 
@@ -37,10 +45,10 @@ export class QuizFormComponent implements OnInit {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     this.quizService.addQuiz(quizToCreate);
     this.quizService.quizSelectedId$.subscribe(quizId => {
-      if(quizId != undefined){
+      // tslint:disable-next-line:triple-equals
+      if (quizId != undefined){
         this.router.navigate(['/edit-quiz/' + quizId]);
       }
     });
   }
-
 }

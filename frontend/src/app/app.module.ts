@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
@@ -36,6 +37,10 @@ import { CommonModule } from '@angular/common';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { StatsQuizPageComponent } from './pages/stats-quiz-page/stats-quiz-page.component';
 import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/update-category-quizzes.component';
+import { CategoryComponent } from './categories/category/category.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { StatsCategoriesPageComponent } from './pages/stats-categories-page/stats-categories-page.component';
+import { PlayCategoriesPageComponent } from './pages/play-categories-page/play-categories-page.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,10 @@ import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/
     StatsPageComponent,
     StatsQuizPageComponent,
     UpdateCategoryQuizzesComponent,
-
+    CategoryComponent,
+    CategoryListComponent,
+    StatsCategoriesPageComponent,
+    PlayCategoriesPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +85,7 @@ import { UpdateCategoryQuizzesComponent } from './pages/update-category-quizzes/
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

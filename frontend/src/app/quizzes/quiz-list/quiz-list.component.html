@@ -1,6 +1,6 @@
 
 <div class="quiz-list" >
     <div class="quiz" *ngFor="let quiz of quizList">
-        <app-quiz [quiz]="quiz" [displaySelectButton]="displaySelectButton" [displayDeleteButton]="displayDeleteButton" [displayEditButton]="displayEditButton" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
+        <app-quiz *ngIf="(categorySelected|json) == (quiz.category|json)" [quiz]="quiz" [displaySelectButton]="displaySelectButton" [displayDeleteButton]="displayDeleteButton" [displayEditButton]="displayEditButton" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
     </div>
 </div>

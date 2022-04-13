@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Category} from '../../../models/category.model';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-update-quizzes',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateQuizzesComponent implements OnInit {
 
-  constructor() { }
+  categorySelected: Category;
+
+  constructor(public categoryService: CategoryService) {
+    this.categoryService.categorySelected$.subscribe(category => this.categorySelected = category);
+  }
 
   ngOnInit(): void {
   }
-
 }

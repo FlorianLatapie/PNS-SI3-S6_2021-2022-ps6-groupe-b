@@ -10,22 +10,23 @@
       <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'"></textarea>
     </label>
     <br>
-    <label for="category">
-      Catégorie *<br>
-      <select id="category" [formControlName]="'category'">
-        <option value="Personnes" selected>Personnes</option>
-        <option value="Lieux">Lieux</option>
-        <option value="Évènements">Évènements</option>
-      </select>
-    </label>
+    <mat-form-field>
+      <mat-label for="category">
+        Catégorie *<br>
+        <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory>
+          <mat-option *ngFor="let category of categoryList" [value]=category>
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-label>
+    </mat-form-field>
     <br>
     <p><i>* : Champs obligatoires</i></p>
-
+    <br>
     <div class="align-button">
       <button type="cancel" class="button-card" [routerLink]="['/manage-page']">Annuler</button>
       <button type="submit" class="button-card" (click)="addQuiz()">Valider</button>
     </div>
-
   </form>
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->

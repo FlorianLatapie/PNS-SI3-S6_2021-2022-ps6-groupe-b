@@ -2,7 +2,7 @@
     <h2>
         {{quiz.name}}
     </h2>
-    <p *ngIf="quiz.category">Catégorie : {{quiz.category}}</p>
+    <p *ngIf="quiz.category">Catégorie : {{quiz.category.name}}</p>
     <p>{{quiz.description}}</p>
     <div class="flex-buttons-quiz">
         <button *ngIf="displaySelectButton" class="button-card" (click)="selectQuiz()">Sélectionner</button>

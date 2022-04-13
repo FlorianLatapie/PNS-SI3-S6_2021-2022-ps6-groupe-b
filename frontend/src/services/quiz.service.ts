@@ -5,6 +5,7 @@ import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {catchError} from 'rxjs/operators';
+import {Category} from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,9 @@ export class QuizService {
 
   public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(undefined);
   public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
+  public categorySelected$: Subject<Category> = new Subject();
 
+  private categoryUrl = serverUrl + '/categories';
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
 
@@ -64,6 +67,8 @@ export class QuizService {
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+    const urlWithCategoryId = this.quizUrl + '/' + quiz.id;
+    this.http.delete<Quiz>(urlWithCategoryId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
   addQuestion(quiz: Quiz, question: Question): void {
