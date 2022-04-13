@@ -5,7 +5,7 @@
     <div class="question-section">
       <label for="label">
         Question <br>
-        <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Ajouter une question...">
       </label>
     </div>
 
@@ -20,15 +20,17 @@
         <div *ngFor="let address of imageLinks.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
             <p>Image n°{{i+1}}</p>
-            <label for="url">
-              Lien :
-              <input type="text" id="url" [formControlName]="'url'">
-            </label>
-            <br>
-            <label for="description">
-              Description :
-              <input type="text" id="description" [formControlName]="'description'">
-            </label>
+            <table class="image-table">
+              <tr>
+                <td>Lien</td>
+                <td><label for="url"><input class="input-custom-subquestion" type="text" id="url" [formControlName]="'url'"></label></td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td><label for="description"><input class="input-custom-subquestion" type="text" id="description" [formControlName]="'description'"></label></td>
+              </tr>
+            </table>
+
           </div>
         </div>
       </div>
@@ -41,7 +43,7 @@
           <div class="answer-form" [formGroupName]="i">
             <label>
               Réponse
-              <input type="text" [formControlName]="'value'">
+              <input class="input-custom-subquestion" type="text" [formControlName]="'value'">
               <br>
               Correct
               <input type="checkbox" [formControlName]="'isCorrect'">
@@ -54,13 +56,10 @@
     <div class="question-section">
       <label for="familyLink">
         Lien de parenté :
-        <input type="text" id="familyLink" [formControlName]="'familyLink'">
+        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Ajouter un lien de parenté">
       </label>
     </div>
 
     <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()">Valider</button>
   </form>
 </div>
-
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->
