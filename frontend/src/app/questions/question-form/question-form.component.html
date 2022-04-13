@@ -1,11 +1,10 @@
 <div class="card">
   <h2>Créer une nouvelle question</h2>
-  <form class="quiz-form" [formGroup]="questionForm">
-
+  <form class="quiz-form" [formGroup]="questionForm" #formcontrol="ngForm">
     <div class="question-section">
       <label for="label">
         Question <br>
-        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Ajouter une question...">
+        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?" required>
       </label>
     </div>
 
@@ -15,7 +14,6 @@
         <p>Vous devez ajouter au moins une image.</p>
       </label>
       <button class="button-card" (click)="addImage()">Ajouter une image</button>
-
       <div class="images" formArrayName="images">
         <div *ngFor="let address of imageLinks.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
@@ -23,14 +21,13 @@
             <table class="image-table">
               <tr>
                 <td>Lien</td>
-                <td><label for="url"><input class="input-custom-subquestion" type="text" id="url" [formControlName]="'url'"></label></td>
+                <td><label for="url"><input class="input-custom-subquestion" type="text" id="url" [formControlName]="'url'" required></label></td>
               </tr>
               <tr>
                 <td>Description</td>
-                <td><label for="description"><input class="input-custom-subquestion" type="text" id="description" [formControlName]="'description'"></label></td>
+                <td><label for="description"><input class="input-custom-subquestion" type="text" id="description" [formControlName]="'description'" required></label></td>
               </tr>
             </table>
-
           </div>
         </div>
       </div>
@@ -43,7 +40,7 @@
           <div class="answer-form" [formGroupName]="i">
             <label>
               Réponse
-              <input class="input-custom-subquestion" type="text" [formControlName]="'value'">
+              <input class="input-custom-subquestion" type="text" [formControlName]="'value'" required>
               <br>
               Correct
               <input type="checkbox" [formControlName]="'isCorrect'">
@@ -56,10 +53,10 @@
     <div class="question-section">
       <label for="familyLink">
         Lien de parenté :
-        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Ajouter un lien de parenté">
+        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils" required>
       </label>
     </div>
 
-    <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()">Valider</button>
+    <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()" [disabled]="!formcontrol.form.valid">Valider</button>
   </form>
 </div>
