@@ -1,7 +1,8 @@
-<button class="button-card" routerLink="/manage-page">Back</button>
-
 <ng-container *ngIf="quiz">
-    <h2>{{quiz.name}}</h2>
-    <app-question-form [quiz]="quiz"></app-question-form>
-    <app-question-list [quiz]="quiz"></app-question-list>
+    <div class="header-page">
+      <button class="button-card" routerLink="/manage-page">Retour</button>
+      <h2 class="page-title">{{quiz.name}}</h2>
+    </div>
+    <app-question-form [quiz]="quiz" class="body-page"></app-question-form>
+    <app-question-list [quiz]="quiz" class="body-page"></app-question-list>
 </ng-container>

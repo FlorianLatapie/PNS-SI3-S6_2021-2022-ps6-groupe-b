@@ -24,8 +24,9 @@ export class QuestionFormComponent implements OnInit {
   private initializeQuestionForm(): void {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
-      imageUrls: this.formBuilder.array([]),
-      answers: this.formBuilder.array([])
+      images: this.formBuilder.array([]),
+      answers: this.formBuilder.array([]),
+      familyLink: '',
     });
   }
 
@@ -51,7 +52,7 @@ export class QuestionFormComponent implements OnInit {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
       // @ts-ignore
-      question.imageUrls = question.imageUrls.map(e => e.url);
+      //question.imageUrls = question.imageUrls.map(e => e.url);
       this.quizService.addQuestion(this.quiz, question);
       this.initializeQuestionForm();
     }
@@ -62,12 +63,13 @@ export class QuestionFormComponent implements OnInit {
   }
 
   get imageLinks(): FormArray {
-    return this.questionForm.get('imageUrls') as FormArray;
+    return this.questionForm.get('images') as FormArray;
   }
 
   private createImageLink(): FormGroup {
     return this.formBuilder.group({
-      url: ''
+      url: '',
+      description : ''
     });
   }
 }

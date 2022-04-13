@@ -73,7 +73,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     setTimeout(() => {
       if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
-        this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.imageUrls.length; //inutile si 3 images
+        this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length; //inutile si 3 images
       } else if (this.questions.length <= 0) {
         this.endOfQuiz = true;
         return;
@@ -86,7 +86,7 @@ export class PlayQuizPageStade6Component implements OnInit {
 
 
   reAddQuestionIntoQuiz(question: Question): boolean {
-    if (question.imageUrls.length > this.currentQuestion.currentImage) {
+    if (question.images.length > this.currentQuestion.currentImage) {
       if ((question.incorrectAnswers < 3 && question.correctAnswers < 1)) {
         // si trop de mauvaises réponses : oublie, si au moins deux bonnes réponses : on sait
         return true;
@@ -104,7 +104,7 @@ export class PlayQuizPageStade6Component implements OnInit {
   initNextQuestion() {
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
-    this.randomImageSide();    
+    this.randomImageSide();
   }
 
   shuffleArray(array) {

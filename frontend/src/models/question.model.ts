@@ -4,10 +4,16 @@ export interface Answer {
     isCorrect: boolean;
 }
 
+export interface Image {
+  url : string;
+  description : string;
+}
+
 export interface Question {
     id: string;
     label: string;
-    imageUrls: string[];
+    images: Image[];
+    familyLink : string;
     answers: Answer[];
     correctAnswers?: number;
     incorrectAnswers?: number;

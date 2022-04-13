@@ -9,12 +9,12 @@
                     <div class="stade6-layout">
                         <div *ngIf="randomImageToleft ;then leftSide; else rightSide"></div>
                         <ng-template #leftSide>
-                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.imageUrls[currentQuestion.currentImage]}}" alt=""/>
+                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" alt=""/>
                             <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}" alt=""/>
                         </ng-template>
                         <ng-template #rightSide>
                             <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}" alt=""/>
-                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.imageUrls[currentQuestion.currentImage]}}" alt=""/>
+                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" alt=""/>
                         </ng-template>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <p>Correct questions : {{quiz.correctQuestions}}</p>
                 <p>Incorrect questions : {{quiz.incorrectQuestions}}</p>
             </div>
-        
+
             <div class="stats-quiz-questions-answers" *ngFor="let question of quiz.questions">
                 <p>{{question.label}} - {{question.id}}<br></p>
                     <p>Correct Answers: {{question.correctAnswers}}/{{question.answers.length}}</p>

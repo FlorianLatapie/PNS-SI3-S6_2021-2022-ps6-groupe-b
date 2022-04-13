@@ -15,12 +15,19 @@
         <p>Vous devez ajouter au moins une image.</p>
       </label>
       <button class="button-card" (click)="addImage()">Ajouter une image</button>
-      <div class="imageUrls" formArrayName="imageUrls">
+
+      <div class="images" formArrayName="images">
         <div *ngFor="let address of imageLinks.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
+            <p>Image n°{{i+1}}</p>
             <label for="url">
-              Lien de l'image n°{{i+1}}:
+              Lien :
               <input type="text" id="url" [formControlName]="'url'">
+            </label>
+            <br>
+            <label for="description">
+              Description :
+              <input type="text" id="description" [formControlName]="'description'">
             </label>
           </div>
         </div>
@@ -42,6 +49,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="question-section">
+      <label for="familyLink">
+        Lien de parenté :
+        <input type="text" id="familyLink" [formControlName]="'familyLink'">
+      </label>
     </div>
 
     <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()">Valider</button>

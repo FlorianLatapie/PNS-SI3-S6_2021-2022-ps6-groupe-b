@@ -5,8 +5,8 @@
     <p *ngIf="quiz.category">Catégorie : {{quiz.category}}</p>
     <p>{{quiz.description}}</p>
     <div class="flex-buttons-quiz">
-        <button *ngIf="displaySelectButton" class="button-card" (click)="selectQuiz()">Select</button>
-        <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
-        <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+        <button *ngIf="displaySelectButton" class="button-card" (click)="selectQuiz()">Sélectionner</button>
+        <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Supprimer</button>
+        <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Modifier</button>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <ng-template #quiz_play>
             <div class="card question-card">
                 <div class="quiz-question-layout">
-                    <img class="image-question-size" src="{{currentQuestion.imageUrls[currentQuestion.currentImage]}}" alt="">
+                    <img class="image-question-size" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" alt="">
                     <h1 class="quiz-question-label">{{currentQuestion.label}}</h1>
                 </div>
                 <div class="grid-button-answers">
@@ -29,7 +29,7 @@
                 <p>Correct questions : {{quiz.correctQuestions}}</p>
                 <p>Incorrect questions : {{quiz.incorrectQuestions}}</p>
             </div>
-        
+
             <div class="stats-quiz-questions-answers" *ngFor="let question of quiz.questions">
                 <p>{{question.label}} - {{question.id}}<br></p>
                     <p>Correct Answers: {{question.correctAnswers}}/{{question.answers.length}}</p>

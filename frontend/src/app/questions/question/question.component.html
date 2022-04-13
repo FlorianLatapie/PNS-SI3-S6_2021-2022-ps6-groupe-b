@@ -5,12 +5,15 @@
     </h2>
 
     <div class="images">
-      <div class="image" *ngFor="let image of question.imageUrls;">
-        <img src="{{image}}">
+      <div class="image" *ngFor="let image of question.images;">
+        <img src="{{image.url}}">
+        <br>
+        <p>{{image.description}}</p>
       </div>
     </div>
 
     <div class="answers">
+      <p>Lien de parenté :  {{question.familyLink}}</p>
       <div class="answer" *ngFor="let answer of question.answers; let i=index">
           {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
       </div>

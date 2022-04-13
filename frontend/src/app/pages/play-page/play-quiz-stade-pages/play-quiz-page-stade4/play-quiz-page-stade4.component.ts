@@ -5,7 +5,6 @@ import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
 
-
 @Component({
   selector: 'app-play-quiz-page-stade4',
   templateUrl: './play-quiz-page-stade4.component.html',
@@ -44,9 +43,9 @@ export class PlayQuizPageStade4Component implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
   }
-  
-  
-  
+
+
+
   onAnswer(option: boolean, idAnswer: string){
     this.changeBtnColor(option,idAnswer);
     if(option){
@@ -54,7 +53,7 @@ export class PlayQuizPageStade4Component implements OnInit {
       this.currentQuestion.correctAnswers++;
       this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
       this.nextQuestion();
-    } 
+    }
     else{
       this.quiz.incorrectQuestions++;
       this.currentQuestion.incorrectAnswers++;
@@ -64,7 +63,7 @@ export class PlayQuizPageStade4Component implements OnInit {
         this.imagesToDisplay++;
         this.shuffleArray(this.currentQuestion.answers);
         }, 2000);
-        
+
       }else{
         this.questions.splice(this.questions.indexOf(this.currentQuestion),1);
         this.nextQuestion();
@@ -78,7 +77,7 @@ export class PlayQuizPageStade4Component implements OnInit {
       setTimeout(()=>{
         this.initNextQuestion();
       }, 2000);
-      
+
     }
     else{
       setTimeout(()=>{
@@ -112,7 +111,7 @@ export class PlayQuizPageStade4Component implements OnInit {
      //mélange les réponses
     this.shuffleArray(this.currentQuestion.answers);
   }
-  
+
   shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
