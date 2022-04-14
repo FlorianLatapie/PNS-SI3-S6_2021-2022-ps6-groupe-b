@@ -1,5 +1,9 @@
+  <div class="header-page">
+    <button class="button-card" routerLink="/manage-page">Retour</button>
+  </div>
+  <h1 class="page-title">Catégories</h1>
+  <div class="body-stats-categories-page">
+    <app-category-list (categorySelectedFromChild)="categorySelected($event)"></app-category-list>
+  </div>
 
-<div class="body-stats-categories-page">
-  <h1>Catégories</h1>
-  <app-category-list (categorySelectedFromChild)="categorySelected($event)"></app-category-list>
-</div>
+

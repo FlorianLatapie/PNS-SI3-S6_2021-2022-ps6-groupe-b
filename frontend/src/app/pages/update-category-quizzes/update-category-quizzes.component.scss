@@ -1,3 +1,22 @@
+@import '../../../../src/styles/page.scss';
+@import '../../../../src/styles/variables.scss';
+
+.header-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .body-update-category-quizzes-page{
   display: flex;
   flex-direction: column;

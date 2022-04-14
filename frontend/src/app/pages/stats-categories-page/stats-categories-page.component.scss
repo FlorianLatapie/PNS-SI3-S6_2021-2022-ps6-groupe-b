@@ -1,6 +1,26 @@
 .body-stats-categories-page{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+@import '../../../../src/styles/page.scss';
+@import '../../../../src/styles/variables.scss';
+
+.header-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.page-title {
+  vertical-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

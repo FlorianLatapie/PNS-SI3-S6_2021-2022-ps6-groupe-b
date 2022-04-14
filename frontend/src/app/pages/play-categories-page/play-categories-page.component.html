@@ -1,6 +1,9 @@
 
 <div class="body-play-categories-page">
-  <h1>Catégories</h1>
+  <div class="header-page">
+    <button class="button-card" routerLink="/main-page">Retour</button>
+  </div>
+  <h1 class="page-title">Catégories</h1>
   <app-category-list (categorySelectedFromChild)="categorySelected($event)"></app-category-list>
 </div>
 

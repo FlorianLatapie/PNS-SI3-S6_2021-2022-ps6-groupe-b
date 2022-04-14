@@ -7,6 +7,14 @@
   flex-direction: column;
 }
 
+.header-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
 .buttons-placement{
   display: flex;
   justify-content: center;

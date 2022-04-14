@@ -1,4 +1,7 @@
-
-<app-quiz-list [displaySelectButton]="true" [displayDeleteButton]="false" [displayEditButton]="false" [categorySelected]="categorySelected" (quizSelectedFromChild)="quizSelected($event)" ></app-quiz-list>
+<div class="header-page">
+  <button class="button-card" routerLink="/play-categories-page">Retour</button>
+</div>
+<h2 class="page-title">Jouer</h2>
+<app-quiz-list [displaySelectButton]="true" [displayDeleteButton]="false" [displayEditButton]="false" [categorySelected]="categorySelected" (quizSelectedFromChild)="quizSelected($event)" class="body-page" ></app-quiz-list>
 
 
