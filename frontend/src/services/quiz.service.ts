@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-import { Quiz } from '../models/quiz.model';
-import { Question } from '../models/question.model';
-import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import {Quiz} from '../models/quiz.model';
+import {Question} from '../models/question.model';
+import {serverUrl, httpOptionsBase} from '../configs/server.config';
 import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
 import {QuizInstance} from '../models/quizInstance.model';
@@ -23,6 +23,7 @@ export class QuizService {
    The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = [];
+  private quizzesInstance: QuizInstance[] = [];
 
   /*
    Observable which contains the list of the quiz.
@@ -44,6 +45,7 @@ export class QuizService {
 
   constructor(private http: HttpClient) {
     this.retrieveQuizzes();
+    this.retrieveQuizzesInstances();
   }
 
   retrieveQuizzes(): void {
@@ -53,7 +55,14 @@ export class QuizService {
     });
   }
 
-  addQuiz(quiz: Quiz): void {
+  retrieveQuizzesInstances(): void {
+    this.http.get<QuizInstance[]>(this.quizInstancePath).subscribe((quizInstanceList) => {
+      this.quizzesInstance = quizInstanceList;
+    });
+  }
+
+
+    addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
       this.retrieveQuizzes();
       this.quizSelectedId$.next(quiz.id);
@@ -97,16 +106,26 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  getQuizByCategory(category: Category): Quiz[]{
+  getQuizByCategory(category: Category): Quiz[] {
     const listQuizzes: Quiz[] = [];
 
     this.quizzes.forEach(quiz => {
-      if (quiz.category.id === category.id){
+      if (quiz.category.id === category.id) {
         listQuizzes.push(quiz);
       }
     });
 
     return listQuizzes;
+  }
+
+  getQuizInstanceById(quizId: string): QuizInstance[] {
+    const res: QuizInstance[] = [];
+    this.quizzesInstance.forEach(quizInstance => {
+      if (quizInstance.quizId === quizId) {
+        res.push(quizInstance);
+      }
+    });
+    return res;
   }
 
   // tslint:disable-next-line:typedef
