@@ -35,4 +35,10 @@ export class CategoryListComponent implements OnInit {
     return this.quizService.getQuizByCategory(category).length;
   }
 
+  getNbQuizzes(): number{
+    let nb: number;
+    this.quizService.quizzes$.subscribe(quiz => nb = quiz.length);
+    return nb;
+  }
+
 }
