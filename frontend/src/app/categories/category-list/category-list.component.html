@@ -1,6 +1,6 @@
 
 <div class="categorie-list" >
   <div class="categorie" *ngFor="let category of categoryList">
-    <app-category [category]="category" (categorySelected)="categorySelected($event)"></app-category>
+    <app-category *ngIf="getNbQuizzesWithCategory(category)!=0" [category]="category" (categorySelected)="categorySelected($event)"></app-category>
   </div>
 </div>
