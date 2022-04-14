@@ -81,6 +81,17 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  getQuizByCategory(category: Category): Quiz[]{
+    const listQuizzes: Quiz[] = [];
+
+    this.quizzes.forEach(quiz => {
+      if (quiz.category.id === category.id){
+        listQuizzes.push(quiz);
+      }
+    });
+
+    return listQuizzes;
+  }
 
   // tslint:disable-next-line:typedef
   private handleError<T>(operation = 'operation', result?: T) {
