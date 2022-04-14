@@ -6,6 +6,8 @@ import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
+import {QuizInstance} from '../models/quizInstance.model';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,7 @@ export class QuizService {
   private categoryUrl = serverUrl + '/categories';
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private quizInstancePath = serverUrl + '/quiz_instance';
 
   private httpOptions = httpOptionsBase;
 
@@ -54,6 +57,19 @@ export class QuizService {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
       this.retrieveQuizzes();
       this.quizSelectedId$.next(quiz.id);
+    });
+  }
+
+  sendStatsToBackend(quiz: Quiz, user: User) {
+    const quizInstance: QuizInstance = {
+      quizId: quiz.id,
+      userId: user.id,
+      correctAnswers: quiz.correctQuestions,
+      wrongAnswers: quiz.incorrectQuestions,
+      questions: quiz.questions
+    };
+    this.http.post<QuizInstance>(this.quizInstancePath, quizInstance, this.httpOptions).subscribe((qi) => {
+      console.log('QuizInstance sent to backend', qi);
     });
   }
 
@@ -127,4 +143,5 @@ export class QuizService {
     this.quizzes$.next(this.quizzes);
   }
   */
+
 }
