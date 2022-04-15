@@ -5,6 +5,7 @@
   <h1 class="page-title">Statistiques</h1>
 
   <h2>Le quiz a été joué {{quizInstances.length}} fois</h2>
+  <p>ID du quiz : {{quiz.id}}</p>
   <table>
     <tbody>
     <tr>
@@ -20,31 +21,40 @@
     </tbody>
   </table>
 
-  <table>
+  <table *ngFor="let quizInstance of quizInstances; let i = index">
     <tbody>
 
     <tr>
+      <th>Essai</th>
+      <th>Numéro question</th>
       <th>Question</th>
       <th>Réponse correcte</th>
       <th>Réussites</th>
       <th>Echecs</th>
     </tr>
-
-    <tr *ngFor="let quizInstance of quizInstances; let i = index">
-      <td *ngFor="let question of quizInstance.questions; let j = index">
-        <p>Quiz n°{{i + 1}}, question n°{{j + 1}} : {{question.label}}</p>
+    <tr *ngFor="let question of quizInstance.questions; let j = index">
+      <td>
+        <p>{{i + 1}}</p>
       </td>
-      <td *ngFor="let question of quizInstance.questions; let j = index">
-        <p *ngFor="let reponse of question.answers">
-          {{reponse.isCorrect ? reponse.value:null}}
-        </p>
+      <td>
+        <p>{{j + 1}}</p>
       </td>
-      <td *ngFor="let question of quizInstance.questions; let j = index">
+      <td>
+        <p>{{question.label}}</p>
+      </td>
+      <td>
+        <div *ngFor="let reponse of question.answers">
+          <p>{{reponse.isCorrect ? reponse.value : null}}<p>
+        </div>
+      </td>
+      <td>
         <p>{{question.correctAnswers}}</p>
       </td>
-      <td *ngFor="let question of quizInstance.questions; let j = index">
+      <td>
         <p>{{question.incorrectAnswers}}</p>
       </td>
+    </tr>
     </tbody>
+
   </table>
 </div>
