@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@ang
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-question-form',
@@ -16,7 +18,7 @@ export class QuestionFormComponent implements OnInit {
 
   public questionForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
+  constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
     this.initializeQuestionForm();
     this.addImage();
@@ -60,6 +62,7 @@ export class QuestionFormComponent implements OnInit {
       const question = this.questionForm.getRawValue() as Question;
       this.quizService.addQuestion(this.quiz, question);
       this.initializeQuestionForm();
+      this.reloadCurrentRoute();
     }
   }
 
@@ -75,6 +78,13 @@ export class QuestionFormComponent implements OnInit {
     return this.formBuilder.group({
       url: '',
       description : ''
+    });
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
     });
   }
 }
