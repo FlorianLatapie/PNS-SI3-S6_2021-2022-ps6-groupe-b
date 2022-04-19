@@ -14,13 +14,13 @@ export class UserListComponent implements OnInit {
 
   @Input()
   displayDeleteButton: boolean;
-  
+
   constructor(private userService: UserService) {
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
     });
   }
-  
+
 
   ngOnInit(): void {
   }
@@ -31,5 +31,12 @@ export class UserListComponent implements OnInit {
 
   selectUser(user: User): void {
     this.userService.setSelectedUser(user.id);
+  }
+
+  isAdminTrue(user: User) {
+    this.userService.updateUser(user);
+  }
+  isAdminFalse(user: User) {
+    this.userService.updateUser(user);
   }
 }
