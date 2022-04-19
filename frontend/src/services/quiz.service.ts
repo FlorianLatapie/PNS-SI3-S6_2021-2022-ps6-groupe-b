@@ -64,7 +64,7 @@ export class QuizService {
   }
 
 
-    addQuiz(quiz: Quiz): void {
+  addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
       this.retrieveQuizzes();
       this.quizSelectedId$.next(quiz.id);
@@ -141,28 +141,8 @@ export class QuizService {
     };
   }
 
-  /*
-  Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
-  addQuestion(quiz: Quiz, question: Question) {
-    quiz.questions.push(question);
-    const index = this.quizzes.findIndex((q: Quiz) => q.id === quiz.id);
-    if (index) {
-      this.updateQuizzes(quiz, index);
-    }
+  public getQuiz(id: string): Observable<Quiz> {
+    const quiz = this.quizzes.find(q => String(q.id) === id);
+    return of(quiz);
   }
-
-  deleteQuestion(quiz: Quiz, question: Question) {
-    const index = quiz.questions.findIndex((q) => q.label === question.label);
-    if (index !== -1) {
-      quiz.questions.splice(index, 1)
-      this.updateQuizzes(quiz, index);
-    }
-  }
-
-  private updateQuizzes(quiz: Quiz, index: number) {
-    this.quizzes[index] = quiz;
-    this.quizzes$.next(this.quizzes);
-  }
-  */
-
 }
