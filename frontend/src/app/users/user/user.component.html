@@ -4,5 +4,9 @@
         {{user.firstName}} {{user.lastName}}
     </h2>
     <button *ngIf = "displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
-    <button class="button-card" (click)="select()">Sélectionner</button>
+    <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
+    <div *ngIf="displayIsAdminButton">
+      <button *ngIf="user.isAdmin == false" class="button-card" (click)="isAdminTrue()">Devenir administrateur</button>
+      <button *ngIf="user.isAdmin == true" class="button-card" (click)="isAdminFalse()">Devenir pas administrateur</button>
+    </div>
 </div>

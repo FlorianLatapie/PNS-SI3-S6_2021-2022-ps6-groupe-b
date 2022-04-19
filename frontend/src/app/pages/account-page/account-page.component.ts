@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
 
@@ -20,9 +20,9 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.userSelected);
-    }
+  }
 
-  logoutAccount(){
+  logoutAccount() {
     this.userService.logoutUser();
   }
 }

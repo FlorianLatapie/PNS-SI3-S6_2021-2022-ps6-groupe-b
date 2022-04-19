@@ -30,4 +30,6 @@ export class LoginPageComponent implements OnInit {
     console.log('user selected :', user);
     this.router.navigate(['/main-page']);
   }
+
+
 }

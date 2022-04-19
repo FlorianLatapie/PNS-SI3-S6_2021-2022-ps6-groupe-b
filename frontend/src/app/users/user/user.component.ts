@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
-import { User } from '../../../models/user.model';
+import {User} from '../../../models/user.model';
 
 @Component({
   selector: 'app-user',
@@ -14,13 +14,20 @@ export class UserComponent implements OnInit {
 
   @Input()
   displayDeleteButton: boolean;
+  @Input()
+  displaySelectButton: boolean;
+  @Input()
+  displayIsAdminButton: boolean;
 
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
   @Output()
   selectUser: EventEmitter<User> = new EventEmitter<User>();
+  @Output()
+  isAdmin: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log(this.displayDeleteButton);
@@ -33,5 +40,15 @@ export class UserComponent implements OnInit {
   select() {
     console.log('user selected');
     this.selectUser.emit(this.user);
+  }
+
+  isAdminTrue() {
+    this.user.isAdmin = true;
+    this.isAdmin.emit(this.user);
+  }
+
+  isAdminFalse(){
+    this.user.isAdmin = false;
+    this.isAdmin.emit(this.user);
   }
 }

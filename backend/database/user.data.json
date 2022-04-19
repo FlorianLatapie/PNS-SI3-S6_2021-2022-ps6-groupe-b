@@ -1,0 +1,23 @@
+[
+  {
+    "firstName": "stade",
+    "lastName": "4",
+    "stade": 4,
+    "id": 1648560295620,
+    "isAdmin": true
+  },
+  {
+    "firstName": "stade",
+    "lastName": "5",
+    "stade": 5,
+    "id": 1648560302115,
+    "isAdmin": true
+  },
+  {
+    "firstName": "stade",
+    "lastName": "6",
+    "stade": 6,
+    "id": 1648560306857,
+    "isAdmin": true
+  }
+]
