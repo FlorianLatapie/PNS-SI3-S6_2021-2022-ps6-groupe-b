@@ -1,19 +1,18 @@
 <div class="card">
   <h2>Créer une nouvelle question</h2>
-  <form class="quiz-form" [formGroup]="questionForm" #formcontrol="ngForm">
+  <form class="quiz-form" [formGroup]="questionForm">
+
     <div class="question-section">
       <label for="label">
         Question <br>
-        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?" required>
+        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?">
       </label>
     </div>
 
     <div class="image-section">
       <label for="url">
-        Lien de l'image<br>
-        <p>Vous devez ajouter au moins une image.</p>
+        <h2>Lien de l'image</h2>
       </label>
-      <button class="button-card" (click)="addImage()">Ajouter une image</button>
       <div class="images" formArrayName="images">
         <div *ngFor="let address of imageLinks.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
@@ -31,15 +30,16 @@
           </div>
         </div>
       </div>
+      <button class="button-card" (click)="addImage()" id="add-image-button">Ajouter une image</button>
     </div>
 
     <div class="answer-section">
-      <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
+      <h2>Réponses</h2>
       <div class="answer" formArrayName="answers">
         <div *ngFor="let address of answers.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
             <label>
-              Réponse
+              Réponse n°{{i+1}}
               <input class="input-custom-subquestion" type="text" [formControlName]="'value'" required>
               <br>
               Correct
@@ -52,11 +52,11 @@
 
     <div class="question-section">
       <label for="familyLink">
-        Lien de parenté :
-        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils" required>
+        <h2>Lien de parenté</h2>
+        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils">
       </label>
     </div>
 
-    <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()" [disabled]="!formcontrol.form.valid">Valider</button>
+    <button type="submit" id="submit-button" class="button-card" (click)="addQuestion()" [disabled]="!questionForm.valid">Valider</button>
   </form>
 </div>

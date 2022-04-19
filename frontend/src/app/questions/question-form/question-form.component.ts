@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
@@ -19,6 +19,13 @@ export class QuestionFormComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
     this.initializeQuestionForm();
+    this.addImage();
+    this.addImage();
+    this.addImage();
+    this.addAnswer();
+    this.addAnswer();
+    this.addAnswer();
+    this.addAnswer();
   }
 
   private initializeQuestionForm(): void {
@@ -26,7 +33,7 @@ export class QuestionFormComponent implements OnInit {
       label: ['', Validators.required],
       images: this.formBuilder.array([]),
       answers: this.formBuilder.array([]),
-      familyLink: '',
+      familyLink: ['', Validators.required],
     });
   }
 
@@ -51,8 +58,6 @@ export class QuestionFormComponent implements OnInit {
   addQuestion(): void {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
-      // @ts-ignore
-      //question.imageUrls = question.imageUrls.map(e => e.url);
       this.quizService.addQuestion(this.quiz, question);
       this.initializeQuestionForm();
     }

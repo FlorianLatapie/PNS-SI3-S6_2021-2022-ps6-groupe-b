@@ -40,7 +40,7 @@ form, .image-section, .answer-section {
 }
 
 .answer-section{
-  margin: 15px auto;
+  margin: 15px 0;
 }
 
 table, tr, td {
@@ -63,6 +63,10 @@ table, tr, td {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+#add-image-button {
+  margin-top: 0.5rem;
 }
 
 #submit-button:disabled,
