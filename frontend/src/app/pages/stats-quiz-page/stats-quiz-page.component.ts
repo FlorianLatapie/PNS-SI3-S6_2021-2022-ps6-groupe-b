@@ -18,7 +18,10 @@ export class StatsQuizPageComponent implements OnInit {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       if (this.quiz) {
-        this.quizInstances = this.quizService.getQuizInstanceById(this.quiz.id);
+        this.quizService.retrieveQuizzesInstances();
+        this.quizService.quizInstanceSelected$.subscribe((quizInstances) => {
+          this.quizInstances = this.quizService.getQuizInstanceById(this.quiz.id);
+        });
       } else {
         console.log('No quiz');
       }

@@ -23,33 +23,34 @@ export class PlayQuizPageStade5Component implements OnInit {
   isCurrentAnswerCorrect: boolean;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
-    this.quizService.quizSelected$.subscribe((quiz) => {
-      this.quiz = quiz;
+    this.quizService.retrieveQuizzes();
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getQuiz(id);
+  }
+
+  ngOnInit(): void { // TODO add url path
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  private getQuiz(id: string){
+    this.quizService.getQuiz(id).subscribe(q => {
+      this.quiz = q;
       this.quiz.correctQuestions = 0;
       this.quiz.incorrectQuestions = 0;
       this.questions = [...this.quiz.questions];
 
-      for (const q of this.questions) {
-        q.correctAnswers = 0;
-        q.incorrectAnswers = 0;
-        q.currentImage = 0;
+      for (const question of this.questions) {
+        question.correctAnswers = 0;
+        question.incorrectAnswers = 0;
+        question.currentImage = 0;
       }
 
       // mélange les questions
       this.shuffleArray(this.questions);
       this.currentQuestion = this.questions[0];
       // ngAfterContentInit utilisation attendre init quiz pour shuffle question
-
-    });
-
-  }
-
-  ngOnInit(): void { // TODO add url path
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
-
-    this.userService.userSelected$.subscribe((user) => {
-      this.user = user;
     });
   }
 

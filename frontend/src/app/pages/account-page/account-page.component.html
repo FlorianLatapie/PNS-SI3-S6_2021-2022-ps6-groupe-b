@@ -1,28 +1,36 @@
-
 <div *ngIf="userSelected != null" class="account-page-layout">
   <h1 class="account-page-title">Page utilisateur</h1>
-  
+
   <table>
     <tr>
       <td>Identifiant unique</td>
       <td>{{userSelected.id}}</td>
-      <button class="modify-button button-card" (click)="modifyId()">Modifier</button>
+      <!--<button class="modify-button button-card" (click)="modifyId()">Modifier</button>-->
+      <td *ngIf="userSelected.isAdmin == true"></td>
     </tr>
     <tr>
       <td>Prénom</td>
       <td>{{userSelected.firstName}}</td>
-      <button class="modify-button button-card" (click)="modifyFirstName()">Modifier</button>
+      <td *ngIf="userSelected.isAdmin == true">
+        <button class="modify-button button-card" (click)="modifyFirstName()">Modifier</button>
+      </td>
     </tr>
     <tr>
       <td>Nom de famille</td>
       <td>{{userSelected.lastName}}</td>
-      <button class="modify-button button-card" (click)="modifyLastName()">Modifier</button>
+      <td *ngIf="userSelected.isAdmin == true">
+        <button class="modify-button button-card" (click)="modifyLastName()">Modifier</button>
+      </td>
     </tr>
     <tr>
       <td>Stade</td>
       <td>{{userSelected.stade}}</td>
-      <button class="modify-button button-card" (click)="modifyStade()">Modifier</button>
+      <td *ngIf="userSelected.isAdmin == true">
+        <button class="modify-button button-card" (click)="modifyStade()">Modifier</button>
+      </td>
     </tr>
   </table>
-  <button class="navigation main-button button logout-button" [routerLink]="['/main-page']" (click)="logoutAccount()">Logout</button>
+  <button class="navigation main-button button logout-button" [routerLink]="['/main-page']" (click)="logoutAccount()">
+    Logout
+  </button>
 </div>
