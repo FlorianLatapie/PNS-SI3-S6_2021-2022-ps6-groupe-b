@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="question-section">
+    <div class="question-section" *ngIf="quiz.category.id == 1">
       <label for="familyLink">
         <h2>Lien de parenté</h2>
         <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils">

@@ -13,7 +13,7 @@
     </div>
 
     <div class="answers">
-      <p>Lien de parenté :  {{question.familyLink}}</p>
+      <p *ngIf="question.familyLink != undefined">Lien de parenté :  {{question.familyLink}}</p>
       <div class="answer" *ngFor="let answer of question.answers; let i=index">
           {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
       </div>

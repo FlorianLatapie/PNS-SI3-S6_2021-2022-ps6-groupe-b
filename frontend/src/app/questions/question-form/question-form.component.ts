@@ -19,27 +19,36 @@ export class QuestionFormComponent implements OnInit {
   public questionForm: FormGroup;
 
   constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService) {
-    // Form creation
-    this.initializeQuestionForm();
-    this.addImage();
-    this.addImage();
-    this.addImage();
-    this.addAnswer();
-    this.addAnswer();
-    this.addAnswer();
-    this.addAnswer();
+
   }
 
   private initializeQuestionForm(): void {
-    this.questionForm = this.formBuilder.group({
-      label: ['', Validators.required],
-      images: this.formBuilder.array([]),
-      answers: this.formBuilder.array([]),
-      familyLink: ['', Validators.required],
-    });
+    if(this.quiz.category.id != 2 && this.quiz.category.id != 3){
+      this.questionForm = this.formBuilder.group({
+        label: ['', Validators.required],
+        images: this.formBuilder.array([]),
+        answers: this.formBuilder.array([]),
+        familyLink: '',
+      });
+    } else {
+      this.questionForm = this.formBuilder.group({
+        label: ['', Validators.required],
+        images: this.formBuilder.array([]),
+        answers: this.formBuilder.array([]),
+      });
+    }
   }
 
   ngOnInit(): void {
+    this.initializeQuestionForm();
+
+    this.addImage();
+    this.addImage();
+    this.addImage();
+    this.addAnswer();
+    this.addAnswer();
+    this.addAnswer();
+    this.addAnswer();
   }
 
   get answers(): FormArray {
