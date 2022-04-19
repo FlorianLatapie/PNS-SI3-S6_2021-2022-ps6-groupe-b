@@ -6,6 +6,8 @@ import {Quiz} from '../../../models/quiz.model';
 import {Category} from '../../../models/category.model';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from "@angular/router";
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/user.model';
 
 
 @Component({
@@ -26,7 +28,10 @@ export class QuizFormComponent implements OnInit {
   selectedCategory: Category;
   categoryList: Category[];
 
-  constructor(private router: Router, public formBuilder: FormBuilder, public quizService: QuizService, public categoryService: CategoryService) {
+  public currentUser: User;
+
+
+  constructor(private router: Router, public formBuilder: FormBuilder, public quizService: QuizService, public categoryService: CategoryService, private userService: UserService) {
     this.categoryService.categories$.subscribe((categories: Category[]) => {
       this.categoryList = categories;
     });
@@ -34,6 +39,10 @@ export class QuizFormComponent implements OnInit {
       name: [''],
       description: [''],
       category: ['']
+    });
+
+    userService.userSelected$.subscribe(event => {
+      this.currentUser = event;
     });
   }
 
@@ -43,6 +52,7 @@ export class QuizFormComponent implements OnInit {
   addQuiz(): void {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+    quizToCreate.userId = this.currentUser.id;
     this.quizService.addQuiz(quizToCreate);
     this.quizService.quizSelectedId$.subscribe(quizId => {
       // tslint:disable-next-line:triple-equals
