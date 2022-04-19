@@ -23,7 +23,7 @@ export class QuizService {
    The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = [];
-  private quizzesInstance: QuizInstance[] = [];
+  private quizzesInstances: QuizInstance[] = [];
 
   /*
    Observable which contains the list of the quiz.
@@ -34,6 +34,7 @@ export class QuizService {
 
   public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(undefined);
   public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
+  public quizInstanceSelected$: BehaviorSubject<QuizInstance[]> = new BehaviorSubject([]);
   public categorySelected$: Subject<Category> = new Subject();
 
   private categoryUrl = serverUrl + '/categories';
@@ -57,7 +58,8 @@ export class QuizService {
 
   retrieveQuizzesInstances(): void {
     this.http.get<QuizInstance[]>(this.quizInstancePath).subscribe((quizInstanceList) => {
-      this.quizzesInstance = quizInstanceList;
+      this.quizzesInstances = quizInstanceList;
+      this.quizInstanceSelected$.next(this.quizzesInstances);
     });
   }
 
@@ -120,7 +122,7 @@ export class QuizService {
 
   getQuizInstanceById(quizId: string): QuizInstance[] {
     const res: QuizInstance[] = [];
-    this.quizzesInstance.forEach(quizInstance => {
+    this.quizzesInstances.forEach(quizInstance => {
       if (quizInstance.quizId === quizId) {
         res.push(quizInstance);
       }
