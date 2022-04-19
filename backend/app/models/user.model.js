@@ -5,4 +5,5 @@ module.exports = new BaseModel('User', {
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   stade: Joi.number().required(),
+  isAdmin: Joi.boolean().required(),
 })

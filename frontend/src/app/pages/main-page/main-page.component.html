@@ -6,7 +6,7 @@
     </svg>
     <div class="buttons-placement">
       <button class="button main-button button-margin" [routerLink]="['/play-categories-page']">Jouer</button>
-      <button class="button main-button button-margin" [routerLink]="['/manage-page']">Gérer les quiz</button>
+      <button *ngIf="user.isAdmin == true" class="button main-button button-margin" [routerLink]="['/manage-page']">Gérer les quiz</button>
     </div>
   </div>
 </ng-template>
