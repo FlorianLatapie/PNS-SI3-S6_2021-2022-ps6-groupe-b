@@ -20,7 +20,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   currentQuestion: Question;
   private questions: Question[];
   currentAnswerId: string;
-  isCurrentAnswerCorrect: boolean;
+  isCurrentAnswerCorrect: boolean = false;
   disabledButton : boolean;
   answerSelected : boolean;
   timer: any;
@@ -115,6 +115,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   initNextQuestion() {
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
+    this.isCurrentAnswerCorrect = false;
     // mélange les réponses
     this.shuffleArray(this.currentQuestion.answers);
   }
@@ -157,6 +158,7 @@ export class PlayQuizPageStade5Component implements OnInit {
 
   changeQuestion(){
     if(this.timer){
+      if(!this.isCurrentAnswerCorrect) this.currentQuestion.showFamilyLink = true;
       clearTimeout(this.timer);
       this.endOfQuestion();
     }

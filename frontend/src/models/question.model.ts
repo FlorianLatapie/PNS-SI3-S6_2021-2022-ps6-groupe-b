@@ -18,4 +18,5 @@ export interface Question {
     correctAnswers?: number;
     incorrectAnswers?: number;
     currentImage?: number;
+    showFamilyLink?: boolean;
 }
