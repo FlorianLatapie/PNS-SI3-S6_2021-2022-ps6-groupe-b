@@ -1,5 +1,38 @@
 @import "./variables";
 
+.button-quiz {
+  display: inline-block;
+  padding: 0.3em 1em;
+  margin: 1em 0.6em;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: $lightwhite;
+  background-color: $blue;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px $darkblue;
+}
+
+.button-quiz:hover {
+  background-color: $darkblue;
+}
+
+.button-quiz:active {
+  background-color: $blue;
+  box-shadow: 0 5px $darkblue;
+  transform: translateY(4px);
+}
+
+.button-quiz:disabled{
+  background-color: $blue;
+  border: none;
+  box-shadow: 0 5px $darkblue;
+  color: $lightwhite;
+}
+
 .quiz-question-layout{
   display: flex;
   flex-direction: column;
