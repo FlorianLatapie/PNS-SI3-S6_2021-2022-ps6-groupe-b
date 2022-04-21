@@ -11,6 +11,9 @@ export class QuestionComponent implements OnInit {
   @Input()
   question: Question;
 
+  @Input()
+  display = true;
+
   @Output()
   deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 

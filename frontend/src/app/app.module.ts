@@ -41,6 +41,9 @@ import { CategoryComponent } from './categories/category/category.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { StatsCategoriesPageComponent } from './pages/stats-categories-page/stats-categories-page.component';
 import { PlayCategoriesPageComponent } from './pages/play-categories-page/play-categories-page.component';
+import { StatsUserPageComponent } from './pages/stats-user-page/stats-user-page.component';
+import { StatsInstancesPageComponent } from './pages/stats-instances-page/stats-instances-page.component';
+import { InstanceComponent } from './instances/instance/instance.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { PlayCategoriesPageComponent } from './pages/play-categories-page/play-c
     CategoryListComponent,
     StatsCategoriesPageComponent,
     PlayCategoriesPageComponent,
+    StatsUserPageComponent,
+    StatsInstancesPageComponent,
+    InstanceComponent,
   ],
   imports: [
     BrowserModule,

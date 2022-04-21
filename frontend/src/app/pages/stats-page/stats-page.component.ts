@@ -17,7 +17,7 @@ export class StatsPageComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   isQuizSelected: Boolean = false;
 
-  constructor(private router: Router, public categoryService: CategoryService) {
+  constructor(private router: Router, public categoryService: CategoryService, private quizService: QuizService) {
     this.categoryService.categorySelected$.subscribe(category => this.category = category);
     console.log(this.category);
   }
@@ -28,6 +28,7 @@ export class StatsPageComponent implements OnInit {
   // tslint:disable-next-line:typedef
   quizSelected(quiz: Quiz){
     this.quiz = quiz;
-    this.router.navigate(['/stats-quiz-page/' + quiz.id]);
+    this.quizService.setSelectedQuizQuiz(this.quiz);
+    this.router.navigate(['/stats-user-page']);
   }
 }

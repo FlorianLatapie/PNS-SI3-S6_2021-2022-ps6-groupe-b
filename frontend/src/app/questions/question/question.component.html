@@ -14,9 +14,11 @@
 
     <div class="answers">
       <p *ngIf="question.familyLink != undefined">Lien de parenté :  {{question.familyLink}}</p>
-      <div class="answer" *ngFor="let answer of question.answers; let i=index">
-          {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
-      </div>
+      <ng-container *ngIf="display">
+        <div class="answer" *ngFor="let answer of question.answers; let i=index">
+            {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
+        </div>
+      </ng-container>
     </div>
-    <button class="button-card" (click)="delete()">Supprimer</button>
+    <button *ngIf="display" class="button-card" (click)="delete()">Supprimer</button>
 </div>

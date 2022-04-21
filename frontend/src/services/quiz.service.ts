@@ -36,6 +36,7 @@ export class QuizService {
   public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(this.quizSelected);
   public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
   public quizInstanceSelected$: BehaviorSubject<QuizInstance[]> = new BehaviorSubject([]);
+  public instanceSelected$: BehaviorSubject<QuizInstance> = new BehaviorSubject(undefined);
   public categorySelected$: Subject<Category> = new Subject();
 
   private categoryUrl = serverUrl + '/categories';
@@ -71,6 +72,7 @@ export class QuizService {
 
   sendStatsToBackend(quiz: Quiz, user: User, stadeEntre: number) {
     const quizInstance: QuizInstance = {
+      num: this.getQuizInstanceByQuizIdAndUserId(quiz.id, user.id).length + 1,
       quizId: quiz.id,
       userId: user.id,
       stade: stadeEntre,
@@ -78,7 +80,9 @@ export class QuizService {
       wrongAnswers: quiz.incorrectQuestions,
       questions: quiz.questions
     };
+    console.log(quizInstance.num);
     this.http.post<QuizInstance>(this.quizInstancePath, quizInstance, this.httpOptions).subscribe((qi) => {
+      this.retrieveQuizzesInstances();
       console.log('QuizInstance sent to backend', qi);
     });
   }
@@ -130,6 +134,16 @@ export class QuizService {
     const res: QuizInstance[] = [];
     this.quizzesInstances.forEach(quizInstance => {
       if (quizInstance.quizId === quizId) {
+        res.push(quizInstance);
+      }
+    });
+    return res;
+  }
+
+  getQuizInstanceByQuizIdAndUserId(quizId: string, userId): QuizInstance[] {
+    const res: QuizInstance[] = [];
+    this.quizzesInstances.forEach(quizInstance => {
+      if (quizInstance.quizId === quizId && quizInstance.userId === userId) {
         res.push(quizInstance);
       }
     });

@@ -1,12 +1,11 @@
 <div class="body-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/stats-page">Retour</button>
+    <button class="button-card" routerLink="/stats-instances-page">Retour</button>
   </div>
   <h1 class="page-title">Statistiques</h1>
 
-  <div *ngIf="quizInstances; then displayStats; else noStats"></div>
+  <div *ngIf="quizInstance; then displayStats; else noStats"></div>
   <ng-template #displayStats>
-    <h2>Le quiz a été joué {{quizInstances.length}} fois</h2>
     <p>ID du quiz : {{quiz.id}}</p>
     <div class="table-wrapper">
       <table class="fl-table">
@@ -18,53 +17,43 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let quizInstance of quizInstances; let i = index">
-          <td>{{i + 1}}</td>
+          <td>{{quizInstance.num}}</td>
           <td>{{quizInstance.correctAnswers}}</td>
           <td>{{quizInstance.wrongAnswers}}</td>
-        </tr>
         </tbody>
       </table>
     </div>
-
-    <div *ngFor="let quizInstance of quizInstances; let i = index">
-      <h2>Essai {{i + 1}}</h2>
-      <h3>Joué en stade : {{quizInstance.stade}}</h3>
       <div class="table-wrapper">
         <table class="fl-table">
           <thead>
-          <tr>
-            <th>Numéro question</th>
-            <th>Question</th>
-            <th>Réponse correcte</th>
-            <th>Réussites</th>
-            <th>Echecs</th>
-          </tr>
+            <tr>
+              <th>Question</th>
+              <th>Réponse correcte</th>
+              <th>Réussites</th>
+              <th>Echecs</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let question of quizInstance.questions; let j = index">
-            <td>
-              {{j + 1}}
-            </td>
-            <td>
-              {{question.label}}
-            </td>
-            <td>
-              <div *ngFor="let reponse of question.answers">
-                {{reponse.isCorrect ? reponse.value : null}}
-              </div>
-            </td>
-            <td>
-              {{question.correctAnswers}}
-            </td>
-            <td>
-              {{question.incorrectAnswers}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+            <tr *ngFor="let question of quizInstance.questions; let j = index">
+              <td>
+                <app-question [question]="question" [display]="false"></app-question>
+              </td>
+              <td>
+                <div *ngFor="let reponse of question.answers">
+                  {{reponse.isCorrect ? reponse.value : null}}
+
+                </div>
+              </td>
+              <td>
+                {{question.correctAnswers}}
+              </td>
+              <td>
+                {{question.incorrectAnswers}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
       </div>
-    </div>
   </ng-template>
   <ng-template #noStats>
     <h2>Aucune statistique disponible</h2>

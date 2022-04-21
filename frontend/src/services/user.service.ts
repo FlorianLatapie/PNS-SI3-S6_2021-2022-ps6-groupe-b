@@ -21,6 +21,8 @@ export class UserService {
 
   public userSelected$: BehaviorSubject<User> = new BehaviorSubject(undefined);
 
+  public userWatched$: BehaviorSubject<User> = new BehaviorSubject(undefined);
+
   private userUrl = serverUrl + '/users';
 
   private httpOptions = httpOptionsBase;
@@ -45,6 +47,10 @@ export class UserService {
     this.http.get<User>(urlWithId).subscribe((user) => {
       this.userSelected$.next(user);
     });
+  }
+
+  setWatchedUser(user: User): void {
+    this.userWatched$.next(user);
   }
 
   logoutUser(): void{
