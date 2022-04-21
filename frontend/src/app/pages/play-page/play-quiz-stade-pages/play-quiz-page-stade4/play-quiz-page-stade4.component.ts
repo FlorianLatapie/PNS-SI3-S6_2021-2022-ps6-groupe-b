@@ -4,8 +4,6 @@ import { Question } from 'src/models/question.model';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import {logger} from 'codelyzer/util/logger';
-import {UserService} from '../../../../../services/user.service';
-import {User} from '../../../../../models/user.model';
 
 
 @Component({
@@ -14,7 +12,7 @@ import {User} from '../../../../../models/user.model';
   styleUrls: ['./play-quiz-page-stade4.component.scss']
 })
 export class PlayQuizPageStade4Component implements OnInit {
-  user: User;
+
   imagesToDisplay: number;
   endOfQuiz = false;
   quiz: Quiz;
@@ -22,11 +20,11 @@ export class PlayQuizPageStade4Component implements OnInit {
   private questions: Question[];
   currentAnswerId: string;
   isCurrentAnswerCorrect: boolean;
-  disabledButton: boolean;
-  answerSelected: boolean;
+  disabledButton : boolean;
+  answerSelected : boolean;
   timer: any;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.retrieveQuizzes();
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.getQuiz(id);
@@ -35,9 +33,6 @@ export class PlayQuizPageStade4Component implements OnInit {
 
 
   ngOnInit(): void { // TODO add url path
-    this.userService.userSelected$.subscribe((user) => {
-      this.user = user;
-    });
   }
 
   private getQuiz(id: string) {
@@ -68,7 +63,7 @@ export class PlayQuizPageStade4Component implements OnInit {
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
       this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
-      this.answerSelected = true;
+      this.answerSelected=true;
       this.nextQuestion();
     }
     else{
@@ -80,7 +75,7 @@ export class PlayQuizPageStade4Component implements OnInit {
         }, 1000);
       }else{
         this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
-        this.answerSelected = true;
+        this.answerSelected=true;
         this.nextQuestion();
       }
     }
@@ -90,7 +85,7 @@ export class PlayQuizPageStade4Component implements OnInit {
     this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.imagesToDisplay++;
     this.shuffleArray(this.currentQuestion.answers);
-    this.answerSelected = false;
+    this.answerSelected=false;
   }
 
   nextQuestion(){
@@ -101,19 +96,18 @@ export class PlayQuizPageStade4Component implements OnInit {
       }, 10000);
     }
     else{
-      this.sendStatsToBackend(this.quiz);
       this.timer = setTimeout(() => {
         this.endOfQuiz = true;
-        this.answerSelected = false;
+        this.answerSelected=false;
       }, 10000);
     }
   }
 
-  sendStatsToBackend(quiz: Quiz) {
-    this.quizService.sendStatsToBackend(quiz, this.user, 4);
-  }
-
+  
+ 
   initNextQuestion(){
+    this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
+
     this.isCurrentAnswerCorrect = false;
     this.imagesToDisplay = 1;
     this.currentQuestion = this.questions[0];
@@ -139,7 +133,7 @@ reloadQuiz(){
 
 changeBtnColor(option: boolean, id: string) {
   const btn = document.getElementById(id);
-  this.disabledButton = true;
+  this.disabledButton =true;
   if (option) {
     btn.classList.add('button-green');
   } else {
@@ -149,7 +143,7 @@ changeBtnColor(option: boolean, id: string) {
 
 disableChangeBtnColor(option: boolean, id: string) {
   const btn = document.getElementById(id);
-  this.disabledButton = false;
+  this.disabledButton=false;
   if (option) {
     btn.classList.remove('button-green');
   } else {
@@ -158,12 +152,11 @@ disableChangeBtnColor(option: boolean, id: string) {
 }
 
 changeQuestion(){
-  this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
-  if (this.timer){
+  if(this.timer){
     clearTimeout(this.timer);
-    this.questions.length >= 1 ? this.initNextQuestion() : this.endOfQuiz = true;
-    this.answerSelected = false;
-    this.disabledButton = false;
+    this.questions.length >= 1 ? this.initNextQuestion(): this.endOfQuiz = true;
+    this.answerSelected=false;
+    this.disabledButton=false;
   }
 }
 
