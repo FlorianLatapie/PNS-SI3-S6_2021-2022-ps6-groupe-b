@@ -11,26 +11,16 @@ import {QuizInstance} from '../../../models/quizInstance.model';
 })
 export class StatsQuizPageComponent implements OnInit {
 
-  public quiz: Quiz;
-  quizInstances: QuizInstance[];
+  quiz: Quiz;
+  quizInstance: QuizInstance;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
-      if (this.quiz) {
-        this.quizService.retrieveQuizzesInstances();
-        this.quizService.quizInstanceSelected$.subscribe((quizInstances) => {
-          this.quizInstances = this.quizService.getQuizInstanceById(this.quiz.id);
-        });
-      } else {
-        console.log('No quiz');
-      }
+      this.quizService.instanceSelected$.subscribe(i => this.quizInstance = i);
     });
   }
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
-  }
+  ngOnInit(): void {}
 
 }

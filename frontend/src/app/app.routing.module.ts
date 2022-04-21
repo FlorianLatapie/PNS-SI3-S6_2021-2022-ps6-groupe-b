@@ -22,6 +22,8 @@ import {StatsQuizPageComponent} from "./pages/stats-quiz-page/stats-quiz-page.co
 import {UpdateCategoryQuizzesComponent} from "./pages/update-category-quizzes/update-category-quizzes.component";
 import {StatsCategoriesPageComponent} from "./pages/stats-categories-page/stats-categories-page.component";
 import {PlayCategoriesPageComponent} from "./pages/play-categories-page/play-categories-page.component";
+import {StatsUserPageComponent} from "./pages/stats-user-page/stats-user-page.component";
+import {StatsInstancesPageComponent} from "./pages/stats-instances-page/stats-instances-page.component";
 
 const routes: Routes = [
     // PAGES
@@ -37,13 +39,15 @@ const routes: Routes = [
     {path: 'sign-in-page', component: SignInPageComponent},
     {path: 'stats-page', component: StatsPageComponent},
     {path: 'stats-categories-page', component: StatsCategoriesPageComponent},
-    {path: 'stats-quiz-page/:id', component: StatsQuizPageComponent},
+    {path: 'stats-quiz-page', component: StatsQuizPageComponent},
     {path: 'login-page', component: LoginPageComponent},
     {path: 'information-quiz-page', component: CreateQuizInformationComponent},
     {path: 'create-quiz-page', component: CreateQuizPageComponent},
     {path: 'update-quizzes', component: UpdateQuizzesComponent},
     {path: 'update-category-quizzes', component: UpdateCategoryQuizzesComponent},
     {path: 'play-categories-page', component: PlayCategoriesPageComponent},
+    {path: 'stats-user-page', component: StatsUserPageComponent},
+    {path: 'stats-instances-page', component: StatsInstancesPageComponent},
 
     {path: '', redirectTo: '/main-page', pathMatch: 'full'},
 
