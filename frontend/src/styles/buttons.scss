@@ -58,8 +58,53 @@
   transition: all 0.4s;
 }
 
+
 .button:hover {
   border: $white solid 3px;
   color: $white;
   box-shadow: black .5px 0 10px;
+}
+
+.yellow-button{
+  font-size: 1rem;
+ background-color:$lightorange;
+ box-shadow: 0 5px $orange;
+}
+
+.yellow-button:hover{
+ background-color:$lightorange;
+ box-shadow: 0 5px $orange;
+}
+
+.yellow-button:disabled{
+  background-color:$orange;
+  box-shadow: 0 5px $orange;
+ }
+
+.button-green{
+  background-color: $green;
+  box-shadow: 0 5px $darkgreen;
+}
+.button-green:disabled{
+  background-color: $green;
+  box-shadow: 0 5px $darkgreen;
+}
+.button-green:hover{
+  background-color: $green;
+  box-shadow: 0 5px $darkgreen;
+}
+
+.button-red{
+  background-color: $lighbrown;
+  box-shadow: 0 5px $brown;
+}
+.button-red:disabled{
+  background-color: $lighbrown;
+  box-shadow: 0 5px $brown;
+
+}
+.button-red:hover{
+  background-color: $lighbrown;
+  box-shadow: 0 5px $brown;
+
 }

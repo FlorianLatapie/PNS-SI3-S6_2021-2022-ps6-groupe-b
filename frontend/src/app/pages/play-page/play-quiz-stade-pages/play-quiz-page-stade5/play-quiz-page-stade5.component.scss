@@ -1,5 +1,6 @@
 @import '../../../../../styles/quiz.scss';
 @import '../../../../../styles/card.scss';
+@import '../../../../../styles/buttons.scss';
 
 .image-question-size{
     max-width: 30vw;
@@ -37,22 +38,8 @@ li{
     text-decoration: none;
 }
 
-.button-green{
-    background-color: #16a637;
-}
-.button-green:disabled{
-    background-color: #16a637;
-}
-.button-green:hover{
-    background-color: #16a637;
-}
-
-.button-red{
-    background-color: #997387;
-}
-.button-red:disabled{
-    background-color: #997387;
-}
-.button-red:hover{
-    background-color: #997387;
+.next-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

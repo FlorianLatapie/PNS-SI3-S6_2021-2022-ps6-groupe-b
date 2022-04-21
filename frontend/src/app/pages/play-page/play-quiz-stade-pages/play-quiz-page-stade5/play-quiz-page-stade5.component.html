@@ -12,8 +12,8 @@
                             {{answer.value}}
                         </button>
                     </div>
-                    <button *ngIf="answerSelected" class="button-quiz" (click)="changeQuestion()">Suivant</button>
                 </div>
+                <button *ngIf="answerSelected" class="button-quiz yellow-button next-button" (click)="changeQuestion()">Suivant</button>
             </div>
     </ng-template>
 

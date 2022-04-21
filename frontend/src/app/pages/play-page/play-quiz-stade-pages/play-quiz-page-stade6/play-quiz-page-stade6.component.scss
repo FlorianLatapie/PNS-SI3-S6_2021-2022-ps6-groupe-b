@@ -1,5 +1,7 @@
 @import '../../../../../styles/quiz.scss';
 @import '../../../../../styles/card.scss';
+@import '../../../../../styles/buttons.scss';
+
 
 .image-question-size-stade6{
     max-width: 30vw;
@@ -30,20 +32,4 @@
 
 li{
     text-decoration: none;
-}
-
-
-
-.button-green{
-    border:solid #16a637;
-}
-.button-green:hover{
-    border:solid #16a637;
-}
-
-.button-red{
-    border:solid #997387;
-}
-.button-red:hover{
-    border:solid #997387;
 }
