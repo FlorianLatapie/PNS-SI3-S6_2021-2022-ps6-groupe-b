@@ -17,6 +17,12 @@ h2 {
   flex-direction: row;
 }
 
+.image {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 img {
   display: inline;
   margin: 0px;
