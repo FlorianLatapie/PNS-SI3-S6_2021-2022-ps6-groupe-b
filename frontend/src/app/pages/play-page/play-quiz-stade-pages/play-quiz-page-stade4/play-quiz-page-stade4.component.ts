@@ -106,6 +106,7 @@ export class PlayQuizPageStade4Component implements OnInit {
   
  
   initNextQuestion(){
+    this.isCurrentAnswerCorrect = false;
     this.imagesToDisplay = 1;
     this.currentQuestion = this.questions[0];
      // mélange les réponses
@@ -149,6 +150,7 @@ disableChangeBtnColor(option: boolean, id: string) {
 }
 
 changeQuestion(){
+  this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
   if(this.timer){
     clearTimeout(this.timer);
     this.questions.length >= 1 ? this.initNextQuestion(): this.endOfQuiz = true;

@@ -39,3 +39,15 @@
     align-items: center;
     justify-content: center;
 }
+.image-description{
+    text-align: center;
+}
+
+.congratulation-message{
+    text-align: center;
+}
+.congratulation-message>h1{
+    color: $green;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
