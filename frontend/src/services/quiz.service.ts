@@ -65,10 +65,8 @@ export class QuizService {
   }
 
 
-  addQuiz(quiz: Quiz): void {
-    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
-      this.setSelectedQuizQuiz(quiz);
-    });
+  addQuiz(quiz: Quiz): Observable<Quiz> {
+    return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions);
   }
 
   sendStatsToBackend(quiz: Quiz, user: User) {

@@ -5,7 +5,7 @@ import {QuizService} from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {Category} from '../../../models/category.model';
 import {CategoryService} from '../../../services/category.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
 
@@ -53,8 +53,9 @@ export class QuizFormComponent implements OnInit {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.userId = this.currentUser.id;
-    this.quizService.addQuiz(quizToCreate);
-    this.router.navigate(['/edit-quiz/']);
-
+    this.quizService.addQuiz(quizToCreate).subscribe(q => {
+      this.quizService.setSelectedQuizQuiz(q);
+      this.router.navigate(['/edit-quiz/']);
+    });
   }
 }
