@@ -23,6 +23,7 @@ export class QuizService {
    The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = [];
+  private quizSelected: Quiz = null;
   private quizzesInstances: QuizInstance[] = [];
 
   /*
@@ -32,7 +33,7 @@ export class QuizService {
   public quizzes$: BehaviorSubject<Quiz[]>
     = new BehaviorSubject(this.quizzes);
 
-  public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(undefined);
+  public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(this.quizSelected);
   public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
   public quizInstanceSelected$: BehaviorSubject<QuizInstance[]> = new BehaviorSubject([]);
   public categorySelected$: Subject<Category> = new Subject();
@@ -66,8 +67,7 @@ export class QuizService {
 
   addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe((quiz) => {
-      this.retrieveQuizzes();
-      this.quizSelectedId$.next(quiz.id);
+      this.setSelectedQuizQuiz(quiz);
     });
   }
 
@@ -84,18 +84,22 @@ export class QuizService {
     });
   }
 
-  setSelectedQuiz(quizId: string): void {
+  setSelectedQuiz(quizId: string): Observable<string> {
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);
     });
+    return of(quizId);
+  }
+
+  setSelectedQuizQuiz(quiz: Quiz): void {
+    this.quizSelected = quiz;
+    this.quizSelected$.next(this.quizSelected);
   }
 
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
-    const urlWithCategoryId = this.quizUrl + '/' + quiz.id;
-    this.http.delete<Quiz>(urlWithCategoryId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
   addQuestion(quiz: Quiz, question: Question): void {

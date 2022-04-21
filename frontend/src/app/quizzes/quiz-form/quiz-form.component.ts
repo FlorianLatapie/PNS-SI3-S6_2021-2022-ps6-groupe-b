@@ -54,11 +54,7 @@ export class QuizFormComponent implements OnInit {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.userId = this.currentUser.id;
     this.quizService.addQuiz(quizToCreate);
-    this.quizService.quizSelectedId$.subscribe(quizId => {
-      // tslint:disable-next-line:triple-equals
-      if (quizId != undefined){
-        this.router.navigate(['/edit-quiz/' + quizId]);
-      }
-    });
+    this.router.navigate(['/edit-quiz/']);
+
   }
 }

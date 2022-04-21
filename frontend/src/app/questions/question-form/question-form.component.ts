@@ -23,12 +23,11 @@ export class QuestionFormComponent implements OnInit {
   }
 
   private initializeQuestionForm(): void {
-    if(this.quiz.category.id != 2 && this.quiz.category.id != 3){
+    if(this.quiz.category.id == 1){
       this.questionForm = this.formBuilder.group({
-        label: ['', Validators.required],
         images: this.formBuilder.array([]),
         answers: this.formBuilder.array([]),
-        familyLink: '',
+        familyLink: ['', Validators.required],
       });
     } else {
       this.questionForm = this.formBuilder.group({
