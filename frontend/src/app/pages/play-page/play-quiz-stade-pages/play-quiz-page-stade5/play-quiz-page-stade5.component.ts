@@ -22,6 +22,8 @@ export class PlayQuizPageStade5Component implements OnInit {
   currentAnswerId: string;
   isCurrentAnswerCorrect: boolean;
   disabledButton : boolean;
+  answerSelected : boolean;
+  timer: any;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.retrieveQuizzes();
@@ -59,6 +61,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   onAnswer(option: boolean, answerId: string) {
     this.currentAnswerId = answerId;
     this.isCurrentAnswerCorrect = option;
+    this.answerSelected = true;
     if (option) {
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
@@ -77,18 +80,23 @@ export class PlayQuizPageStade5Component implements OnInit {
 
   nextQuestion() {
     this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
-    setTimeout(() => {
-      if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
-        this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length;
-        // inutile si 3 images
-      } else if (this.questions.length <= 0) {
-        this.endOfQuiz = true;
-        this.sendStatsToBackend(this.quiz);
-        return;
-      }
-      this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
-      this.initNextQuestion();
+    this.timer = setTimeout(() => {
+      this.endOfQuestion();
     }, 10000);
+  }
+
+  endOfQuestion(){
+    if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
+      this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length;
+      // inutile si 3 images
+    } else if (this.questions.length <= 0) {
+      this.endOfQuiz = true;
+      this.sendStatsToBackend(this.quiz);
+      return;
+    }
+    this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
+    this.initNextQuestion();
+    this.answerSelected = false;
   }
 
   reAddQuestionIntoQuiz(question: Question): boolean {
@@ -144,6 +152,14 @@ export class PlayQuizPageStade5Component implements OnInit {
       btn.classList.remove('button-green');
     } else {
       btn.classList.remove('button-red');
+    }
+  }
+
+  changeQuestion(){
+    console.log(this.timer);
+    if(this.timer){
+      clearTimeout(this.timer);
+      this.endOfQuestion();
     }
   }
 
