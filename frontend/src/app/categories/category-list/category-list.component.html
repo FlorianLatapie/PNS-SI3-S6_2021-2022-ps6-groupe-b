@@ -6,9 +6,12 @@
     </div>
   </ng-container>
   <ng-container *ngIf="getNbQuizzes()==0">
-    <div class="buttons-placement">
-      <h1>Ajoutez un quiz pour commencer ;)</h1>
+    <div *ngIf="user.isAdmin" class="buttons-placement">
+      <h1>Ajoutez un quiz pour commencer</h1>
       <button class="navigation" [routerLink]="['/information-quiz-page']">Créer un quiz</button>
+    </div>
+    <div *ngIf="user.isAdmin == false" class="buttons-placement">
+      <h1>Il n'y a pas de quiz a afficher</h1>
     </div>
   </ng-container>
 </div>
