@@ -18,6 +18,11 @@ export class PlayQuizPageStade4Component implements OnInit {
   quiz: Quiz;
   currentQuestion: Question;
   private questions: Question[];
+  currentAnswerId: string;
+  isCurrentAnswerCorrect: boolean;
+  disabledButton : boolean;
+  answerSelected : boolean;
+  timer: any;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.retrieveQuizzes();
@@ -51,64 +56,55 @@ export class PlayQuizPageStade4Component implements OnInit {
   }
 
   onAnswer(option: boolean, idAnswer: string){
+    this.currentAnswerId = idAnswer;
+    this.isCurrentAnswerCorrect = option;
     this.changeBtnColor(option, idAnswer);
     if (option){
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
       this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
+      this.answerSelected=true;
       this.nextQuestion();
     }
     else{
       this.quiz.incorrectQuestions++;
       this.currentQuestion.incorrectAnswers++;
       if (this.currentQuestion.incorrectAnswers < 3){
-        setTimeout(() => {
-        this.disableChangeBtnColor(option, idAnswer);
-        this.imagesToDisplay++;
-        this.shuffleArray(this.currentQuestion.answers);
-        }, 2000);
-
+        this.timer = setTimeout(() => {
+          this.falseAnswer();
+        }, 1000);
       }else{
         this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
+        this.answerSelected=true;
         this.nextQuestion();
       }
     }
   }
 
+  falseAnswer(){
+    this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
+    this.imagesToDisplay++;
+    this.shuffleArray(this.currentQuestion.answers);
+    this.answerSelected=false;
+  }
 
   nextQuestion(){
     if (this.questions.length >= 1){
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.initNextQuestion();
-      }, 2000);
-
+        this.answerSelected = false;
+      }, 10000);
     }
     else{
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.endOfQuiz = true;
-      }, 3000);
-    }
-
-  }
-
-  changeBtnColor(option: boolean, id: string){
-    const btn = document.getElementById(id);
-    if (option){
-      btn.classList.add('button-green');
-    }else{
-      btn.classList.add('button-red');
+        this.answerSelected=false;
+      }, 10000);
     }
   }
 
-  disableChangeBtnColor(option: boolean, id: string){
-    const btn = document.getElementById(id);
-    if (option){
-      btn.classList.remove('button-green');
-    }else{
-      btn.classList.remove('button-red');
-    }
-  }
-
+  
+ 
   initNextQuestion(){
     this.imagesToDisplay = 1;
     this.currentQuestion = this.questions[0];
@@ -132,5 +128,34 @@ reloadQuiz(){
   this.router.navigate([currentUrl]);
 }
 
+changeBtnColor(option: boolean, id: string) {
+  const btn = document.getElementById(id);
+  this.disabledButton =true;
+  if (option) {
+    btn.classList.add('button-green');
+  } else {
+    btn.classList.add('button-red');
+  }
+}
+
+disableChangeBtnColor(option: boolean, id: string) {
+  const btn = document.getElementById(id);
+  this.disabledButton=false;
+  if (option) {
+    btn.classList.remove('button-green');
+  } else {
+    btn.classList.remove('button-red');
+  }
+}
+
+changeQuestion(){
+  console.log(this.timer);
+  if(this.timer){
+    clearTimeout(this.timer);
+    this.questions.length >= 1 ? this.initNextQuestion(): this.endOfQuiz = true;
+    this.answerSelected=false;
+    this.disabledButton=false;
+  }
+}
 
 }
