@@ -74,7 +74,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   }
 
   sendStatsToBackend(quiz: Quiz) {
-    this.quizService.sendStatsToBackend(quiz, this.user);
+    this.quizService.sendStatsToBackend(quiz, this.user, 5);
   }
 
   nextQuestion() {

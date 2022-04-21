@@ -69,10 +69,11 @@ export class QuizService {
     return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions);
   }
 
-  sendStatsToBackend(quiz: Quiz, user: User) {
+  sendStatsToBackend(quiz: Quiz, user: User, stadeEntre: number) {
     const quizInstance: QuizInstance = {
       quizId: quiz.id,
       userId: user.id,
+      stade: stadeEntre,
       correctAnswers: quiz.correctQuestions,
       wrongAnswers: quiz.incorrectQuestions,
       questions: quiz.questions

@@ -2,6 +2,7 @@
   {
     "quizId": 1650357399894,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 2,
     "wrongAnswers": 0,
     "questions": [
@@ -109,6 +110,7 @@
   {
     "quizId": 1650357399894,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 2,
     "wrongAnswers": 1,
     "questions": [
@@ -216,6 +218,7 @@
   {
     "quizId": 1650357399894,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 2,
     "wrongAnswers": 4,
     "questions": [
@@ -323,6 +326,7 @@
   {
     "quizId": 1650357399894,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 2,
     "wrongAnswers": 1,
     "questions": [
@@ -430,6 +434,7 @@
   {
     "quizId": 1650357399894,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 2,
     "wrongAnswers": 1,
     "questions": [
@@ -537,6 +542,7 @@
   {
     "quizId": 1650550216007,
     "userId": 1648560302115,
+    "stade": 5,
     "correctAnswers": 4,
     "wrongAnswers": 0,
     "questions": [
@@ -742,6 +748,7 @@
   {
     "quizId": 1650550216007,
     "userId": 1648560306857,
+    "stade": 6,
     "correctAnswers": 4,
     "wrongAnswers": 2,
     "questions": [
