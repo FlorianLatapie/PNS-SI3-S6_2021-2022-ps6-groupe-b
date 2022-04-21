@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import {Category} from "../../../models/category.model";
+import {QuizService} from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -30,7 +30,7 @@ export class QuizComponent implements OnInit {
   @Output()
   deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-  constructor() {
+  constructor(private quizService: QuizService) {
   }
 
 
@@ -47,5 +47,9 @@ export class QuizComponent implements OnInit {
 
   delete(): void {
     this.deleteQuiz.emit(this.quiz);
+  }
+
+  changeSelectedQuiz(quiz: Quiz) {
+    this.quizService.setSelectedQuizQuiz(quiz);
   }
 }

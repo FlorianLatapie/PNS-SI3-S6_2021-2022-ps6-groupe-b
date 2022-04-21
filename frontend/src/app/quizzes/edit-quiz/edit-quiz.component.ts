@@ -12,14 +12,11 @@ export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) {
-    this.quizService.retrieveQuizzes();
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id)
-    this.quizService.getQuiz(id).subscribe((quiz) => this.quiz = quiz);
+  constructor(private quizService: QuizService) {
+    this.quizService.quizSelected$.subscribe(q => this.quiz = q);
+    console.log(this.quiz);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

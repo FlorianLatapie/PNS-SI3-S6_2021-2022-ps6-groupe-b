@@ -23,7 +23,6 @@ export class QuestionFormComponent implements OnInit {
   }
 
   private initializeQuestionForm(): void {
-    console.log(this.quiz);
     if(this.quiz.category.id == 1){
       this.questionForm = this.formBuilder.group({
         images: this.formBuilder.array([]),
@@ -40,7 +39,6 @@ export class QuestionFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.quiz);
     this.initializeQuestionForm();
 
     this.addImage();
