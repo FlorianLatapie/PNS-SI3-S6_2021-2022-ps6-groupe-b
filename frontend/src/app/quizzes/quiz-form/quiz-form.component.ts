@@ -54,6 +54,7 @@ export class QuizFormComponent implements OnInit {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.userId = this.currentUser.id;
     this.quizService.addQuiz(quizToCreate).subscribe(q => {
+      this.quizService.retrieveQuizzes();
       this.quizService.setSelectedQuizQuiz(q);
       this.router.navigate(['/edit-quiz/']);
     });
