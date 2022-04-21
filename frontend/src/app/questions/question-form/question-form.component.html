@@ -2,10 +2,10 @@
   <h2>Créer une nouvelle question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
 
-    <div class="question-section">
+    <div class="question-section" *ngIf="this.quiz.category.id != 1">
       <label for="label">
         Question <br>
-        <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?">
+        <input *ngIf="this.quiz.category.id != 1" class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?">
       </label>
     </div>
 
@@ -53,7 +53,7 @@
     <div class="question-section" *ngIf="quiz.category.id == 1">
       <label for="familyLink">
         <h2>Lien de parenté</h2>
-        <input class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils">
+        <input *ngIf="quiz.category.id == 1" class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils">
       </label>
     </div>
 
