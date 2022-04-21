@@ -6,6 +6,7 @@
                     <img class="image-question-size" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" alt="">
                     <h1 class="quiz-question-label">{{currentQuestion.label}}</h1>
                 </div>
+                <p class="family-link">{{currentQuestion.images[currentQuestion.currentImage]}}</p>
                 <div class="grid-button-answers">
                     <div *ngFor="let answer of currentQuestion.answers">
                         <button id="{{answer.value}}" class ="button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect, answer.value)" [disabled]="disabledButton">

@@ -156,7 +156,6 @@ export class PlayQuizPageStade5Component implements OnInit {
   }
 
   changeQuestion(){
-    console.log(this.timer);
     if(this.timer){
       clearTimeout(this.timer);
       this.endOfQuestion();

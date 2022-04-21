@@ -149,7 +149,6 @@ disableChangeBtnColor(option: boolean, id: string) {
 }
 
 changeQuestion(){
-  console.log(this.timer);
   if(this.timer){
     clearTimeout(this.timer);
     this.questions.length >= 1 ? this.initNextQuestion(): this.endOfQuiz = true;
