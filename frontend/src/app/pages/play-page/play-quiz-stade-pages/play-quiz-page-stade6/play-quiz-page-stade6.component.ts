@@ -12,10 +12,11 @@ import {QuizService} from 'src/services/quiz.service';
 })
 export class PlayQuizPageStade6Component implements OnInit {
 
-  currentImage: number;
+  lastQuestionImage: number;
   endOfQuiz = false;
   quiz: Quiz;
   currentQuestion: Question;
+  lastQuestion: Question;
   private questions: Question[];
   currentAnswerId: string;
   isCurrentAnswerCorrect: boolean;
@@ -25,11 +26,13 @@ export class PlayQuizPageStade6Component implements OnInit {
   disabledImage: boolean = false;
   answerSelected : boolean;
   timer: any;
+  showDescription: boolean = false;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.retrieveQuizzes();
     const id = this.route.snapshot.paramMap.get('id');
     this.getQuiz(id);
+    this.lastQuestionImage=0;
   }
 
   ngOnInit(): void { // TODO add url path
@@ -49,8 +52,7 @@ export class PlayQuizPageStade6Component implements OnInit {
       this.randomImageToleft = false;
       this.currentRandomImage = 0;
       this.randomImages = [];
-      this.randomImages.push('https://resize-public.ladmedia.fr/img/var/public/storage/images/toutes-les-photos/j-en-ai-assez-fait-apres-bruce-willis-jim-carrey-souhaite-aussi-arreter-sa-carriere-1704345/45046100-1-fre-FR/J-en-ai-assez-fait-Apres-Bruce-Willis-Jim-Carrey-souhaite-aussi-arreter-sa-carriere.jpg');
-      this.randomImages.push('https://static.cnews.fr/sites/default/files/styles/image_640_360/public/jim_carrey_6246cc9c0cebc_0.jpg?itok=uHABiK82');
+      for(var i = 1; i<10; i++) this.randomImages.push('../../../../../assets/'+i+'.jpg');
       
       // mélange les questions
       this.shuffleArray(this.questions);
@@ -63,6 +65,7 @@ export class PlayQuizPageStade6Component implements OnInit {
   onAnswer(option: boolean, answerId: string) {
     this.currentAnswerId = answerId;
     this.isCurrentAnswerCorrect = option;
+    this.lastQuestionImage = this.currentQuestion.currentImage;
     this.answerSelected=true;
     if (option) {
       this.quiz.correctQuestions++;
@@ -85,12 +88,12 @@ export class PlayQuizPageStade6Component implements OnInit {
 
   endOfQuestion(){
     if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
-      this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length; // inutile si 3 images
+      this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length;
     } else if (this.questions.length <= 0) {
       this.endOfQuiz = true;
       return;
     }
-    this.currentRandomImage = (Math.floor(Math.random() * 10)) % this.randomImages.length;
+    this.currentRandomImage = (Math.floor(Math.random() * 100)) % this.randomImages.length;
     this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.initNextQuestion();
   }
@@ -99,7 +102,6 @@ export class PlayQuizPageStade6Component implements OnInit {
   reAddQuestionIntoQuiz(question: Question): boolean {
     if (question.images.length > this.currentQuestion.currentImage) {
       if ((question.incorrectAnswers < 3 && question.correctAnswers < 1)) {
-        // si trop de mauvaises réponses : oublie, si au moins deux bonnes réponses : on sait
         return true;
       }
       this.questions.splice(this.questions.indexOf(question), 1);
@@ -113,9 +115,9 @@ export class PlayQuizPageStade6Component implements OnInit {
   }
 
   initNextQuestion() {
+    this.randomImageSide();
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
-    this.randomImageSide();
   }
 
   shuffleArray(array) {
@@ -157,9 +159,14 @@ export class PlayQuizPageStade6Component implements OnInit {
 
   changeQuestion(){
     if(this.timer){
+      this.lastQuestion= this.currentQuestion;
       clearTimeout(this.timer);
       this.endOfQuestion();
       this.answerSelected=false;
     }
+  }
+
+  switchToDescription(){
+    if(this.isCurrentAnswerCorrect)this.showDescription = !this.showDescription;
   }
 }

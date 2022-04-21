@@ -1,29 +1,47 @@
 <ng-container *ngIf="quiz">
     <!-- {{shuffleArray(quiz.questions)}} -->
-
-    <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
+    <div *ngIf="showDescription || !endOfQuiz; then quiz_play ; else quiz_end"></div>
     <ng-template #quiz_play>
-            <div class="card question-card-stade6">
-                <div class="quiz-question-layout">
-                    <h1 class="quiz-question-label">Qui reconnaissez vous ?</h1>
-                    <div class="stade6-layout">
-                        <div *ngIf="randomImageToleft ;then leftSide; else rightSide"></div>
-                        <ng-template #leftSide>
-                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" [disabled]="disabledImage"/>
-                            <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}" [disabled]="disabledImage"/>
-                        </ng-template>
-                        <ng-template #rightSide>
-                            <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}" [disabled]="disabledImage"/>
-                            <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" [disabled]="disabledImage"/>
-                        </ng-template>
+        <div *ngIf="showDescription; then quiz_play_showDescription ; else quiz_play_showQuestion"></div>
+        <ng-template #quiz_play_showQuestion>
+                <div class="card question-card-stade6">
+                    <div class="quiz-question-layout">
+                        <h1 class="quiz-question-label">Qui reconnaissez vous ?</h1>
+                            <div class="stade6-layout">
+                                <div *ngIf="randomImageToleft ;then leftSide; else rightSide"></div>
+                                <ng-template #leftSide>
+                                    <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}"/>
+                                    <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}"/>
+                                </ng-template>
+                                <ng-template #rightSide>
+                                    <img id="incorrectImage"  (click)="onAnswer(false, 'incorrectImage')" class="image-question-size-stade6" src="{{randomImages[currentRandomImage]}}"/>
+                                    <img id="correctImage"  (click)="onAnswer(true, 'correctImage')" class="image-question-size-stade6" src="{{currentQuestion.images[currentQuestion.currentImage].url}}"/>
+                                </ng-template>
+                            </div>
+                        <button *ngIf="answerSelected" class="button-quiz yellow-button next-button" (click)="changeQuestion(); switchToDescription()">Suivant</button>
                     </div>
-                    <button *ngIf="answerSelected" class="button-quiz yellow-button next-button" (click)="changeQuestion()">Suivant</button>
                 </div>
-            </div>
+        </ng-template>
+
+        <ng-template #quiz_play_showDescription>
+                <div class="card question-card-stade6">
+                    <div class="quiz-question-layout">
+                        <h1 class="quiz-question-label">Bravo !</h1>
+                        <p>Lien de parenté : {{lastQuestion.familyLink}}</p>
+                            <div class="stade6-layout">
+                                <div *ngIf="randomImageToleft ;then leftSide; else rightSide"></div>
+                                    <img class="image-question-size-stade6" src="{{lastQuestion.images[lastQuestionImage].url}}" />
+                            </div>
+                        <p>Description : {{lastQuestion.images[lastQuestionImage].description}}</p>
+                        <button class="button-quiz yellow-button next-button" (click)="switchToDescription()">Suivant</button>
+                    </div>
+                </div>
+        </ng-template>
     </ng-template>
+    
     <ng-template #quiz_end>
         <div class="end-of-quiz">
-            <h1>Fin du quiz</h1>
+            <h1 id="endQuiz">Fin du quiz</h1>
             <p>Merci d'avoir joué !</p>
             <button class="button-card" [routerLink]="['/play-page']">Retour</button>
             <button class="button-card" (click)="reloadQuiz()">Rejouer</button>
