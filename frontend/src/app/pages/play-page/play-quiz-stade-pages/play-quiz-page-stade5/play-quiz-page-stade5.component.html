@@ -8,7 +8,7 @@
                 </div>
                 <div class="grid-button-answers">
                     <div *ngFor="let answer of currentQuestion.answers">
-                        <button id="{{answer.value}}" class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect, answer.value)">
+                        <button id="{{answer.value}}" class ="button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect, answer.value)" [disabled]="disabledButton">
                             {{answer.value}}
                         </button>
                     </div>

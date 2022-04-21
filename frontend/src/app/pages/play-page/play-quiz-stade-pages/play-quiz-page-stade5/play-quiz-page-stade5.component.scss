@@ -37,9 +37,10 @@ li{
     text-decoration: none;
 }
 
-
-
 .button-green{
+    background-color: #16a637;
+}
+.button-green:disabled{
     background-color: #16a637;
 }
 .button-green:hover{
@@ -47,6 +48,9 @@ li{
 }
 
 .button-red{
+    background-color: #997387;
+}
+.button-red:disabled{
     background-color: #997387;
 }
 .button-red:hover{

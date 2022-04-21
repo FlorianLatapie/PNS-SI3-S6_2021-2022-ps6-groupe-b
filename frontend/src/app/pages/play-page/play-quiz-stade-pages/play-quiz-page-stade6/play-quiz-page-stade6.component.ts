@@ -129,6 +129,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     const btn = document.getElementById(id);
     if (option){
       btn.classList.add('button-green');
+      
     }else{
       btn.classList.add('button-red');
     }

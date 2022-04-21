@@ -21,6 +21,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   private questions: Question[];
   currentAnswerId: string;
   isCurrentAnswerCorrect: boolean;
+  disabledButton : boolean;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.retrieveQuizzes();
@@ -87,7 +88,7 @@ export class PlayQuizPageStade5Component implements OnInit {
       }
       this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
       this.initNextQuestion();
-    }, 1000);
+    }, 10000);
   }
 
   reAddQuestionIntoQuiz(question: Question): boolean {
@@ -128,6 +129,7 @@ export class PlayQuizPageStade5Component implements OnInit {
 
   changeBtnColor(option: boolean, id: string) {
     const btn = document.getElementById(id);
+    this.disabledButton =true;
     if (option) {
       btn.classList.add('button-green');
     } else {
@@ -137,6 +139,7 @@ export class PlayQuizPageStade5Component implements OnInit {
 
   disableChangeBtnColor(option: boolean, id: string) {
     const btn = document.getElementById(id);
+    this.disabledButton=false;
     if (option) {
       btn.classList.remove('button-green');
     } else {

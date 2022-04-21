@@ -16,7 +16,6 @@ export class PlayQuizPageStade4Component implements OnInit {
   imagesToDisplay: number;
   endOfQuiz = false;
   quiz: Quiz;
-  quizzes: Quiz[];
   currentQuestion: Question;
   private questions: Question[];
 
@@ -32,10 +31,6 @@ export class PlayQuizPageStade4Component implements OnInit {
   }
 
   private getQuiz(id: string) {
-    this.quizService.quizzes$.subscribe(q => {
-      this.quizzes = q;
-    });
-    console.log(this.quizzes);
     this.quizService.getQuiz(id).subscribe( q => {
       this.quiz = q;
       console.log(this.quiz);
