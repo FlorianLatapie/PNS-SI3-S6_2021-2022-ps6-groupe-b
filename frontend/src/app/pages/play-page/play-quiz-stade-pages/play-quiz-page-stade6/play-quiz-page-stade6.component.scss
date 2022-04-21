@@ -6,7 +6,7 @@
 .image-question-size-stade6{
     max-width: 30vw;
     max-height: 40vh;
-    margin: 0, 1rem;
+    margin: 1rem 1rem;
 }
 
 .question-card-stade6{
@@ -15,7 +15,9 @@
     align-items: center;
     justify-content: center;
     margin: 1rem 1rem;
+    height: 60vh;
 }
+
 
 .stade6-layout{
     display: flex;
@@ -32,4 +34,18 @@
 
 li{
     text-decoration: none;
+}
+
+
+.next-button{
+    margin-top: 1rem;
+}
+
+
+.image-green{
+    border: solid $green;
+}
+
+.image-red{
+border: solid $lighbrown;
 }

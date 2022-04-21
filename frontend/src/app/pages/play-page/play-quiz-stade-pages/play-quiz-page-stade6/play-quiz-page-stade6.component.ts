@@ -22,6 +22,9 @@ export class PlayQuizPageStade6Component implements OnInit {
   randomImages: string[];
   currentRandomImage: number;
   randomImageToleft: boolean;
+  disabledImage: boolean = false;
+  answerSelected : boolean;
+  timer: any;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
     this.quizService.retrieveQuizzes();
@@ -48,6 +51,7 @@ export class PlayQuizPageStade6Component implements OnInit {
       this.randomImages = [];
       this.randomImages.push('https://resize-public.ladmedia.fr/img/var/public/storage/images/toutes-les-photos/j-en-ai-assez-fait-apres-bruce-willis-jim-carrey-souhaite-aussi-arreter-sa-carriere-1704345/45046100-1-fre-FR/J-en-ai-assez-fait-Apres-Bruce-Willis-Jim-Carrey-souhaite-aussi-arreter-sa-carriere.jpg');
       this.randomImages.push('https://static.cnews.fr/sites/default/files/styles/image_640_360/public/jim_carrey_6246cc9c0cebc_0.jpg?itok=uHABiK82');
+      
       // mélange les questions
       this.shuffleArray(this.questions);
       this.currentQuestion = this.questions[0];
@@ -59,6 +63,7 @@ export class PlayQuizPageStade6Component implements OnInit {
   onAnswer(option: boolean, answerId: string) {
     this.currentAnswerId = answerId;
     this.isCurrentAnswerCorrect = option;
+    this.answerSelected=true;
     if (option) {
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
@@ -70,20 +75,24 @@ export class PlayQuizPageStade6Component implements OnInit {
     this.nextQuestion();
   }
 
-
   nextQuestion() {
     this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
-    setTimeout(() => {
-      if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
-        this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length; // inutile si 3 images
-      } else if (this.questions.length <= 0) {
-        this.endOfQuiz = true;
-        return;
-      }
-      this.currentRandomImage = (Math.floor(Math.random() * 10)) % this.randomImages.length;
-      this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
-      this.initNextQuestion();
-    }, 1000);
+    this.timer = setTimeout(() => {
+      this.endOfQuestion();
+      this.answerSelected=false;
+    }, 10000);
+  }
+
+  endOfQuestion(){
+    if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
+      this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length; // inutile si 3 images
+    } else if (this.questions.length <= 0) {
+      this.endOfQuiz = true;
+      return;
+    }
+    this.currentRandomImage = (Math.floor(Math.random() * 10)) % this.randomImages.length;
+    this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
+    this.initNextQuestion();
   }
 
 
@@ -125,23 +134,33 @@ export class PlayQuizPageStade6Component implements OnInit {
     this.router.navigate([currentUrl]);
   }
 
-  changeBtnColor(option: boolean, id: string){
+  changeBtnColor(option: boolean, id: string) {
     const btn = document.getElementById(id);
-    if (option){
-      btn.classList.add('button-green');
-      
-    }else{
-      btn.classList.add('button-red');
+    if (option && !this.disabledImage) {
+      this.disabledImage =true;
+      btn.classList.add('image-green');
+    } else if (!this.disabledImage) {
+      this.disabledImage =true;
+      btn.classList.add('image-red');
     }
   }
 
-  disableChangeBtnColor(option: boolean, id: string){
+  disableChangeBtnColor(option: boolean, id: string) {
     const btn = document.getElementById(id);
-    if (option){
-      btn.classList.remove('button-green');
-    }else{
-      btn.classList.remove('button-red');
+    this.disabledImage=false;
+    if (option) {
+      btn.classList.remove('image-green');
+    } else {
+      btn.classList.remove('image-red');
     }
   }
 
+  changeQuestion(){
+    console.log(this.timer);
+    if(this.timer){
+      clearTimeout(this.timer);
+      this.endOfQuestion();
+      this.answerSelected=false;
+    }
+  }
 }
