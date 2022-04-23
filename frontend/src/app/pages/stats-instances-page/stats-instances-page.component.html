@@ -4,6 +4,9 @@
   </div>
   <h1 class="page-title">Instances du quiz "{{quiz.name}}"</h1>
   <h2 class="stat-quiz">Le quiz a été joué {{quizInstances.length}} fois !</h2>
+  <p>Personnes oubliées : </p>
+  <p *ngFor="let reponse of stats | keyvalue">La personne {{reponse.value[0]}} est correcte
+    à {{(reponse.value[1] / (reponse.value[1] + reponse.value[2])*100 | number: '1.0-0')}}%</p>
   <div class="instanceList">
     <ng-container *ngFor="let instance of quizInstances">
       <app-instance [quizInstance]="instance" [nbTry]="quizInstances.indexOf(instance)+1" (instanceSelected)="selectedInstance($event)"></app-instance>

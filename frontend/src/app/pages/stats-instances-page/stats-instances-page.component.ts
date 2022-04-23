@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class StatsInstancesPageComponent implements OnInit {
   quiz: Quiz;
   quizInstances: QuizInstance[];
+  stats: {};
 
   constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, private userService: UserService) {
     const idQuiz = this.route.snapshot.paramMap.get('idquiz');
@@ -21,9 +22,9 @@ export class StatsInstancesPageComponent implements OnInit {
       this.quizService.getQuiz(idQuiz).subscribe(q => {
         this.quiz = q;
         this.quizInstances = this.quizService.getQuizInstanceByQuizIdAndUserId(idQuiz, idUser, i);
+        this.getStats();
       });
     });
-
   }
 
   ngOnInit(): void {
@@ -31,5 +32,27 @@ export class StatsInstancesPageComponent implements OnInit {
 
   selectedInstance(quizInstance: QuizInstance): void {
     this.router.navigate(['/stats-quiz-page/' + quizInstance.id]);
+  }
+
+  getStats(): void {
+    const correctAnswers = {};
+    for (const quizInstance of this.quizInstances) {
+      for (const question of quizInstance.questions) {
+        for (const answer of question.answers) {
+          if (answer.isCorrect) {
+            correctAnswers[question.id] = [answer.value, 0, 0];
+          }
+        }
+      }
+    }
+
+    for (const quizInstance of this.quizInstances) {
+      for (const question of quizInstance.questions) {
+        correctAnswers[question.id][1] += question.correctAnswers;
+        correctAnswers[question.id][2] += question.incorrectAnswers;
+      }
+    }
+    console.log(correctAnswers);
+    this.stats = correctAnswers;
   }
 }

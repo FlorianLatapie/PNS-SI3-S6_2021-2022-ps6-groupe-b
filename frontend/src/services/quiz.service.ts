@@ -67,6 +67,7 @@ export class QuizService {
   sendStatsToBackend(quiz: Quiz, user: User, stadeEntre: number): void {
     const quizInstance: QuizInstance = {
       num: this.getQuizInstanceByQuizIdAndUserId(quiz.id, user.id, this.quizzesInstances).length + 1,
+      // c'est une tache async et peut poser un problème
       quizId: quiz.id,
       userId: user.id,
       stade: stadeEntre,
@@ -76,7 +77,6 @@ export class QuizService {
     };
     this.http.post<QuizInstance>(this.quizInstancePath, quizInstance, this.httpOptions).subscribe((qi) => {
       this.retrieveQuizzesInstances();
-      console.log('QuizInstance sent to backend', qi);
     });
   }
 
