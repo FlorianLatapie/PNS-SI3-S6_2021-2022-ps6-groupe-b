@@ -21,6 +21,11 @@ h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 220px;
+}
+
+#description-image{
+  text-align: center;
 }
 
 img {
