@@ -6,5 +6,5 @@ module.exports = new BaseModel('Question', {
   images: Joi.array().required(),
   quizId: Joi.number(),
   answers: Joi.array(),
-  familyLink : Joi.string(),
+  familyLink: Joi.string(),
 })

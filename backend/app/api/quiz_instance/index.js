@@ -2,7 +2,6 @@ const { Router } = require('express')
 
 const { QuizInstance } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
-const logger = require('../../utils/logger')
 
 const router = new Router()
 
