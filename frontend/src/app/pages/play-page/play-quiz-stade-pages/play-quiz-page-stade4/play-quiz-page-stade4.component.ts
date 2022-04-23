@@ -45,7 +45,7 @@ export class PlayQuizPageStade4Component implements OnInit {
       console.log(this.quiz);
       this.quiz.correctQuestions = 0;
       this.quiz.incorrectQuestions = 0;
-      this.questions = this.quiz.questions;
+      this.questions = [...this.quiz.questions];
       // to del
       for (const q of this.questions) {
         q.correctAnswers = 0;
