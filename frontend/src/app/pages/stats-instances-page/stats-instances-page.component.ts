@@ -52,7 +52,6 @@ export class StatsInstancesPageComponent implements OnInit {
         correctAnswers[question.id][2] += question.incorrectAnswers;
       }
     }
-    console.log(correctAnswers);
     this.stats = correctAnswers;
   }
 }

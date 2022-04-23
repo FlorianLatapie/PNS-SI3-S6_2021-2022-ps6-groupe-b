@@ -3,7 +3,6 @@ const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('QuizInstance', {
   id: Joi.number(),
-  num: Joi.number().required(),
   quizId: Joi.number().required(),
   userId: Joi.number().required(),
   stade: Joi.number().required(),
