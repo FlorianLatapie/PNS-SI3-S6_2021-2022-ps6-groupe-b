@@ -1,39 +1,41 @@
 <ng-container *ngIf="quiz">
-    <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
-    <ng-template #quiz_play>
-            <div class="card question-card">
-                <div class="quiz-question-layout">
-                    <div class="quiz-question-images-layout">
-                        <div *ngFor="let a of [].constructor(imagesToDisplay); let i = index">
-                        <img class="image-question-size" src="{{currentQuestion.images[i].url}}" alt="">
-                        <p class="image-description">Description : {{currentQuestion.images[i].description}}</p>
-                        </div>
-                    </div>
-                    <h1 *ngIf="!isCurrentAnswerCorrect" class="quiz-question-label">{{currentQuestion.label}}</h1>
-                </div>
-                <div *ngIf="isCurrentAnswerCorrect" class="congratulation-message">
-                    <h1>Bravo !</h1>
-                    <p><b>{{currentAnswerId}}</b> est la bonne réponse c'est votre <b>{{currentQuestion.familyLink}}</b></p>
-                </div>
-            
-                <div class="grid-button-answers">
-                    <div *ngFor="let answer of currentQuestion.answers">
-                        <button id="{{answer.value}}" class = "button-quiz button-quiz-answer" (click)="onAnswer(answer.isCorrect, answer.value)" [disabled]="disabledButton">
-                            {{answer.value}}
-                        </button>
-                    </div>
-                </div>
-                <button *ngIf="answerSelected" class="button-quiz yellow-button next-button" (click)="changeQuestion()">Suivant</button>
-            </div>
-    </ng-template>
-
-    <ng-template #quiz_end>
-        <div class="end-of-quiz">
-            <h1>Fin du quiz</h1>
-            <p>Merci d'avoir joué !</p>
-            <button class="button-card" [routerLink]="['/play-page']">Retour</button>
-            <button class="button-card" (click)="reloadQuiz()">Rejouer</button>
+  <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
+  <ng-template #quiz_play>
+    <div class="card question-card">
+      <div class="quiz-question-layout">
+        <div class="quiz-question-images-layout">
+          <div *ngFor="let a of [].constructor(imagesToDisplay); let i = index">
+            <img class="image-question-size" src="{{currentQuestion.images[i].url}}" alt="">
+            <p class="image-description">Description : {{currentQuestion.images[i].description}}</p>
+          </div>
         </div>
-    </ng-template>
+        <h1 *ngIf="!isCurrentAnswerCorrect" class="quiz-question-label">{{currentQuestion.label}}</h1>
+      </div>
+      <div *ngIf="isCurrentAnswerCorrect" class="congratulation-message">
+        <h1>Bravo !</h1>
+        <p><b>{{currentAnswerId}}</b> est la bonne réponse c'est votre <b>{{currentQuestion.familyLink}}</b></p>
+      </div>
+
+      <div class="grid-button-answers">
+        <div *ngFor="let answer of currentQuestion.answers">
+          <button id="{{answer.value}}" class="button-quiz button-quiz-answer"
+                  (click)="onAnswer(answer.isCorrect, answer.value)" [disabled]="disabledButton">
+            {{answer.value}}
+          </button>
+        </div>
+      </div>
+      <button *ngIf="answerSelected" class="button-quiz yellow-button next-button" (click)="changeQuestion()">Suivant
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #quiz_end>
+    <div class="end-of-quiz">
+      <h1>Fin du quiz</h1>
+      <p>Merci d'avoir joué !</p>
+      <button class="button-card" [routerLink]="['/play-page']">Retour</button>
+      <button class="button-card" (click)="reloadQuiz()">Rejouer</button>
+    </div>
+  </ng-template>
 
 </ng-container>

@@ -12,13 +12,13 @@ export class SignInPageComponent implements OnInit {
   @Input()
   user: User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  whenUserCreated($event: User) {
-    console.log("coucou");
+  whenUserCreated($event: User): void {
     this.router.navigate(['/login-page']);
   }
 }

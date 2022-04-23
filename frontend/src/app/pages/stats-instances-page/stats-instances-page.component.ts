@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../../models/quiz.model';
 import {QuizInstance} from '../../../models/quizInstance.model';
 import {QuizService} from '../../../services/quiz.service';
-import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -12,7 +11,6 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./stats-instances-page.component.scss']
 })
 export class StatsInstancesPageComponent implements OnInit {
-
   quiz: Quiz;
   quizInstances: QuizInstance[];
 

@@ -15,12 +15,13 @@ export class InstanceComponent implements OnInit {
   @Output()
   instanceSelected: EventEmitter<QuizInstance> = new EventEmitter<QuizInstance>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
-  selectedInstance(quizInstance: QuizInstance) {
+  selectedInstance(quizInstance: QuizInstance): void {
     this.instanceSelected.emit(quizInstance);
   }
 }

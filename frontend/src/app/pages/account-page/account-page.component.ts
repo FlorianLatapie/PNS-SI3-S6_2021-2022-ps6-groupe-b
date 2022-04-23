@@ -22,7 +22,7 @@ export class AccountPageComponent implements OnInit {
     console.log(this.userSelected);
   }
 
-  logoutAccount() {
+  logoutAccount(): void {
     this.userService.logoutUser();
   }
 }

@@ -20,9 +20,9 @@ export class PlayQuizPageStade5Component implements OnInit {
   currentQuestion: Question;
   private questions: Question[];
   currentAnswerId: string;
-  isCurrentAnswerCorrect: boolean = false;
-  disabledButton : boolean;
-  answerSelected : boolean;
+  isCurrentAnswerCorrect = false;
+  disabledButton: boolean;
+  answerSelected: boolean;
   timer: any;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
@@ -37,7 +37,7 @@ export class PlayQuizPageStade5Component implements OnInit {
     });
   }
 
-  private getQuiz(id: string){
+  private getQuiz(id: string): void {
     this.quizService.getQuiz(id).subscribe(q => {
       this.quiz = q;
       this.quiz.correctQuestions = 0;
@@ -58,7 +58,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   }
 
 
-  onAnswer(option: boolean, answerId: string) {
+  onAnswer(option: boolean, answerId: string): void {
     this.currentAnswerId = answerId;
     this.isCurrentAnswerCorrect = option;
     this.answerSelected = true;
@@ -73,18 +73,18 @@ export class PlayQuizPageStade5Component implements OnInit {
     this.nextQuestion();
   }
 
-  sendStatsToBackend(quiz: Quiz) {
+  sendStatsToBackend(quiz: Quiz): void {
     this.quizService.sendStatsToBackend(quiz, this.user, 5);
   }
 
-  nextQuestion() {
+  nextQuestion(): void {
     this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.timer = setTimeout(() => {
       this.endOfQuestion();
     }, 10000);
   }
 
-  endOfQuestion(){
+  endOfQuestion(): void {
     if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
       this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length;
       // inutile si 3 images
@@ -111,7 +111,7 @@ export class PlayQuizPageStade5Component implements OnInit {
   }
 
 
-  initNextQuestion() {
+  initNextQuestion(): void {
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
     this.isCurrentAnswerCorrect = false;
@@ -119,7 +119,7 @@ export class PlayQuizPageStade5Component implements OnInit {
     this.shuffleArray(this.currentQuestion.answers);
   }
 
-  shuffleArray(array) {
+  shuffleArray(array): void {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = array[i];
@@ -128,16 +128,16 @@ export class PlayQuizPageStade5Component implements OnInit {
     }
   }
 
-  reloadQuiz() {
+  reloadQuiz(): void {
     const currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
 
-  changeBtnColor(option: boolean, id: string) {
+  changeBtnColor(option: boolean, id: string): void {
     const btn = document.getElementById(id);
-    this.disabledButton =true;
+    this.disabledButton = true;
     if (option) {
       btn.classList.add('button-green');
     } else {
@@ -145,9 +145,9 @@ export class PlayQuizPageStade5Component implements OnInit {
     }
   }
 
-  disableChangeBtnColor(option: boolean, id: string) {
+  disableChangeBtnColor(option: boolean, id: string): void {
     const btn = document.getElementById(id);
-    this.disabledButton=false;
+    this.disabledButton = false;
     if (option) {
       btn.classList.remove('button-green');
     } else {
@@ -155,9 +155,11 @@ export class PlayQuizPageStade5Component implements OnInit {
     }
   }
 
-  changeQuestion(){
-    if(this.timer){
-      if(!this.isCurrentAnswerCorrect) this.currentQuestion.showFamilyLink = true;
+  changeQuestion(): void {
+    if (this.timer) {
+      if (!this.isCurrentAnswerCorrect) {
+        this.currentQuestion.showFamilyLink = true;
+      }
       clearTimeout(this.timer);
       this.endOfQuestion();
     }

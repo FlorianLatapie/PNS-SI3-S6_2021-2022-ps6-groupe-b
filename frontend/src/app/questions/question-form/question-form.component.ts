@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
-import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from 'src/models/quiz.model';
-import { Question } from 'src/models/question.model';
-import {Router} from "@angular/router";
+import {Component, OnInit, Input} from '@angular/core';
+import {FormGroup, FormBuilder, FormArray, Validators, FormControl} from '@angular/forms';
+import {QuizService} from '../../../services/quiz.service';
+import {Quiz} from 'src/models/quiz.model';
+import {Question} from 'src/models/question.model';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   private initializeQuestionForm(): void {
-    if(this.quiz.category.id == 1){
+    if (this.quiz.category.id == 1) {
       this.questionForm = this.formBuilder.group({
         images: this.formBuilder.array([]),
         answers: this.formBuilder.array([]),
@@ -85,12 +85,12 @@ export class QuestionFormComponent implements OnInit {
   private createImageLink(): FormGroup {
     return this.formBuilder.group({
       url: '',
-      description : ''
+      description: ''
     });
   }
 
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
+  reloadCurrentRoute(): void {
+    const currentUrl = this.router.url;
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate([currentUrl]);
     });

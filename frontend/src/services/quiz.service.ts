@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Quiz} from '../models/quiz.model';
 import {Question} from '../models/question.model';
-import {serverUrl, httpOptionsBase} from '../configs/server.config';
+import {httpOptionsBase, serverUrl} from '../configs/server.config';
 import {Category} from '../models/category.model';
 import {QuizInstance} from '../models/quizInstance.model';
 import {User} from '../models/user.model';
-import {CATEGORY_LIST} from '../mocks/categories-list.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -124,7 +123,7 @@ export class QuizService {
   getQuizInstanceByQuizId(quizId: string, quizInstances: QuizInstance[]): QuizInstance[] {
     const res: QuizInstance[] = [];
     quizInstances.forEach(instance => {
-      if (String(instance.quizId) === quizId){
+      if (String(instance.quizId) === quizId) {
         res.push(instance);
       }
     });
@@ -134,9 +133,9 @@ export class QuizService {
   getQuizInstanceByQuizIdAndUserId(quizId: string, userId: string, quizInstances: QuizInstance[]): QuizInstance[] {
     const res: QuizInstance[] = [];
     quizInstances.forEach(instance => {
-     if (String(instance.quizId) === quizId && String(instance.userId) === userId){
-       res.push(instance);
-     }
+      if (String(instance.quizId) === quizId && String(instance.userId) === userId) {
+        res.push(instance);
+      }
     });
     return res;
   }

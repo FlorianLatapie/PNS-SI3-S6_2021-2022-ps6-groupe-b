@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../models/category.model';
 import {Router} from '@angular/router';
-import {QuizService} from "../../../services/quiz.service";
+import {QuizService} from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-stats-categories-page',
@@ -18,8 +18,7 @@ export class StatsCategoriesPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  categorySelected(category: Category) {
+  categorySelected(category: Category): void {
     this.quizService.setSelectedCategory(category);
     this.router.navigate(['/stats-page/']);
   }

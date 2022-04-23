@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../../models/quiz.model';
 import {Router} from '@angular/router';
 import {Category} from '../../../models/category.model';
@@ -10,7 +10,6 @@ import {QuizService} from '../../../services/quiz.service';
   styleUrls: ['./stats-page.component.scss']
 })
 export class StatsPageComponent implements OnInit {
-
   category: Category;
 
   constructor(private router: Router, private quizService: QuizService) {
@@ -20,8 +19,7 @@ export class StatsPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  quizSelected(quiz: Quiz){
+  quizSelected(quiz: Quiz): void {
     this.router.navigate(['/stats-user-page/' + quiz.id]);
   }
 }

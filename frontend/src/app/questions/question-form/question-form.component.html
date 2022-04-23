@@ -5,7 +5,8 @@
     <div class="question-section" *ngIf="this.quiz.category.id != 1">
       <label for="label">
         Question <br>
-        <input *ngIf="this.quiz.category.id != 1" class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="Qui est-ce ?">
+        <input *ngIf="this.quiz.category.id != 1" class="input-custom" type="text" id="label"
+               [formControlName]="'label'" placeholder="Qui est-ce ?">
       </label>
     </div>
 
@@ -16,15 +17,17 @@
       <div class="images" formArrayName="images">
         <div *ngFor="let address of imageLinks.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
-            <p>Image n°{{i+1}}</p>
+            <p>Image n°{{i + 1}}</p>
             <table class="image-table">
               <tr>
                 <td>Lien</td>
-                <td><label for="url"><input class="input-custom-subquestion" type="text" id="url" [formControlName]="'url'" required></label></td>
+                <td><label for="url"><input class="input-custom-subquestion" type="text" id="url"
+                                            [formControlName]="'url'" required></label></td>
               </tr>
               <tr>
                 <td>Description</td>
-                <td><label for="description"><input class="input-custom-subquestion" type="text" id="description" [formControlName]="'description'" required></label></td>
+                <td><label for="description"><input class="input-custom-subquestion" type="text" id="description"
+                                                    [formControlName]="'description'" required></label></td>
               </tr>
             </table>
           </div>
@@ -39,7 +42,7 @@
         <div *ngFor="let address of answers.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
             <label>
-              Réponse n°{{i+1}}
+              Réponse n°{{i + 1}}
               <input class="input-custom-subquestion" type="text" [formControlName]="'value'" required>
               <br>
               Correct
@@ -53,10 +56,13 @@
     <div class="question-section" *ngIf="quiz.category.id == 1">
       <label for="familyLink">
         <h2>Lien de parenté</h2>
-        <input *ngIf="quiz.category.id == 1" class="input-custom" type="text" id="familyLink" [formControlName]="'familyLink'" placeholder="Petit-fils">
+        <input *ngIf="quiz.category.id == 1" class="input-custom" type="text" id="familyLink"
+               [formControlName]="'familyLink'" placeholder="Petit-fils">
       </label>
     </div>
 
-    <button type="button" id="submit-button" class="button-card" (click)="addQuestion()" [disabled]="!questionForm.valid">Valider</button>
+    <button type="button" id="submit-button" class="button-card" (click)="addQuestion()"
+            [disabled]="!questionForm.valid">Valider
+    </button>
   </form>
 </div>

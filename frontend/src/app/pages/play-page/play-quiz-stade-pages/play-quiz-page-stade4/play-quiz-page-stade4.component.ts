@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Question } from 'src/models/question.model';
-import { Quiz } from 'src/models/quiz.model';
-import { QuizService } from 'src/services/quiz.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Question} from 'src/models/question.model';
+import {Quiz} from 'src/models/quiz.model';
+import {QuizService} from 'src/services/quiz.service';
 import {logger} from 'codelyzer/util/logger';
 import {UserService} from '../../../../../services/user.service';
 import {User} from '../../../../../models/user.model';
@@ -33,22 +33,21 @@ export class PlayQuizPageStade4Component implements OnInit {
   }
 
 
-
-  ngOnInit(): void { // TODO add url path
+  ngOnInit(): void {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
     });
   }
 
-  private getQuiz(id: string) {
-    this.quizService.getQuiz(id).subscribe( q => {
+  private getQuiz(id: string): void {
+    this.quizService.getQuiz(id).subscribe(q => {
       this.quiz = q;
       console.log(this.quiz);
       this.quiz.correctQuestions = 0;
       this.quiz.incorrectQuestions = 0;
       this.questions = this.quiz.questions;
       // to del
-      for (const q of this.questions){
+      for (const q of this.questions) {
         q.correctAnswers = 0;
         q.incorrectAnswers = 0;
       }
@@ -60,25 +59,24 @@ export class PlayQuizPageStade4Component implements OnInit {
     });
   }
 
-  onAnswer(option: boolean, idAnswer: string){
+  onAnswer(option: boolean, idAnswer: string): void {
     this.currentAnswerId = idAnswer;
     this.isCurrentAnswerCorrect = option;
     this.changeBtnColor(option, idAnswer);
-    if (option){
+    if (option) {
       this.quiz.correctQuestions++;
       this.currentQuestion.correctAnswers++;
       this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
       this.answerSelected = true;
       this.nextQuestion();
-    }
-    else{
+    } else {
       this.quiz.incorrectQuestions++;
       this.currentQuestion.incorrectAnswers++;
-      if (this.currentQuestion.incorrectAnswers < 3){
+      if (this.currentQuestion.incorrectAnswers < 3) {
         this.timer = setTimeout(() => {
           this.falseAnswer();
         }, 1000);
-      }else{
+      } else {
         this.questions.splice(this.questions.indexOf(this.currentQuestion), 1);
         this.answerSelected = true;
         this.nextQuestion();
@@ -86,21 +84,20 @@ export class PlayQuizPageStade4Component implements OnInit {
     }
   }
 
-  falseAnswer(){
+  falseAnswer(): void {
     this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.imagesToDisplay++;
     this.shuffleArray(this.currentQuestion.answers);
     this.answerSelected = false;
   }
 
-  nextQuestion(){
-    if (this.questions.length >= 1){
+  nextQuestion(): void {
+    if (this.questions.length >= 1) {
       this.timer = setTimeout(() => {
         this.initNextQuestion();
         this.answerSelected = false;
       }, 10000);
-    }
-    else{
+    } else {
       this.sendStatsToBackend(this.quiz);
       this.timer = setTimeout(() => {
         this.endOfQuiz = true;
@@ -109,62 +106,62 @@ export class PlayQuizPageStade4Component implements OnInit {
     }
   }
 
-  sendStatsToBackend(quiz: Quiz) {
+  sendStatsToBackend(quiz: Quiz): void {
     this.quizService.sendStatsToBackend(quiz, this.user, 4);
   }
 
-  initNextQuestion(){
+  initNextQuestion(): void {
     this.disableChangeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.isCurrentAnswerCorrect = false;
     this.imagesToDisplay = 1;
     this.currentQuestion = this.questions[0];
-     // mélange les réponses
+    // mélange les réponses
     this.shuffleArray(this.currentQuestion.answers);
   }
 
-  shuffleArray(array) {
+  shuffleArray(array): void {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
     }
-}
-
-reloadQuiz(){
-  const currentUrl = this.router.url;
-  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  this.router.onSameUrlNavigation = 'reload';
-  this.router.navigate([currentUrl]);
-}
-
-changeBtnColor(option: boolean, id: string) {
-  const btn = document.getElementById(id);
-  this.disabledButton = true;
-  if (option) {
-    btn.classList.add('button-green');
-  } else {
-    btn.classList.add('button-red');
   }
-}
 
-disableChangeBtnColor(option: boolean, id: string) {
-  const btn = document.getElementById(id);
-  this.disabledButton = false;
-  if (option) {
-    btn.classList.remove('button-green');
-  } else {
-    btn.classList.remove('button-red');
+  reloadQuiz(): void {
+    const currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
-}
 
-changeQuestion(){
-  if (this.timer){
-    clearTimeout(this.timer);
-    this.questions.length >= 1 ? this.initNextQuestion() : this.endOfQuiz = true;
-    this.answerSelected = false;
+  changeBtnColor(option: boolean, id: string): void {
+    const btn = document.getElementById(id);
+    this.disabledButton = true;
+    if (option) {
+      btn.classList.add('button-green');
+    } else {
+      btn.classList.add('button-red');
+    }
+  }
+
+  disableChangeBtnColor(option: boolean, id: string): void {
+    const btn = document.getElementById(id);
     this.disabledButton = false;
+    if (option) {
+      btn.classList.remove('button-green');
+    } else {
+      btn.classList.remove('button-red');
+    }
   }
-}
+
+  changeQuestion(): void {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.questions.length >= 1 ? this.initNextQuestion() : this.endOfQuiz = true;
+      this.answerSelected = false;
+      this.disabledButton = false;
+    }
+  }
 
 }

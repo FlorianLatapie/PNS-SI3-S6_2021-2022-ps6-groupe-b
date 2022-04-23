@@ -1,12 +1,16 @@
 <div class="card card-user">
-    <h2>
-        <i class="fas fa-user"></i>
-        {{user.firstName}} {{user.lastName}}
-    </h2>
-    <button *ngIf = "displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
-    <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
-    <div *ngIf="displayIsAdminButton">
-      <button *ngIf="user.isAdmin == false" class="button-card" (click)="isAdminTrue()">Donner les droits d'administrateur</button>
-      <button *ngIf="user.isAdmin == true" class="button-card" (click)="isAdminFalse()">Révoquer les droits d'administrateur</button>
-    </div>
+  <h2>
+    <i class="fas fa-user"></i>
+    {{user.firstName}} {{user.lastName}}
+  </h2>
+  <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
+  <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
+  <div *ngIf="displayIsAdminButton">
+    <button *ngIf="user.isAdmin == false" class="button-card" (click)="isAdminTrue()">Donner les droits
+      d'administrateur
+    </button>
+    <button *ngIf="user.isAdmin == true" class="button-card" (click)="isAdminFalse()">Révoquer les droits
+      d'administrateur
+    </button>
+  </div>
 </div>

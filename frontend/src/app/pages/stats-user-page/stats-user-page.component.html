@@ -1,13 +1,13 @@
-
 <div class="body-page">
   <div class="header-page">
     <button class="button-card" routerLink="/stats-page">Retour</button>
   </div>
   <h1 class="page-title">Choisissez un utilisateur</h1>
   <div *ngIf="numberOfPlayerWhoPlayedQuiz()!=0" class="userList">
-   <ng-container *ngFor="let user of userList">
-    <app-user *ngIf="hasUserPlayedQuiz(user)" [user]="user" [displaySelectButton]="true" (selectUser)="selectUser(user)"></app-user>
-   </ng-container>
+    <ng-container *ngFor="let user of userList">
+      <app-user *ngIf="hasUserPlayedQuiz(user)" [user]="user" [displaySelectButton]="true"
+                (selectUser)="selectUser(user)"></app-user>
+    </ng-container>
   </div>
   <div *ngIf="numberOfPlayerWhoPlayedQuiz()==0" class="userList">
     <h1>Aucun utilisateur n'a joué à ce quiz !</h1>

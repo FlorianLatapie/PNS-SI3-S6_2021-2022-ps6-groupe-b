@@ -25,10 +25,10 @@ export class PlayQuizPageStade6Component implements OnInit {
   randomImages: string[];
   currentRandomImage: number;
   randomImageToleft: boolean;
-  disabledImage: boolean = false;
+  disabledImage = false;
   answerSelected: boolean;
   timer: any;
-  showDescription: boolean = false;
+  showDescription = false;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.retrieveQuizzes();
@@ -43,7 +43,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     });
   }
 
-  private getQuiz(id: string) {
+  private getQuiz(id: string): void {
     this.quizService.getQuiz(id).subscribe(q => {
       this.quiz = q;
       this.quiz.correctQuestions = 0;
@@ -57,7 +57,7 @@ export class PlayQuizPageStade6Component implements OnInit {
       this.randomImageToleft = false;
       this.currentRandomImage = 0;
       this.randomImages = [];
-      for (var i = 1; i < 10; i++) {
+      for (let i = 1; i < 10; i++) {
         this.randomImages.push('../../../../../assets/' + i + '.jpg');
       }
 
@@ -69,7 +69,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     });
   }
 
-  onAnswer(option: boolean, answerId: string) {
+  onAnswer(option: boolean, answerId: string): void {
     this.currentAnswerId = answerId;
     this.isCurrentAnswerCorrect = option;
     this.lastQuestionImage = this.currentQuestion.currentImage;
@@ -85,7 +85,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     this.nextQuestion();
   }
 
-  nextQuestion() {
+  nextQuestion(): void {
     this.changeBtnColor(this.isCurrentAnswerCorrect, this.currentAnswerId);
     this.timer = setTimeout(() => {
       this.endOfQuestion();
@@ -93,7 +93,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     }, 10000);
   }
 
-  endOfQuestion() {
+  endOfQuestion(): void {
     if (this.reAddQuestionIntoQuiz(this.currentQuestion)) {
       this.currentQuestion.currentImage = (this.currentQuestion.currentImage + 1) % this.currentQuestion.images.length;
     } else if (this.questions.length <= 0) {
@@ -106,7 +106,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     this.initNextQuestion();
   }
 
-  sendStatsToBackend(quiz: Quiz) {
+  sendStatsToBackend(quiz: Quiz): void {
     this.quizService.sendStatsToBackend(quiz, this.user, 6);
   }
 
@@ -122,17 +122,17 @@ export class PlayQuizPageStade6Component implements OnInit {
     return false;
   }
 
-  randomImageSide() {
+  randomImageSide(): void {
     this.randomImageToleft = Boolean(Math.round(Math.random()));
   }
 
-  initNextQuestion() {
+  initNextQuestion(): void {
     this.randomImageSide();
     this.shuffleArray(this.questions);
     this.currentQuestion = this.questions[0];
   }
 
-  shuffleArray(array) {
+  shuffleArray(array): void {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = array[i];
@@ -141,14 +141,14 @@ export class PlayQuizPageStade6Component implements OnInit {
     }
   }
 
-  reloadQuiz() {
+  reloadQuiz(): void {
     const currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
 
-  changeBtnColor(option: boolean, id: string) {
+  changeBtnColor(option: boolean, id: string): void {
     const btn = document.getElementById(id);
     if (option && !this.disabledImage) {
       this.disabledImage = true;
@@ -159,7 +159,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     }
   }
 
-  disableChangeBtnColor(option: boolean, id: string) {
+  disableChangeBtnColor(option: boolean, id: string): void {
     const btn = document.getElementById(id);
     this.disabledImage = false;
     if (option) {
@@ -169,7 +169,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     }
   }
 
-  changeQuestion() {
+  changeQuestion(): void {
     if (this.timer) {
       this.lastQuestion = this.currentQuestion;
       clearTimeout(this.timer);
@@ -178,7 +178,7 @@ export class PlayQuizPageStade6Component implements OnInit {
     }
   }
 
-  switchToDescription() {
+  switchToDescription(): void {
     if (this.isCurrentAnswerCorrect) {
       this.showDescription = !this.showDescription;
     }

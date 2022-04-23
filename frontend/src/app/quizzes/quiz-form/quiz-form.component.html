@@ -3,13 +3,15 @@
     <div class="name">
       <label for="name">
         Nom du Quiz *<br>
-        <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="Quiz pour Ginette" required>
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="Quiz pour Ginette"
+               required>
       </label>
     </div>
     <div class="description">
       <label for="description">
         Description *<br>
-        <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'" placeholder="Photos de vacances de 1995" required></textarea>
+        <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'"
+                  placeholder="Photos de vacances de 1995" required></textarea>
       </label>
     </div>
     <br>
@@ -28,7 +30,9 @@
     <br>
     <div class="align-button">
       <button type="cancel" class="button-card" [routerLink]="['/manage-page']">Annuler</button>
-      <button type="button" class="button-card" id="submit-button" (click)="addQuiz()" [disabled]="!formcontrol.form.valid">Valider</button>
+      <button type="button" class="button-card" id="submit-button" (click)="addQuiz()"
+              [disabled]="!formcontrol.form.valid">Valider
+      </button>
     </div>
   </form>
 </div>

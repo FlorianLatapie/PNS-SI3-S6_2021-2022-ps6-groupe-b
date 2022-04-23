@@ -33,20 +33,20 @@ export class UserComponent implements OnInit {
     console.log(this.displayDeleteButton);
   }
 
-  delete() {
+  delete(): void {
     this.deleteUser.emit(this.user);
   }
 
-  select() {
+  select(): void {
     this.selectUser.emit(this.user);
   }
 
-  isAdminTrue() {
+  isAdminTrue(): void {
     this.user.isAdmin = true;
     this.isAdmin.emit(this.user);
   }
 
-  isAdminFalse(){
+  isAdminFalse(): void {
     this.user.isAdmin = false;
     this.isAdmin.emit(this.user);
   }

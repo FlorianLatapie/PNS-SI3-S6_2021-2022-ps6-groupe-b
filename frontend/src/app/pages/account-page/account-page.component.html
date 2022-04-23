@@ -5,7 +5,6 @@
     <tr>
       <td>Identifiant unique</td>
       <td>{{userSelected.id}}</td>
-      <!--<button class="modify-button button-card" (click)="modifyId()">Modifier</button>-->
       <td *ngIf="userSelected.isAdmin == true"></td>
     </tr>
     <tr>
@@ -30,7 +29,9 @@
       </td>
     </tr>
   </table>
-  <button *ngIf="userSelected.isAdmin == true" class="modify-button button-card" [routerLink]="['/user-list']">Gérer les utilisateurs</button>
+  <button *ngIf="userSelected.isAdmin == true" class="modify-button button-card" [routerLink]="['/user-list']">Gérer les
+    utilisateurs
+  </button>
 
   <button class="navigation main-button button logout-button" [routerLink]="['/main-page']" (click)="logoutAccount()">
     Logout

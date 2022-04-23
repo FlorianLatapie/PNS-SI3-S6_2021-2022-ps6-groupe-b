@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Category} from '../../../models/category.model';
-import {QuizService} from "../../../services/quiz.service";
+import {QuizService} from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-update-quizzes',

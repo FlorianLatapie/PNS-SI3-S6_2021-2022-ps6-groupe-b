@@ -1,12 +1,14 @@
 <div class="card quiz-card">
-    <h2>
-        {{quiz.name}}
-    </h2>
-    <p *ngIf="quiz.category">Catégorie : {{quiz.category.name}}</p>
-    <p>{{quiz.description}}</p>
-    <div class="flex-buttons-quiz">
-        <button *ngIf="displaySelectButton" class="button-card" (click)="selectQuiz()">Sélectionner</button>
-        <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Supprimer</button>
-        <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}" (click)="changeSelectedQuiz(quiz)">Modifier</button>
-    </div>
+  <h2>
+    {{quiz.name}}
+  </h2>
+  <p *ngIf="quiz.category">Catégorie : {{quiz.category.name}}</p>
+  <p>{{quiz.description}}</p>
+  <div class="flex-buttons-quiz">
+    <button *ngIf="displaySelectButton" class="button-card" (click)="selectQuiz()">Sélectionner</button>
+    <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Supprimer</button>
+    <button *ngIf="displayEditButton" class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}"
+            (click)="changeSelectedQuiz(quiz)">Modifier
+    </button>
+  </div>
 </div>

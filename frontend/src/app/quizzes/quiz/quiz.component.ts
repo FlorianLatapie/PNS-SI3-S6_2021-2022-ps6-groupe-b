@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { Quiz } from '../../../models/quiz.model';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Quiz} from '../../../models/quiz.model';
 import {QuizService} from '../../../services/quiz.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class QuizComponent implements OnInit {
     this.deleteQuiz.emit(this.quiz);
   }
 
-  changeSelectedQuiz(quiz: Quiz) {
+  changeSelectedQuiz(quiz: Quiz): void {
     this.quizService.setSelectedQuizQuiz(quiz);
   }
 }

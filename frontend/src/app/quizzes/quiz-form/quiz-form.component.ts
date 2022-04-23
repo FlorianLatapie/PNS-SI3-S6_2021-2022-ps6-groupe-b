@@ -7,7 +7,7 @@ import {Category} from '../../../models/category.model';
 import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
-import {CATEGORY_LIST} from "../../../mocks/categories-list.mock";
+import {CATEGORY_LIST} from '../../../mocks/categories-list.mock';
 
 
 @Component({

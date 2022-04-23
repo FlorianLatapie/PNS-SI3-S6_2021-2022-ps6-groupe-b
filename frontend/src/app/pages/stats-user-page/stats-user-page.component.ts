@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
-import {Quiz} from "../../../models/quiz.model";
-import {ActivatedRoute, Router} from "@angular/router";
-import {QuizService} from "../../../services/quiz.service";
-import {QuizInstance} from "../../../models/quizInstance.model";
+import {Quiz} from '../../../models/quiz.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {QuizService} from '../../../services/quiz.service';
+import {QuizInstance} from '../../../models/quizInstance.model';
 
 @Component({
   selector: 'app-stats-user-page',
@@ -12,7 +12,6 @@ import {QuizInstance} from "../../../models/quizInstance.model";
   styleUrls: ['./stats-user-page.component.scss']
 })
 export class StatsUserPageComponent implements OnInit {
-
   userList: User[];
   quizInstances: QuizInstance[];
   quiz: Quiz;

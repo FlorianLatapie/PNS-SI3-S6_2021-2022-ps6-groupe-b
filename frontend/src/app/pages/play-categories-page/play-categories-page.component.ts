@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../models/category.model';
 import {Router} from '@angular/router';
-import {QuizService} from "../../../services/quiz.service";
+import {QuizService} from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-play-categories-page',
@@ -10,7 +10,8 @@ import {QuizService} from "../../../services/quiz.service";
 })
 export class PlayCategoriesPageComponent implements OnInit {
 
-  constructor(private router: Router, public quizService: QuizService) { }
+  constructor(private router: Router, public quizService: QuizService) {
+  }
 
   ngOnInit(): void {
   }

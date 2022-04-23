@@ -1,8 +1,8 @@
 <ng-container *ngIf="quiz">
-    <div class="header-page">
-      <button class="button-card" routerLink="/update-quizzes">Retour</button>
-    </div>
-    <h2 class="page-title">{{quiz.name}}</h2>
-    <app-question-form [quiz]="quiz" class="body-page"></app-question-form>
-    <app-question-list [quiz]="quiz" class="body-page"></app-question-list>
+  <div class="header-page">
+    <button class="button-card" routerLink="/update-quizzes">Retour</button>
+  </div>
+  <h2 class="page-title">{{quiz.name}}</h2>
+  <app-question-form [quiz]="quiz" class="body-page"></app-question-form>
+  <app-question-list [quiz]="quiz" class="body-page"></app-question-list>
 </ng-container>

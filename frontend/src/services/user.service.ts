@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import { User } from '../models/user.model';
-import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {User} from '../models/user.model';
+import {httpOptionsBase, serverUrl} from '../configs/server.config';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class UserService {
     this.userWatched$.next(user);
   }
 
-  logoutUser(): void{
+  logoutUser(): void {
     this.userSelected$.next(null);
   }
 
@@ -67,7 +67,7 @@ export class UserService {
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
   }
 
-  updateUser(user: User): void{
+  updateUser(user: User): void {
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.put<User>(urlWithId, user, this.httpOptions).subscribe(() => this.retrieveUsers());
     console.log('user updated !');

@@ -24,6 +24,7 @@ export class StatsQuizPageComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 }

@@ -1,24 +1,26 @@
 <div class="card">
-    <h2 *ngIf="question.label != undefined">
-        <i class="fab fa-leanpub"></i>
-        {{question.label}}
-    </h2>
+  <h2 *ngIf="question.label != undefined">
+    <i class="fab fa-leanpub"></i>
+    {{question.label}}
+  </h2>
 
-    <div class="images">
-      <div class="image" *ngFor="let image of question.images;">
-        <img src="{{image.url}}">
+  <div class="images">
+    <div class="image" *ngFor="let image of question.images;">
+      <img src="{{image.url}}">
+      <br>
+      <p id="description-image">{{image.description}}</p>
+    </div>
+  </div>
+
+  <div class="answers">
+    <p *ngIf="question.familyLink != undefined">Lien de parenté :  {{question.familyLink}}</p>
+    <ng-container *ngIf="display">
+      <div class="answer" *ngFor="let answer of question.answers; let i=index">
+        {{i}} - {{answer.value}}
+        <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
         <br>
-        <p id="description-image">{{image.description}}</p>
       </div>
-    </div>
-
-    <div class="answers">
-      <p *ngIf="question.familyLink != undefined">Lien de parenté :  {{question.familyLink}}</p>
-      <ng-container *ngIf="display">
-        <div class="answer" *ngFor="let answer of question.answers; let i=index">
-            {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
-        </div>
-      </ng-container>
-    </div>
-    <button *ngIf="display" class="button-card" (click)="delete()">Supprimer</button>
+    </ng-container>
+  </div>
+  <button *ngIf="display" class="button-card" (click)="delete()">Supprimer</button>
 </div>
