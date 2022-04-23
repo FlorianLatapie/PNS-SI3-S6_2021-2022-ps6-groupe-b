@@ -1,6 +1,14 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/buttons.scss";
 
+.header-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
 .account-page-layout{
     display: flex;
     flex-direction: column;

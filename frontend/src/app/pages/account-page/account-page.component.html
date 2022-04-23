@@ -1,4 +1,7 @@
 <div *ngIf="userSelected != null" class="account-page-layout">
+  <div class="header-page">
+    <button class="button-card" routerLink="{{previousUrl}}">Retour</button>
+  </div>
   <h1 class="account-page-title">Page utilisateur</h1>
 
   <table>
@@ -9,16 +12,16 @@
     </tr>
     <tr>
       <td>Prénom</td>
-      <td>{{userSelected.firstName}}</td>
+      <td id="first_name">{{userSelected.firstName}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button class="modify-button button-card" (click)="modifyFirstName()">Modifier</button>
+        <button id="first_name_button" class="modify-button button-card" (click)="modifyName('first_name')">Modifier</button>
       </td>
     </tr>
     <tr>
       <td>Nom de famille</td>
-      <td>{{userSelected.lastName}}</td>
+      <td id="last_name">{{userSelected.lastName}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button class="modify-button button-card" (click)="modifyLastName()">Modifier</button>
+        <button id="last_name_button" class="modify-button button-card" (click)="modifyName('last_name')">Modifier</button>
       </td>
     </tr>
     <tr>
