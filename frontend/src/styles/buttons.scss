@@ -35,7 +35,6 @@
   background-color: $blue;
 }
 
-
 .main-button {
   font-size: 1.5rem;
   color: $darkblue;
@@ -58,7 +57,6 @@
   transition: all 0.4s;
 }
 
-
 .button:hover {
   border: $white solid 3px;
   color: $white;
@@ -79,16 +77,18 @@
 .yellow-button:disabled{
   background-color:$orange;
   box-shadow: 0 5px $orange;
- }
+}
 
 .button-green{
   background-color: $green;
   box-shadow: 0 5px $darkgreen;
 }
+
 .button-green:disabled{
   background-color: $green;
   box-shadow: 0 5px $darkgreen;
 }
+
 .button-green:hover{
   background-color: $green;
   box-shadow: 0 5px $darkgreen;
@@ -98,15 +98,16 @@
   background-color: $lighbrown;
   box-shadow: 0 5px $brown;
 }
+
 .button-red:disabled{
   background-color: $lighbrown;
   box-shadow: 0 5px $brown;
 
 }
+
 .button-red:hover{
   background-color: $lighbrown;
   box-shadow: 0 5px $brown;
-
 }
 
 /*Play quiz page*/
@@ -120,4 +121,5 @@
   grid-template-columns: repeat(2, 2fr);
   grid-auto-rows: 3.5rem;
   align-items: center;
+  justify-items: center;
 }
