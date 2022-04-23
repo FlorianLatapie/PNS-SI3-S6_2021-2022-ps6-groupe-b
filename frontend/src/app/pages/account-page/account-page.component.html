@@ -25,7 +25,8 @@
       <td>Stade</td>
       <td>{{userSelected.stade}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button class="modify-button button-card" (click)="modifyStade()">Modifier</button>
+        <button class="modify-button button-card" (click)="downStade()">-</button>
+        <button class="modify-button button-card" (click)="upStade()">+</button>
       </td>
     </tr>
   </table>

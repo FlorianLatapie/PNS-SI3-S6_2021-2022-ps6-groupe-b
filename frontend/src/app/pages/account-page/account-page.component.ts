@@ -25,4 +25,20 @@ export class AccountPageComponent implements OnInit {
   logoutAccount(): void {
     this.userService.logoutUser();
   }
+
+  downStade(): void {
+    const stade = parseInt(this.userSelected.stade.toString(), 10) - 1;
+    if (stade >= 4) {
+      this.userSelected.stade = stade + '';
+      this.userService.updateUser(this.userSelected);
+    }
+  }
+
+  upStade(): void {
+    const stade = parseInt(this.userSelected.stade.toString(), 10) + 1;
+    if (stade <= 6) {
+      this.userSelected.stade = stade + '';
+      this.userService.updateUser(this.userSelected);
+    }
+  }
 }
