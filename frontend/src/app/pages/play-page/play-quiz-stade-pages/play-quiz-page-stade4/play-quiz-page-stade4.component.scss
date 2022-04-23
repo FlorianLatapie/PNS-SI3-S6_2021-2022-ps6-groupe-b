@@ -3,39 +3,48 @@
 @import '../../../../../styles/buttons.scss';
 
 .image-question-size{
-    max-width: 30vw;
-    max-height: 40vh;
+  max-width: 30vw;
+  max-height: 40vh;
 }
 
 .question-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
 }
 
 .quiz-question-images-layout{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .next-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.image-description{
-    text-align: center;
+
+.image-layout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-description {
+  text-align: center;
+  max-width: 18vw;
 }
 
 .congratulation-message{
-    text-align: center;
+  text-align: center;
 }
 .congratulation-message>h1{
-    color: $green;
-    font-size: 1.2rem;
-    font-weight: 600;
+  color: $green;
+  font-size: 1.2rem;
+  font-weight: 600;
 }

@@ -4,9 +4,9 @@
     <div class="card question-card">
       <div class="quiz-question-layout">
         <div class="quiz-question-images-layout">
-          <div *ngFor="let a of [].constructor(imagesToDisplay); let i = index">
+          <div class="image-layout" *ngFor="let a of [].constructor(imagesToDisplay); let i = index">
             <img class="image-question-size" src="{{currentQuestion.images[i].url}}" alt="">
-            <p class="image-description">Description : {{currentQuestion.images[i].description}}</p>
+            <p class="image-description">{{currentQuestion.images[i].description}}</p>
           </div>
         </div>
         <h1 *ngIf="!isCurrentAnswerCorrect" class="quiz-question-label">{{currentQuestion.label}}</h1>
