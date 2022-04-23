@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from '../../../models/category.model';
 import {Router} from '@angular/router';
-import {CategoryService} from '../../../services/category.service';
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-stats-categories-page',
@@ -12,7 +12,7 @@ export class StatsCategoriesPageComponent implements OnInit {
 
   category: Category;
 
-  constructor(private router: Router, public categoryService: CategoryService) {
+  constructor(private router: Router, public quizService: QuizService) {
   }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class StatsCategoriesPageComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   categorySelected(category: Category) {
-    this.categoryService.setSelectedCategory(category);
+    this.quizService.setSelectedCategory(category);
     this.router.navigate(['/stats-page/']);
   }
 

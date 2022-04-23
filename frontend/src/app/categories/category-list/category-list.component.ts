@@ -2,10 +2,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Category} from '../../../models/category.model';
 import {Quiz} from '../../../models/quiz.model';
 import {Router} from '@angular/router';
-import {CategoryService} from '../../../services/category.service';
 import {QuizService} from '../../../services/quiz.service';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
+import {CATEGORY_LIST} from "../../../mocks/categories-list.mock";
 
 @Component({
   selector: 'app-category-list',
@@ -14,13 +14,10 @@ import {UserService} from '../../../services/user.service';
 })
 export class CategoryListComponent implements OnInit {
   user: User;
-  categoryList: Category[];
+  categoryList: Category[] = CATEGORY_LIST;
 
-  constructor(private router: Router, public categoryService: CategoryService, private quizService: QuizService, private userService: UserService) {
-    this.categoryService.categories$.subscribe((categories: Category[]) => {
-      this.categoryList = categories;
-    });
-  }
+  constructor(private router: Router, private quizService: QuizService, private userService: UserService) {}
+
 
   @Output()
   categorySelectedFromChild: EventEmitter<Category> = new EventEmitter<Category>();

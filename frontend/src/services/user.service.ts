@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { User } from '../models/user.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 
@@ -42,10 +42,15 @@ export class UserService {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
   }
 
+  getUser(userId: string): Observable<User> {
+    const urlWithId = this.userUrl + '/' + userId;
+    return this.http.get<User>(urlWithId);
+  }
+
   setSelectedUser(userId: string): void {
     const urlWithId = this.userUrl + '/' + userId;
-    this.http.get<User>(urlWithId).subscribe((user) => {
-      this.userSelected$.next(user);
+    this.http.get<User>(urlWithId).subscribe(u => {
+      this.userSelected$.next(u);
     });
   }
 

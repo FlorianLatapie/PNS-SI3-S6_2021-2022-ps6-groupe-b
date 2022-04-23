@@ -15,9 +15,12 @@ export class StatsQuizPageComponent implements OnInit {
   quizInstance: QuizInstance;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) {
-    this.quizService.quizSelected$.subscribe((quiz) => {
-      this.quiz = quiz;
-      this.quizService.instanceSelected$.subscribe(i => this.quizInstance = i);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.quizService.getQuizInstance(id).subscribe(i => {
+      this.quizService.getQuiz(String(i.quizId)).subscribe(q => {
+        this.quizInstance = i;
+        this.quiz = q;
+      });
     });
   }
 

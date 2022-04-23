@@ -4,7 +4,7 @@ import {QuizInstance} from '../../../models/quizInstance.model';
 import {QuizService} from '../../../services/quiz.service';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-stats-instances-page',
@@ -14,26 +14,24 @@ import {Router} from "@angular/router";
 export class StatsInstancesPageComponent implements OnInit {
 
   quiz: Quiz;
-  user: User;
   quizInstances: QuizInstance[];
 
-  constructor(private router: Router, private quizService: QuizService, private userService: UserService) {
-    this.quizService.quizSelected$.subscribe(q => {
-      this.quiz = q;
-      this.userService.userWatched$.subscribe(u => {
-        this.user = u;
-        this.quizInstances = this.quizService.getQuizInstanceByQuizIdAndUserId(this.quiz.id, this.user.id);
+  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, private userService: UserService) {
+    const idQuiz = this.route.snapshot.paramMap.get('idquiz');
+    const idUser = this.route.snapshot.paramMap.get('iduser');
+    this.quizService.quizInstances$.subscribe(i => {
+      this.quizService.getQuiz(idQuiz).subscribe(q => {
+        this.quiz = q;
+        this.quizInstances = this.quizService.getQuizInstanceByQuizIdAndUserId(idQuiz, idUser, i);
       });
     });
 
-    console.log(this.quizInstances);
   }
 
   ngOnInit(): void {
   }
 
-  selectedInstance(quizInstance: QuizInstance) {
-    this.quizService.instanceSelected$.next(quizInstance);
-    this.router.navigate(['/stats-quiz-page']);
+  selectedInstance(quizInstance: QuizInstance): void {
+    this.router.navigate(['/stats-quiz-page/' + quizInstance.id]);
   }
 }

@@ -4,10 +4,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {QuizService} from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {Category} from '../../../models/category.model';
-import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
+import {CATEGORY_LIST} from "../../../mocks/categories-list.mock";
 
 
 @Component({
@@ -31,10 +31,9 @@ export class QuizFormComponent implements OnInit {
   public currentUser: User;
 
 
-  constructor(private router: Router, public formBuilder: FormBuilder, public quizService: QuizService, public categoryService: CategoryService, private userService: UserService) {
-    this.categoryService.categories$.subscribe((categories: Category[]) => {
-      this.categoryList = categories;
-    });
+  constructor(private router: Router, public formBuilder: FormBuilder, public quizService: QuizService, private userService: UserService) {
+    this.categoryList = CATEGORY_LIST;
+
     this.quizForm = this.formBuilder.group({
       name: [''],
       description: [''],
@@ -54,10 +53,8 @@ export class QuizFormComponent implements OnInit {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.userId = this.currentUser.id;
     this.quizService.addQuiz(quizToCreate).subscribe(q => {
-      this.quizService.retrieveQuizzes();
-      this.categoryService.setSelectedCategory(q.category);
-      this.quizService.setSelectedQuizQuiz(q);
-      this.router.navigate(['/edit-quiz/']);
+      this.quizService.setSelectedCategory(q.category);
+      this.router.navigate(['/edit-quiz/' + q.id]);
     });
   }
 }

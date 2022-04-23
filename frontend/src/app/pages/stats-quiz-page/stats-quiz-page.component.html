@@ -1,6 +1,6 @@
 <div class="body-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/stats-instances-page">Retour</button>
+    <button *ngIf="quizInstance" class="button-card" routerLink="/stats-instances-page/{{quizInstance.quizId}}/{{quizInstance.userId}}">Retour</button>
   </div>
   <h1 class="page-title">Statistiques</h1>
 
@@ -43,7 +43,6 @@
               <td>
                 <div *ngFor="let reponse of question.answers">
                   {{reponse.isCorrect ? reponse.value : null}}
-
                 </div>
               </td>
               <td>

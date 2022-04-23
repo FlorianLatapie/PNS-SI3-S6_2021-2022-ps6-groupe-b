@@ -4,10 +4,10 @@ import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Quiz} from '../models/quiz.model';
 import {Question} from '../models/question.model';
 import {serverUrl, httpOptionsBase} from '../configs/server.config';
-import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
 import {QuizInstance} from '../models/quizInstance.model';
 import {User} from '../models/user.model';
+import {CATEGORY_LIST} from '../mocks/categories-list.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -23,23 +23,18 @@ export class QuizService {
    The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = [];
-  private quizSelected: Quiz = null;
   private quizzesInstances: QuizInstance[] = [];
+
 
   /*
    Observable which contains the list of the quiz.
    Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
-  public quizzes$: BehaviorSubject<Quiz[]>
-    = new BehaviorSubject(this.quizzes);
+  public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
+  public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(undefined);
+  public categorySelected$: BehaviorSubject<Category> = new BehaviorSubject<Category>(undefined);
+  public quizInstances$: BehaviorSubject<QuizInstance[]> = new BehaviorSubject<QuizInstance[]>(this.quizzesInstances);
 
-  public quizSelected$: BehaviorSubject<Quiz> = new BehaviorSubject(this.quizSelected);
-  public quizSelectedId$: BehaviorSubject<String> = new BehaviorSubject(undefined);
-  public quizInstanceSelected$: BehaviorSubject<QuizInstance[]> = new BehaviorSubject([]);
-  public instanceSelected$: BehaviorSubject<QuizInstance> = new BehaviorSubject(undefined);
-  public categorySelected$: Subject<Category> = new Subject();
-
-  private categoryUrl = serverUrl + '/categories';
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
   private quizInstancePath = serverUrl + '/quiz_instance';
@@ -59,9 +54,9 @@ export class QuizService {
   }
 
   retrieveQuizzesInstances(): void {
-    this.http.get<QuizInstance[]>(this.quizInstancePath).subscribe((quizInstanceList) => {
-      this.quizzesInstances = quizInstanceList;
-      this.quizInstanceSelected$.next(this.quizzesInstances);
+    this.http.get<QuizInstance[]>(this.quizInstancePath).subscribe(instanceList => {
+      this.quizzesInstances = instanceList;
+      this.quizInstances$.next(this.quizzesInstances);
     });
   }
 
@@ -70,9 +65,9 @@ export class QuizService {
     return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions);
   }
 
-  sendStatsToBackend(quiz: Quiz, user: User, stadeEntre: number) {
+  sendStatsToBackend(quiz: Quiz, user: User, stadeEntre: number): void {
     const quizInstance: QuizInstance = {
-      num: this.getQuizInstanceByQuizIdAndUserId(quiz.id, user.id).length + 1,
+      num: this.getQuizInstanceByQuizIdAndUserId(quiz.id, user.id, this.quizzesInstances).length + 1,
       quizId: quiz.id,
       userId: user.id,
       stade: stadeEntre,
@@ -80,24 +75,23 @@ export class QuizService {
       wrongAnswers: quiz.incorrectQuestions,
       questions: quiz.questions
     };
-    console.log(quizInstance.num);
     this.http.post<QuizInstance>(this.quizInstancePath, quizInstance, this.httpOptions).subscribe((qi) => {
       this.retrieveQuizzesInstances();
       console.log('QuizInstance sent to backend', qi);
     });
   }
 
-  setSelectedQuiz(quizId: string): Observable<string> {
+  getQuiz(quizId: string): Observable<any> {
     const urlWithId = this.quizUrl + '/' + quizId;
-    this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
-      this.quizSelected$.next(quiz);
-    });
-    return of(quizId);
+    return this.http.get<Quiz>(urlWithId);
   }
 
   setSelectedQuizQuiz(quiz: Quiz): void {
-    this.quizSelected = quiz;
-    this.quizSelected$.next(this.quizSelected);
+    this.quizSelected$.next(quiz);
+  }
+
+  setSelectedCategory(category: Category): void {
+    this.categorySelected$.next(category);
   }
 
   deleteQuiz(quiz: Quiz): void {
@@ -107,15 +101,12 @@ export class QuizService {
 
   addQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-    this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
-      this.setSelectedQuiz(quiz.id);
-      this.retrieveQuizzes();
-    });
+    this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
-  deleteQuestion(quiz: Quiz, question: Question): void {
+  deleteQuestion(quiz: Quiz, question: Question): Observable<any> {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+    return this.http.delete<Question>(questionUrl, this.httpOptions);
   }
 
   getQuizByCategory(category: Category): Quiz[] {
@@ -130,22 +121,22 @@ export class QuizService {
     return listQuizzes;
   }
 
-  getQuizInstanceById(quizId: string): QuizInstance[] {
+  getQuizInstanceByQuizId(quizId: string, quizInstances: QuizInstance[]): QuizInstance[] {
     const res: QuizInstance[] = [];
-    this.quizzesInstances.forEach(quizInstance => {
-      if (quizInstance.quizId === quizId) {
-        res.push(quizInstance);
+    quizInstances.forEach(instance => {
+      if (String(instance.quizId) === quizId){
+        res.push(instance);
       }
     });
     return res;
   }
 
-  getQuizInstanceByQuizIdAndUserId(quizId: string, userId): QuizInstance[] {
+  getQuizInstanceByQuizIdAndUserId(quizId: string, userId: string, quizInstances: QuizInstance[]): QuizInstance[] {
     const res: QuizInstance[] = [];
-    this.quizzesInstances.forEach(quizInstance => {
-      if (quizInstance.quizId === quizId && quizInstance.userId === userId) {
-        res.push(quizInstance);
-      }
+    quizInstances.forEach(instance => {
+     if (String(instance.quizId) === quizId && String(instance.userId) === userId){
+       res.push(instance);
+     }
     });
     return res;
   }
@@ -161,8 +152,8 @@ export class QuizService {
     };
   }
 
-  public getQuiz(id: string): Observable<Quiz> {
-    const quiz = this.quizzes.find(q => String(q.id) === id);
-    return of(quiz);
+  getQuizInstance(id: string): Observable<QuizInstance> {
+    const url = this.quizInstancePath + '/' + id;
+    return this.http.get<QuizInstance>(url);
   }
 }

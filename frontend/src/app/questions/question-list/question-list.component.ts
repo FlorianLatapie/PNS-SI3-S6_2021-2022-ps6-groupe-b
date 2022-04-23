@@ -19,7 +19,13 @@ export class QuestionListComponent implements OnInit {
   }
 
   deleteQuestion(question: Question): void {
-    this.quizService.deleteQuestion(this.quiz, question);
+    this.quizService.deleteQuestion(this.quiz, question).subscribe(() => {
+      this.reloadQuiz();
+    });
+  }
+
+  reloadQuiz(): void {
+    this.quizService.getQuiz(this.quiz.id).subscribe( q => this.quiz = q);
   }
 
 }

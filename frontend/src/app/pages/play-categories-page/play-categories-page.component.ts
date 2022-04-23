@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from '../../../models/category.model';
 import {Router} from '@angular/router';
-import {CategoryService} from '../../../services/category.service';
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-play-categories-page',
@@ -10,14 +10,14 @@ import {CategoryService} from '../../../services/category.service';
 })
 export class PlayCategoriesPageComponent implements OnInit {
 
-  constructor(private router: Router, public categoryService: CategoryService) { }
+  constructor(private router: Router, public quizService: QuizService) { }
 
   ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
   categorySelected(category: Category) {
-    this.categoryService.setSelectedCategory(category);
+    this.quizService.setSelectedCategory(category);
     this.router.navigate(['/play-page/']);
   }
 }

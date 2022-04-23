@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Category} from '../../../models/category.model';
-import {CategoryService} from '../../../services/category.service';
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-update-quizzes',
@@ -11,8 +11,8 @@ export class UpdateQuizzesComponent implements OnInit {
 
   categorySelected: Category;
 
-  constructor(public categoryService: CategoryService) {
-    this.categoryService.categorySelected$.subscribe(category => this.categorySelected = category);
+  constructor(public quizService: QuizService) {
+    this.quizService.categorySelected$.subscribe(category => this.categorySelected = category);
   }
 
   ngOnInit(): void {

@@ -8,8 +8,8 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  user:User;
-  
+  user: User;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@ import { Quiz } from 'src/models/quiz.model';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
 import {Category} from '../../../models/category.model';
-import {CategoryService} from '../../../services/category.service';
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-play-page',
@@ -18,8 +18,8 @@ export class PlayPageComponent implements OnInit {
   isQuizSelected: Boolean = false;
   categorySelected: Category;
 
-  constructor(private router: Router, public categoryService: CategoryService, private userService: UserService) {
-    this.categoryService.categorySelected$.subscribe(category => this.categorySelected = category);
+  constructor(private router: Router, public quizService: QuizService, private userService: UserService) {
+    this.quizService.categorySelected$.subscribe(category => this.categorySelected = category);
   }
 
   ngOnInit(): void {

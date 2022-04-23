@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../../../models/quiz.model';
 import {Router} from '@angular/router';
 import {Category} from '../../../models/category.model';
-import {CategoryService} from '../../../services/category.service';
 import {QuizService} from '../../../services/quiz.service';
 
 @Component({
@@ -12,14 +11,10 @@ import {QuizService} from '../../../services/quiz.service';
 })
 export class StatsPageComponent implements OnInit {
 
-  quiz: Quiz;
   category: Category;
-  // tslint:disable-next-line:ban-types
-  isQuizSelected: Boolean = false;
 
-  constructor(private router: Router, public categoryService: CategoryService, private quizService: QuizService) {
-    this.categoryService.categorySelected$.subscribe(category => this.category = category);
-    console.log(this.category);
+  constructor(private router: Router, private quizService: QuizService) {
+    this.quizService.categorySelected$.subscribe(category => this.category = category);
   }
 
   ngOnInit(): void {
@@ -27,8 +22,6 @@ export class StatsPageComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   quizSelected(quiz: Quiz){
-    this.quiz = quiz;
-    this.quizService.setSelectedQuizQuiz(this.quiz);
-    this.router.navigate(['/stats-user-page']);
+    this.router.navigate(['/stats-user-page/' + quiz.id]);
   }
 }

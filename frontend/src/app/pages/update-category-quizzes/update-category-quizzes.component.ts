@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from "../../../models/category.model";
 import {Router} from "@angular/router";
-import {CategoryService} from "../../../services/category.service";
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-update-category-quizzes',
@@ -12,14 +12,14 @@ export class UpdateCategoryQuizzesComponent implements OnInit {
 
   categorie: Category;
 
-  constructor(private router: Router, public categoryService: CategoryService) { }
+  constructor(private router: Router, public quizService: QuizService) { }
 
   ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
   categorySelected(categorie: Category) {
-    this.categoryService.setSelectedCategory(categorie);
+    this.quizService.setSelectedCategory(categorie);
     this.router.navigate(['/update-quizzes/']);
   }
 }
