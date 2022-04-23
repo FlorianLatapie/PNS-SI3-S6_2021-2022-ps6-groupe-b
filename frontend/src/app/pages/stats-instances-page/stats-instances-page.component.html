@@ -6,7 +6,7 @@
   <h2 class="stat-quiz">Le quiz a été joué {{quizInstances.length}} fois !</h2>
   <div class="instanceList">
     <ng-container *ngFor="let instance of quizInstances">
-      <app-instance [quizInstance]="instance" (instanceSelected)="selectedInstance($event)"></app-instance>
+      <app-instance [quizInstance]="instance" [nbTry]="quizInstances.indexOf(instance)+1" (instanceSelected)="selectedInstance($event)"></app-instance>
     </ng-container>
   </div>
 </div>

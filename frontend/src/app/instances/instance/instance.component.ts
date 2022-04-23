@@ -11,6 +11,9 @@ export class InstanceComponent implements OnInit {
 
   @Input()
   quizInstance: QuizInstance;
+  
+  @Input()
+  nbTry: Number;
 
   @Output()
   instanceSelected: EventEmitter<QuizInstance> = new EventEmitter<QuizInstance>();
