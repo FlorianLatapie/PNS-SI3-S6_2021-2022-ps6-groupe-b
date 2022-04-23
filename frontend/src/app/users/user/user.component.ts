@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.displayDeleteButton);
   }
 
   delete(): void {
