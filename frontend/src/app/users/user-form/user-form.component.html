@@ -11,9 +11,13 @@
       <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
     </label>
     <br>
-    <label for="stade">
+    <label>
       Stade<br>
-      <input class="input-custom" type="number" id="stade" [formControlName]="'stade'">
+      <select [formControlName]="'stade'">
+        <option type="number" value="4" >4</option>
+        <option type="number" value="5" >5</option>
+        <option type="number" value="6" >6</option>
+      </select>
     </label>
     <br>
     <button type="submit" class="button-card" (click)="addUser()">Créer</button>

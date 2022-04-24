@@ -1,9 +1,15 @@
-<div class="card card-user">
+<div class="card card-user" xmlns="http://www.w3.org/1999/html">
   <h2>
     <i class="fas fa-user"></i>
     {{user.firstName}} {{user.lastName}}
   </h2>
-  <h3 *ngIf="user.isAdmin == true">Administrateur</h3>
+  <div *ngIf="user.isAdmin == true;then admin else player"></div>
+  <ng-template #admin>
+    <h3>Administrateur</h3>
+  </ng-template>
+  <ng-template #player>
+    <h3>Joueur</h3>
+  </ng-template>
   <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
   <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
   <div *ngIf="displayIsAdminButton">
