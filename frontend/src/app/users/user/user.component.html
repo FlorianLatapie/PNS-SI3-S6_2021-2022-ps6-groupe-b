@@ -3,6 +3,7 @@
     <i class="fas fa-user"></i>
     {{user.firstName}} {{user.lastName}}
   </h2>
+  <h3 *ngIf="user.isAdmin == true">Administrateur</h3>
   <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
   <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
   <div *ngIf="displayIsAdminButton">
