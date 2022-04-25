@@ -1,14 +1,23 @@
 <ng-container *ngIf="quiz">
   <div *ngIf="!endOfQuiz || quiz.questions.length<0; then quiz_play; else quiz_end"></div>
   <ng-template #quiz_play>
-    <div class="card question-card">
+    <div class="card question-card question-card-stade5">
       <div class="quiz-question-layout">
         <img class="image-question-size" src="{{currentQuestion.images[currentQuestion.currentImage].url}}" alt="">
-        <p class="family-link" *ngIf="currentQuestion.showFamilyLink"><br>(indice) Lien de parenté
+        <p class="family-link" *ngIf="currentQuestion.showFamilyLink && quiz.category.id==1"><br>(indice) Lien de parenté
           : {{currentQuestion.familyLink}}</p>
         <p class="description" *ngIf="isCurrentAnswerCorrect"><br>Description
           : {{currentQuestion.images[currentQuestion.currentImage].description}}</p>
-        <h1 class="quiz-question-label">{{currentQuestion.label}}</h1>
+        <h1 *ngIf="!isCurrentAnswerCorrect" class="quiz-question-label">{{currentQuestion.label}}</h1>
+      </div>
+      <div *ngIf="isCurrentAnswerCorrect" class="congratulation-message">
+        <h1>Bravo !</h1>
+        <div *ngIf="quiz.category.id==1">
+          <p><b>{{currentAnswerId}}</b> est la bonne réponse c'est votre <b>{{currentQuestion.familyLink}}</b>.</p>
+        </div>
+        <div *ngIf="quiz.category.id==2 or quiz.category.id==3">
+          <p><b>{{currentAnswerId}}</b> est la bonne réponse.</p>
+        </div>
       </div>
       <div class="grid-button-answers">
         <div *ngFor="let answer of currentQuestion.answers">

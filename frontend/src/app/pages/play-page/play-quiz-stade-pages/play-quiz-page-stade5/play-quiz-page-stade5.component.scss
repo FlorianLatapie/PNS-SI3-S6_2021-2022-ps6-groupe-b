@@ -15,6 +15,10 @@
     margin: 1rem 0;
 }
 
+.question-card-stade5{
+    min-height: 70vh;
+}
+
 .stats-quiz-layout{
     display: flex;
     justify-content: center;
@@ -31,3 +35,13 @@ li{
     align-items: center;
     justify-content: center;
 }
+
+.congratulation-message>h1{
+    color: $green;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.congratulation-message{
+    text-align: center;
+  }

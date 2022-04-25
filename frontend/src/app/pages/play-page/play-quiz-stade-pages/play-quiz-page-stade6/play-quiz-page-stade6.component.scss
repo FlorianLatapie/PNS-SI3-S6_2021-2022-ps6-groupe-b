@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
     margin: 1rem 1rem;
-    height: 60vh;
+    min-height: 70vh;
 }
 
 
@@ -50,4 +50,8 @@ li{
 border: solid $lighbrown;
 }
 
-  
+.congratulation-message{
+    color: $green;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
