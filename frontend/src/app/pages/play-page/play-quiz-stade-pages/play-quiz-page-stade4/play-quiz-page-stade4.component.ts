@@ -21,7 +21,7 @@ export class PlayQuizPageStade4Component implements OnInit {
   currentQuestion: Question;
   private questions: Question[];
   currentAnswerId: string;
-  isCurrentAnswerCorrect: boolean;
+  isCurrentAnswerCorrect: boolean =false;
   disabledButton: boolean;
   answerSelected: boolean;
   timer: any;
