@@ -57,8 +57,20 @@ export class PlayQuizPageStade6Component implements OnInit {
       this.randomImageToleft = false;
       this.currentRandomImage = 0;
       this.randomImages = [];
-      for (let i = 1; i < 10; i++) {
-        this.randomImages.push('../../../../../assets/' + i + '.jpg');
+      if(this.quiz.category.id==1){
+        for (let i = 1; i < 10; i++) {
+          this.randomImages.push('../../../../../assets/personnes/' + i + '.jpg');
+        }
+      }
+      else if(this.quiz.category.id==2){
+        for (let i = 1; i < 8; i++) {
+          this.randomImages.push('../../../../../assets/lieux/' + i + '.jpg');
+        }
+      }
+      else if(this.quiz.category.id==3){
+        for (let i = 1; i < 5; i++) {
+          this.randomImages.push('../../../../../assets/evenements/' + i + '.jpg');
+        }
       }
 
       // mélange les questions

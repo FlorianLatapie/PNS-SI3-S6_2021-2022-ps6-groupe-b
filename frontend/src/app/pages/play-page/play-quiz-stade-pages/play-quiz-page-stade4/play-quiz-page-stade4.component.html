@@ -13,7 +13,12 @@
       </div>
       <div *ngIf="isCurrentAnswerCorrect" class="congratulation-message">
         <h1>Bravo !</h1>
-        <p><b>{{currentAnswerId}}</b> est la bonne réponse c'est votre <b>{{currentQuestion.familyLink}}</b></p>
+        <div *ngIf="quiz.category.id==2 or quiz.category.id==3">
+          <p><b>{{currentAnswerId}}</b> est la bonne réponse.</p>
+        </div>
+        <div *ngIf="quiz.category.id==1">
+          <p><b>{{currentAnswerId}}</b> est la bonne réponse c'est votre <b>{{currentQuestion.familyLink}}</b>.</p>
+        </div>
       </div>
 
       <div class="grid-button-answers">
