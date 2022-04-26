@@ -34,6 +34,7 @@
       <div class="card question-card-stade6">
         <div class="quiz-question-layout">
           <h1 class="quiz-question-label congratulation-message">Bravo !</h1>
+          <p>C'est la bonne réponse</p>
           <p *ngIf="quiz.category.id==1">Lien de parenté : {{lastQuestion.familyLink}}</p>
           <div class="stade6-layout">
             <div *ngIf="randomImageToleft ;then leftSide; else rightSide"></div>
