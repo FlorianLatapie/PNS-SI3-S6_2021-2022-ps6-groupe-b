@@ -1,11 +1,11 @@
 <div class="body-manage-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/main-page">Retour</button>
+    <button  mat-raised-button color="primary" class="button-display"  routerLink="/main-page">Retour</button>
   </div>
   <h1 class="manage-page-title">Gérer les quiz</h1>
   <div class="buttons-placement">
-    <button class="button main-button" [routerLink]="['/information-quiz-page']">Créer un quiz</button>
-    <button class="button main-button" [routerLink]="['/update-category-quizzes']">Modifier les quiz</button>
-    <button class="button main-button" [routerLink]="['/stats-categories-page']">Statistiques</button>
+    <button mat-raised-button color="basic" class="button-margin" [routerLink]="['/information-quiz-page']">Créer un quiz</button>
+    <button mat-raised-button color="basic" class="button-margin" [routerLink]="['/update-category-quizzes']">Modifier les quiz</button>
+    <button mat-raised-button color="basic" class="button-margin" [routerLink]="['/stats-categories-page']">Statistiques</button>
   </div>
 </div>

@@ -1,17 +1,18 @@
-<div class="header">
-  <a class="navigation header-title" [routerLink]="['/main-page']">
-    Groupe B
-  </a>
-  <div class="connection-parameters">
-    <a class="navigation" [routerLink]="['/guidelines-page']">Notice</a>
-    <a class="navigation" [routerLink]="['/about-page']">A Propos |</a>
-    <a *ngIf="userSelected != null" class="navigation" id="name_header" [routerLink]="['/account-page']">
+
+
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span class="navbar-main" [routerLink]="['/main-page']">
+      PS6 groupe B
+  </span>
+  <span class="spacer"></span>
+  <a mat-button class="navigation" [routerLink]="['/guidelines-page']">Notice</a>
+    <a mat-button class="navigation" [routerLink]="['/about-page']">A Propos</a>
+    <a mat-raised-button color="accent" *ngIf="userSelected != null" class="navigation" id="name_header" [routerLink]="['/account-page']">
       {{username}}
     </a>
     <div *ngIf="userSelected == null">
-      <a class="connect-navigation navigation " [routerLink]="['/login-page']"> Se connecter</a>
-      <a class="connect-navigation navigation">/</a>
-      <a class="connect-navigation navigation" [routerLink]="['/sign-in-page']">S'inscrire</a>
+      <a mat-raised-button color="accent" class="connect-navigation navigation " [routerLink]="['/login-page']"> Se connecter</a>
+     
+      <a mat-button class="connect-navigation navigation" [routerLink]="['/sign-in-page']">S'inscrire</a>
     </div>
-  </div>
-</div>
+</mat-toolbar>

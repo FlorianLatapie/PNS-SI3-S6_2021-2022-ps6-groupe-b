@@ -31,7 +31,11 @@ import { UpdateQuizzesComponent } from './pages/update-quizzes/update-quizzes.co
 import { PlayQuizPageStade4Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade4/play-quiz-page-stade4.component';
 import { PlayQuizPageStade5Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade5/play-quiz-page-stade5.component';
 import { PlayQuizPageStade6Component } from './pages/play-page/play-quiz-stade-pages/play-quiz-page-stade6/play-quiz-page-stade6.component';
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
@@ -44,6 +48,7 @@ import { PlayCategoriesPageComponent } from './pages/play-categories-page/play-c
 import { StatsUserPageComponent } from './pages/stats-user-page/stats-user-page.component';
 import { StatsInstancesPageComponent } from './pages/stats-instances-page/stats-instances-page.component';
 import { InstanceComponent } from './instances/instance/instance.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -91,7 +96,13 @@ import { InstanceComponent } from './instances/instance/instance.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
 <div class="categorie-list" >
   <ng-container *ngIf="getNbQuizzes()!=0">
     <div class="categorie" *ngFor="let category of categoryList">
-      <app-category *ngIf="getNbQuizzesWithCategory(category)!=0" [category]="category" (categorySelected)="categorySelected($event)"></app-category>
+      <app-category class="category-card" *ngIf="getNbQuizzesWithCategory(category)!=0" [category]="category" (categorySelected)="categorySelected($event)"></app-category>
     </div>
   </ng-container>
   <ng-container *ngIf="getNbQuizzes()==0">

@@ -1,13 +1,17 @@
 @import '../../../../src/styles/buttons.scss';
 @import '../../../../src/styles/variables.scss';
-
+@import '../../../../src/styles/buttons.scss';
 
 .body-main-page{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height: 60vh;
+    height: 80vh;
+}
+
+.title-main-page{
+  margin-top: 2rem;
 }
 
 .buttons-placement{
@@ -17,7 +21,9 @@
 }
 
 .button-margin{
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 .connect{
@@ -25,15 +31,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 50vh;
 }
 
 .connect-button{
     padding: 1rem 1.5rem;
-    margin: .5rem;
+    margin: 1rem 1rem;
+    font-size: 2rem;
 
-}
-
-.title-main-page{
 }
 
 .brain-img{
@@ -42,7 +47,11 @@
     opacity: 12%;
 }
 
-.svg{
+mat-card{
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 5rem;
 }
 
 svg text {

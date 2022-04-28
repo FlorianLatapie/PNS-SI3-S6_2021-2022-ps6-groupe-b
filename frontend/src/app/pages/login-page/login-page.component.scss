@@ -7,3 +7,28 @@
     overflow-wrap: normal;
     flex-wrap: wrap;
 }
+
+mat-card{
+    display: flex;
+    flex-direction: row;
+}
+
+.title-login{
+    cursor: pointer;
+    color: black;
+    margin-top: 7rem;
+    font-size: 4rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.center{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

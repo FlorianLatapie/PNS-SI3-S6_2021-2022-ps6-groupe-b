@@ -1,3 +1,6 @@
+
+
+
 @import './styles/variables.scss';
 @import "./styles/card.scss";
 
@@ -33,3 +36,9 @@ h1{
   font-size: 2em;
   color: $darkblue;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
