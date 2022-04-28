@@ -1,12 +1,12 @@
 <div class="body-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/stats-page">Retour</button>
+    <button  mat-raised-button color="primary" class="button-display" routerLink="/stats-page">Retour</button>
   </div>
   <h1 class="page-title">Choisissez un utilisateur</h1>
   <div *ngIf="numberOfPlayerWhoPlayedQuiz()!=0" class="userList">
     <ng-container *ngFor="let user of userList">
-      <app-user *ngIf="hasUserPlayedQuiz(user)" [user]="user" [displaySelectButton]="true"
-                (selectUser)="selectUser(user)"></app-user>
+      <app-user *ngIf="hasUserPlayedQuiz(user)" [user]="user" [displaySelectButton]="false"
+                (click)="selectUser(user)"></app-user>
     </ng-container>
   </div>
   <div *ngIf="numberOfPlayerWhoPlayedQuiz()==0" class="userList">

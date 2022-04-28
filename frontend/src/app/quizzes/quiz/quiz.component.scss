@@ -14,4 +14,10 @@
 
 .flex-buttons-quiz{
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+button{
+    padding: .5rem 1rem;
+    font-size: 1.1rem;
 }
