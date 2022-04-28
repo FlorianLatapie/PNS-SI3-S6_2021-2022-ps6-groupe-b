@@ -10,13 +10,13 @@
       <br>
 
       <p>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label for="description">Description</mat-label>
           <textarea matInput id="description" [formControlName]="'description'"  placeholder="Photos de vacances de 1995" required></textarea>
         </mat-form-field>
       </p>
     <br>
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label for="category">Catégorie</mat-label>
       <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory required>
         <div *ngFor="let category of categoryList">
