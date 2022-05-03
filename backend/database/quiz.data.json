@@ -6,7 +6,9 @@
       "id": 1,
       "name": "Personnes"
     },
-    "id": 1650357399894
+    "id": 1650357399894,
+    "login": "test",
+    "password": "test"
   },
   {
     "name": "Quiz de Thomas",
@@ -16,7 +18,9 @@
       "name": "Personnes"
     },
     "userId": 1648560306857,
-    "id": 1650550216007
+    "id": 1650550216007,
+    "login": "test",
+    "password": "test"
   },
   {
     "name": "Quiz Jean",
@@ -26,7 +30,9 @@
       "name": "Personnes"
     },
     "userId": 1648560302115,
-    "id": 1650703455277
+    "id": 1650703455277,
+    "login": "test",
+    "password": "test"
   },
   {
     "name": "quiz pour monique",
@@ -36,7 +42,9 @@
       "name": "Personnes"
     },
     "userId": 1648560295620,
-    "id": 1650816998452
+    "id": 1650816998452,
+    "login": "test",
+    "password": "test"
   },
   {
     "name": "Quiz Lucile",
@@ -46,7 +54,9 @@
       "name": "Evènements"
     },
     "userId": 1648560295620,
-    "id": 1650894741467
+    "id": 1650894741467,
+    "login": "test",
+    "password": "test"
   },
   {
     "name": "Quiz pour Michel",
@@ -56,6 +66,8 @@
       "name": "Lieux"
     },
     "userId": 1648560295620,
-    "id": 1650895111871
+    "id": 1650895111871,
+    "login": "test",
+    "password": "test"
   }
 ]

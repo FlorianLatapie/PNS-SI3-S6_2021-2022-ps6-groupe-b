@@ -9,4 +9,6 @@ module.exports = new BaseModel('Quiz', {
     id: Joi.number().required(),
     name: Joi.string().required(),
   },
+  login: Joi.string().required(),
+  password: Joi.string().required(),
 })

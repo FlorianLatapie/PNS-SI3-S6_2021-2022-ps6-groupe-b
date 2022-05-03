@@ -106,11 +106,10 @@ export class QuizService {
     return this.http.delete<Question>(questionUrl, this.httpOptions);
   }
 
-  getQuizByCategory(category: Category): Quiz[] {
+  getQuizByCategory(category: Category, user: User): Quiz[] {
     const listQuizzes: Quiz[] = [];
-
     this.quizzes.forEach(quiz => {
-      if (quiz.category.id === category.id) {
+      if (quiz.category.id === category.id && quiz.login === user.login && quiz.password === user.password) {
         listQuizzes.push(quiz);
       }
     });

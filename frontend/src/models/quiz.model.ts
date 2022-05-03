@@ -10,4 +10,6 @@ export interface Quiz {
   questions: Question[];
   correctQuestions?: number;
   incorrectQuestions?: number;
+  login: string;
+  password: string;
 }

@@ -44,6 +44,8 @@ import { PlayCategoriesPageComponent } from './pages/play-categories-page/play-c
 import { StatsUserPageComponent } from './pages/stats-user-page/stats-user-page.component';
 import { StatsInstancesPageComponent } from './pages/stats-instances-page/stats-instances-page.component';
 import { InstanceComponent } from './instances/instance/instance.component';
+import { InscriptionPageComponent } from './pages/inscription-page/inscription-page.component';
+import { ConnexionPageComponent } from './pages/connexion-page/connexion-page.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { InstanceComponent } from './instances/instance/instance.component';
     StatsUserPageComponent,
     StatsInstancesPageComponent,
     InstanceComponent,
+    InscriptionPageComponent,
+    ConnexionPageComponent,
   ],
   imports: [
     BrowserModule,

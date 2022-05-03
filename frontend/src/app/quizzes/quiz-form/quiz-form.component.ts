@@ -52,6 +52,8 @@ export class QuizFormComponent implements OnInit {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.userId = this.currentUser.id;
+    quizToCreate.login = this.currentUser.login;
+    quizToCreate.password = this.currentUser.password;
     this.quizService.addQuiz(quizToCreate).subscribe(q => {
       this.quizService.setSelectedCategory(q.category);
       this.router.navigate(['/edit-quiz/' + q.id]);

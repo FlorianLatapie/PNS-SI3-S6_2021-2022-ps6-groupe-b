@@ -32,7 +32,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   getNbQuizzesWithCategory(category: Category): number {
-    return this.quizService.getQuizByCategory(category).length;
+    return this.quizService.getQuizByCategory(category, this.user).length;
   }
 
   getNbQuizzes(): number {

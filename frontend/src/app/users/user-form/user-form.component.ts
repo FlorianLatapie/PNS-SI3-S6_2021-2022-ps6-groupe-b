@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {UserService} from '../../../services/user.service';
@@ -13,15 +13,21 @@ export class UserFormComponent implements OnInit {
 
   public userForm: FormGroup;
 
+  @Input()
+  public displayLoginAndPassword = false;
+
   @Output()
   public userCreated: EventEmitter<User> = new EventEmitter<User>();
+
 
   constructor(public formBuilder: FormBuilder, public userService: UserService) {
     this.userForm = this.formBuilder.group({
       firstName: [''],
       lastName: [''],
       stade: [''],
-      isAdmin: ['false']
+      isAdmin: ['false'],
+      login: [''],
+      password: ['']
     });
   }
 
@@ -31,7 +37,6 @@ export class UserFormComponent implements OnInit {
   addUser(): void {
     // We retrieve here the user object from the userForm and we cast the type "as User".
     const userToCreate: User = this.userForm.getRawValue() as User;
-    this.userService.addUser(userToCreate);
     this.userCreated.emit(userToCreate);
   }
 }

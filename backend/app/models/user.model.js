@@ -6,4 +6,6 @@ module.exports = new BaseModel('User', {
   lastName: Joi.string().required(),
   stade: Joi.number().required(),
   isAdmin: Joi.boolean().required(),
+  login: Joi.string().required(),
+  password: Joi.string().required()
 })

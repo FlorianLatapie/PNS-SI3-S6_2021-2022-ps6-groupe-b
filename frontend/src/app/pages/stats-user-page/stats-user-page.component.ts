@@ -21,6 +21,7 @@ export class StatsUserPageComponent implements OnInit {
     this.quizService.getQuiz(id).subscribe(q => {
       this.userService.users$.subscribe(u => {
         this.quizService.quizInstances$.subscribe(i => {
+          console.log(q);
           this.quiz = q;
           this.userList = u;
           this.quizInstances = i;

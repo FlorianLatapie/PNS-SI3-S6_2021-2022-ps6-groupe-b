@@ -24,6 +24,8 @@ import {StatsCategoriesPageComponent} from './pages/stats-categories-page/stats-
 import {PlayCategoriesPageComponent} from './pages/play-categories-page/play-categories-page.component';
 import {StatsUserPageComponent} from './pages/stats-user-page/stats-user-page.component';
 import {StatsInstancesPageComponent} from './pages/stats-instances-page/stats-instances-page.component';
+import {InscriptionPageComponent} from "./pages/inscription-page/inscription-page.component";
+import {ConnexionPageComponent} from "./pages/connexion-page/connexion-page.component";
 
 const routes: Routes = [
   // PAGES
@@ -48,6 +50,8 @@ const routes: Routes = [
   {path: 'play-categories-page', component: PlayCategoriesPageComponent},
   {path: 'stats-user-page/:id', component: StatsUserPageComponent},
   {path: 'stats-instances-page/:idquiz/:iduser', component: StatsInstancesPageComponent},
+  {path: 'inscription-page', component: InscriptionPageComponent},
+  {path: 'connexion-page', component: ConnexionPageComponent},
 
   {path: '', redirectTo: '/main-page', pathMatch: 'full'},
 

@@ -28,18 +28,14 @@ export class UserService {
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    this.retrieveUsers();
   }
 
-  retrieveUsers(): void {
-    this.http.get<User[]>(this.userUrl).subscribe((userList) => {
-      this.users = userList;
-      this.users$.next(this.users);
-    });
+  retrieveUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl);
   }
 
-  addUser(user: User): void {
-    this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.userUrl, user, this.httpOptions);
   }
 
   getUser(userId: string): Observable<User> {
@@ -64,12 +60,34 @@ export class UserService {
 
   deleteUser(user: User): void {
     const urlWithId = this.userUrl + '/' + user.id;
-    this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
+    this.http.delete<User>(urlWithId, this.httpOptions).subscribe(u => this.users.splice(this.users.indexOf(u)));
   }
 
   updateUser(user: User): void {
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.put<User>(urlWithId, user, this.httpOptions).subscribe(() => this.retrieveUsers());
     console.log('user updated !');
+  }
+
+  getUserByLoginAndPassword(login: string, password: string): User[] {
+    const userList: User[] = [];
+    this.users.forEach(user => {
+      if (user.login === login && user.password === password){
+        userList.push(user);
+      }
+    });
+    this.users = userList;
+    this.users$.next(this.users);
+    return userList;
+  }
+
+  setUsers(userList: User[]): void {
+    this.users = userList;
+    this.users$.next(this.users);
+  }
+
+  addToUsers(u: User): void {
+    this.users.push(u);
+    this.users$.next(this.users);
   }
 }

@@ -4,4 +4,6 @@ export interface User {
   lastName: string;
   stade: string;
   isAdmin: boolean;
+  login: string;
+  password: string;
 }

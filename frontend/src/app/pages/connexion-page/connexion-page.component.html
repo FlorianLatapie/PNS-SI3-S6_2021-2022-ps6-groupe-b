@@ -1,0 +1,19 @@
+<div class="card">
+  <h1>Connexion</h1>
+  <br>
+  <form [formGroup]="connexionForm">
+  <label for="login">
+    Login <br>
+    <input type="text" id="login" [formControlName]="'login'">
+  </label>
+  <br>
+  <label for="password">
+    Password <br>
+    <input type="password" id="password" [formControlName]="'password'">
+  </label>
+  <br>
+  <div id="error"></div>
+  <br>
+  <button class="button-card" (click)="connexion()"> Se connecter </button>
+  </form>
+</div>

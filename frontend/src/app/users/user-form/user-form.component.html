@@ -20,6 +20,19 @@
       </select>
     </label>
     <br>
+    <ng-container *ngIf="displayLoginAndPassword; then displayLogin"></ng-container>
+    <ng-template #displayLogin>
+      <label for="login">
+        Login<br>
+        <input class="input-custom" type="text" id="login" [formControlName]="'login'">
+      </label>
+      <br>
+      <label for="password">
+        Password<br>
+        <input class="input-custom" type="password" id="password" [formControlName]="'password'">
+      </label>
+      <br>
+    </ng-template>
     <button type="submit" class="button-card" (click)="addUser()">Créer</button>
   </form>
 </div>
