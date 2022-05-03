@@ -22,15 +22,17 @@
     <br>
     <ng-container *ngIf="displayLoginAndPassword; then displayLogin"></ng-container>
     <ng-template #displayLogin>
-      <label for="login">
-        Login<br>
-        <input class="input-custom" type="text" id="login" [formControlName]="'login'">
-      </label>
+      <mat-form-field>
+        <mat-label for="login">
+          Login<br></mat-label>
+          <input matInput type="text" id="login" [formControlName]="'login'">
+      </mat-form-field>
       <br>
-      <label for="password">
-        Password<br>
-        <input class="input-custom" type="password" id="password" [formControlName]="'password'">
-      </label>
+      <mat-form-field>
+        <mat-label for="password">
+          Password<br></mat-label>
+          <input matInput type="password" id="password" [formControlName]="'password'">
+      </mat-form-field>
       <br>
     </ng-template>
     <button mat-raised-button color="accent" type="submit" (click)="addUser()">Créer</button>

@@ -1,19 +1,21 @@
 <div class="card">
   <h1>Connexion</h1>
   <br>
-  <form [formGroup]="connexionForm">
-  <label for="login">
-    Login <br>
-    <input type="text" id="login" [formControlName]="'login'">
-  </label>
-  <br>
-  <label for="password">
-    Password <br>
-    <input type="password" id="password" [formControlName]="'password'">
-  </label>
-  <br>
-  <div id="error"></div>
-  <br>
-  <button class="button-card" (click)="connexion()"> Se connecter </button>
-  </form>
+  <mat-form [formGroup]="connexionForm">
+    <mat-form-field>
+      <mat-label for="login">
+        Login <br></mat-label>
+        <input matInput type="text" id="login" [formControlName]="'login'">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label for="password">
+        Password <br></mat-label>
+        <input matInput type="password" id="password" [formControlName]="'password'">
+    </mat-form-field>
+    <br>
+    <div id="error"></div>
+    <br>
+    <button class="button-card" (click)="connexion()"> Se connecter </button>
+  </mat-form>
 </div>

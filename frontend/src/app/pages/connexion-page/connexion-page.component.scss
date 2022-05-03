@@ -1,0 +1,19 @@
+@import '../../../styles/card.scss';
+
+button{
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  text-align: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.card{
+  margin: 5rem auto;
+  max-width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
