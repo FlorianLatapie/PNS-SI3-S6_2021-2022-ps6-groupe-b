@@ -5,8 +5,8 @@
       <text class="title-main-page" x="50%" y="60%" text-anchor="middle">Quiz Groupe B</text>
     </svg>
     <div class="buttons-placement">
-      <button mat-raised-button color="accent" class="button-margin" [routerLink]="['/play-categories-page']">Jouer</button>
-      <button mat-raised-button color="basic" *ngIf="user.isAdmin == true" class="button-margin" [routerLink]="['/manage-page']">
+      <button class="button main-button button-margin" [routerLink]="['/play-categories-page']">Jouer</button>
+      <button class="button main-button button-margin" *ngIf="user.isAdmin == true" [routerLink]="['/manage-page']">
         Gérer les quiz
       </button>
     </div>
@@ -14,14 +14,14 @@
 </ng-template>
 <ng-template #ask_to_connect>
   <div class="connect">
-    <mat-card>
-      <button  mat-raised-button color="primary" class="connect-button" [routerLink]="['/login-page']">
+    <!-- <mat-card> -->
+      <button class="button main-button button-margin" [routerLink]="['/login-page']">
         Se connecter
       </button>
-      <button  mat-raised-button color="primary" class="connect-button" [routerLink]="['/sign-in-page']">
+      <button class="button main-button button-margin" [routerLink]="['/sign-in-page']">
         S'inscrire
       </button>
-    </mat-card>
+    <!-- </mat-card> -->
     </div>
   <img class="brain-img" src="../../../assets/cerveau.png" alt="">
 </ng-template>
