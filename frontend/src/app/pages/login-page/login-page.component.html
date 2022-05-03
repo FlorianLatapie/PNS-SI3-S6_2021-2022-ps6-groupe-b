@@ -1,6 +1,11 @@
+<h1 class="title-login">Qui est-ce ?</h1>
+
 <div class="user-list">
-  <div class="user" *ngFor="let user of userList">
-    <app-user [user]="user" [displaySelectButton]="true" [displayDeleteButton]="false" (deleteUser)="deleteUser($event)"
-              (selectUser)="selectUser($event)"></app-user>
-  </div>
+    <div class="user" *ngFor="let user of userList">
+      <app-user (click)="selectUser(user)" [user]="user" [displaySelectButton]="false" [displayDeleteButton]="false" (deleteUser)="deleteUser($event)"
+      (selectUser)="selectUser($event)"></app-user>
+    </div>
+</div>
+<div class="center">
+  <button mat-button color="primary"	[routerLink]="['/user-list']" >Gérer les utilisateurs</button>
 </div>

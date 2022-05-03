@@ -1,4 +1,5 @@
 @import '../../../../src/styles/page.scss';
+@import '../../../../src/styles/buttons.scss';
 @import '../../../../src/styles/variables.scss';
 
 .header-page {
@@ -22,4 +23,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.button-margin{
+  margin: 1rem;
 }

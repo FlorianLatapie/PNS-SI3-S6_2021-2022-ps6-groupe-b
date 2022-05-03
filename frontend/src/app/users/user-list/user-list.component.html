@@ -4,4 +4,7 @@
     <app-user [user]="user" [displayDeleteButton]="true" [displayIsAdminButton]="true" (deleteUser)="deleteUser($event)"
               (isAdmin)="isAdminTrue($event)" (isAdmin)="isAdminFalse($event)"></app-user>
   </div>
+  <button mat-raised-button class="button-cross" >
+    <img class="img-cross" src="../../../assets/cross.svg" 	[routerLink]="['/sign-in-page']" >
+  </button>
 </div>

@@ -8,44 +8,17 @@
   color: $white;
 }
 
-.header {
+.navbar-main{
   display: flex;
-  justify-content: space-between;
-  background: $darkblue;
-  font-size: 0.8rem;
-  padding: 1em;
-  // box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-  margin-bottom: 2rem;
-}
-
-.navigation {
-  padding-left: 0.5em;
-  color: white;
-  // font-size: .5rem;
-  text-decoration: none;
-  transition: all 0.4s;
-
-}
-
-.connect-navigation{
-  padding-left: none;
-}
-
-.navigation:hover{
-  text-shadow: $lightwhite 3px 0 12px;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
-.useful-links>a{
-  margin: .5rem;
-  text-decoration: none;
+.spacer{
+  flex: 1 1 auto;
 }
 
-#Titre{
-  font-size: 1rem;
-  align-self: center;
-}
-
-.connection-parameters{
-  display: flex;
+mat-toolbar{
+  color: $darkblue;
 }

@@ -1,3 +1,11 @@
+@use "@angular/material/theming" as mat;
+
+$my-primary: mat.$mat-indigo;
+$my-accent: mat.$mat-pink;
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.$mat-purple;
+
 $app-background-color: #f2f2f2;
 $blue: #2f2fa2;
 $darkblue: #0e1b79;

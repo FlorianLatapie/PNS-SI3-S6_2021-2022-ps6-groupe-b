@@ -1,30 +1,30 @@
 <div class="card">
   <form class="quiz-form" [formGroup]="quizForm" #formcontrol="ngForm">
-    <div class="name">
-      <label for="name">
-        Nom du Quiz *<br>
-        <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="Quiz pour Ginette"
-               required>
-      </label>
-    </div>
-    <div class="description">
-      <label for="description">
-        Description *<br>
-        <textarea class="input-custom" type="text" id="description" rows="5" cols="36" [formControlName]="'description'"
-                  placeholder="Photos de vacances de 1995" required></textarea>
-      </label>
-    </div>
+      <p>
+        <mat-form-field appearance="legacy" hintLabel="Maximum 20 charactères">
+          <mat-label for="name"> Nom du Quiz</mat-label>
+          <input  matInput  #input maxlength="20" type="text" id="name" [formControlName]="'name'" placeholder="Quiz pour Ginette" required>
+          <mat-hint>{{input.value?.length || 0}}/20</mat-hint>
+        </mat-form-field>
+      </p>
+      <br>
+
+      <p>
+        <mat-form-field>
+          <mat-label for="description">Description</mat-label>
+          <textarea matInput id="description" [formControlName]="'description'"  placeholder="Photos de vacances de 1995" required></textarea>
+        </mat-form-field>
+      </p>
     <br>
-    <mat-form-field appearance="fill">
-      <mat-label for="category">
-        Catégorie *<br>
-        <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory required>
-          <mat-option *ngFor="let category of categoryList" [value]=category>
-            {{category.name}}
-          </mat-option>
-        </mat-select>
-      </mat-label>
+    <mat-form-field>
+      <mat-label for="category">Catégorie</mat-label>
+      <mat-select id="category" [formControlName]="'category'" [(value)]=selectedCategory required>
+        <div *ngFor="let category of categoryList">
+          <mat-option [value]=category>{{category.name}}</mat-option>
+        </div>
+      </mat-select>
     </mat-form-field>
+  
     <br>
     <p><i>* : Champs obligatoires</i></p>
     <br>

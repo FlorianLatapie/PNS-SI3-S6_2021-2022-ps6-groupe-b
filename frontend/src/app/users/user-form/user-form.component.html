@@ -1,24 +1,24 @@
 <div class="card">
   <h2>Créer un nouvel utilisateur</h2>
   <form class="user-form" [formGroup]="userForm">
-    <label for="firstName">
-      Prénom<br>
-      <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
-    </label>
+    <mat-form-field>
+      <mat-label for="firstName">Prénom</mat-label>
+      <input matInput [formControlName]="'firstName'">
+    </mat-form-field>
     <br>
-    <label for="lastName">
-      Nom de famille<br>
-      <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
-    </label>
+    <mat-form-field>
+      <mat-label for="firstName">Nom de famille</mat-label>
+      <input matInput [formControlName]="'lastName'">
+    </mat-form-field>
     <br>
-    <label>
-      Stade<br>
-      <select [formControlName]="'stade'">
-        <option type="number" value="4" >4</option>
-        <option type="number" value="5" >5</option>
-        <option type="number" value="6" >6</option>
-      </select>
-    </label>
+    <mat-form-field>
+      <mat-label>Stade</mat-label>
+      <mat-select [formControlName]="'stade'">
+        <mat-option type="number" value="4" >4</mat-option>
+        <mat-option type="number" value="5" >5</mat-option>
+        <mat-option type="number" value="6" >6</mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
     <ng-container *ngIf="displayLoginAndPassword; then displayLogin"></ng-container>
     <ng-template #displayLogin>
@@ -33,6 +33,6 @@
       </label>
       <br>
     </ng-template>
-    <button type="submit" class="button-card" (click)="addUser()">Créer</button>
+    <button mat-raised-button color="accent" type="submit" (click)="addUser()">Créer</button>
   </form>
 </div>

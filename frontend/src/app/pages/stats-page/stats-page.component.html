@@ -1,8 +1,9 @@
 <div class="body-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/stats-categories-page">Retour</button>
+    <button  mat-raised-button color="primary" class="button-display"  routerLink="/play-categories-page">Retour</button>
   </div>
+
   <h1 class="page-title">Statistiques</h1>
-  <app-quiz-list [displaySelectButton]="true" [displayDeleteButton]="false" [displayEditButton]="false"
+  <app-quiz-list [displaySelectButton]="false" [displayDeleteButton]="false" [displayEditButton]="false"
                  [categorySelected]="category" (quizSelectedFromChild)="quizSelected($event)"></app-quiz-list>
 </div>

@@ -1,8 +1,8 @@
-<div class="card card-user" xmlns="http://www.w3.org/1999/html">
-  <h2>
-    <i class="fas fa-user"></i>
-    {{user.firstName}} {{user.lastName}}
-  </h2>
+<button mat-raised-button class="card card-user">
+    <h2>
+      <i class="fas fa-user"></i>
+      {{user.firstName}} {{user.lastName}}
+    </h2>
   <div *ngIf="user.isAdmin == true;then admin else player"></div>
   <ng-template #admin>
     <h3>Administrateur</h3>
@@ -10,17 +10,17 @@
   <ng-template #player>
     <h3>Joueur</h3>
   </ng-template>
-  <button *ngIf="displayDeleteButton" class="button-card" (click)="delete()">Delete</button>
-  <button *ngIf="displaySelectButton" class="button-card" (click)="select()">Sélectionner</button>
+  <button mat-raised-button color="accent" *ngIf="displayDeleteButton" class="delete-button"  (click)="delete()">Delete</button>
+  <button mat-raised-button color="primary" *ngIf="displaySelectButton"  (click)="select()">Sélectionner</button>
   <div *ngIf="displayIsAdminButton">
     <div *ngIf="user.isAdmin == true;then button_admin else button_player"></div>
     <ng-template #button_player>
-      <button  class="button-card" (click)="isAdminTrue()">Donner les droits
+      <button mat-raised-button color="primary"  (click)="isAdminTrue()">Donner les droits
         d'administrateur
       </button>
     </ng-template>
     <ng-template #button_admin>
-      <button class="button-card" (click)="isAdminFalse()">Révoquer les droits
+      <button mat-raised-button color="primary"  (click)="isAdminFalse()">Révoquer les droits
         d'administrateur
       </button>
     </ng-template>
@@ -29,4 +29,4 @@
       <div class="error_msg" id="error_msg_{{user.id}}"></div>
     </div>
   </div>
-</div>
+</button>

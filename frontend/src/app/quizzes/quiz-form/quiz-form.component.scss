@@ -8,13 +8,22 @@
   width: 100%;
 }
 
-.name {
-  margin-bottom: 0.5em;
-}
 
 #submit-button:disabled,
 #submit-button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+.card{
+  padding-top: 2rem;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field{
+  width: 20rem;
 }

@@ -1,12 +1,15 @@
+
+@import '../../../../src/styles/page.scss';
+@import '../../../../src/styles/buttons.scss';
+@import '../../../../src/styles/variables.scss';
+
+
 .body-stats-categories-page{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-
-@import '../../../../src/styles/page.scss';
-@import '../../../../src/styles/variables.scss';
 
 .header-page {
   display: flex;
@@ -23,4 +26,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.button-display{
+  display: flex;
+  justify-content: flex-start;
 }

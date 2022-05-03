@@ -1,6 +1,6 @@
 <div *ngIf="userSelected != null" class="account-page-layout">
   <div class="header-page">
-    <button class="button-card" routerLink="{{previousUrl}}">Retour</button>
+    <button mat-raised-button color="primary" class="button-display" routerLink="{{previousUrl}}">Retour</button>
   </div>
   <h1 class="account-page-title">Page utilisateur</h1>
 
@@ -14,30 +14,30 @@
       <td>Prénom</td>
       <td id="first_name">{{userSelected.firstName}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button id="first_name_button" class="modify-button button-card" (click)="modifyName('first_name')">Modifier</button>
+        <button mat-raised-button color="basic" id="first_name_button" class="modify-button button-card" (click)="modifyName('first_name')">Modifier</button>
       </td>
     </tr>
     <tr>
       <td>Nom de famille</td>
       <td id="last_name">{{userSelected.lastName}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button id="last_name_button" class="modify-button button-card" (click)="modifyName('last_name')">Modifier</button>
+        <button mat-raised-button color="basic" id="last_name_button" class="modify-button button-card" (click)="modifyName('last_name')">Modifier</button>
       </td>
     </tr>
     <tr>
       <td>Stade</td>
       <td>{{userSelected.stade}}</td>
       <td *ngIf="userSelected.isAdmin == true">
-        <button class="modify-button button-card" (click)="downStade()">-</button>
-        <button class="modify-button button-card" (click)="upStade()">+</button>
+        <button mat-raised-button color="basic" class="modify-button button-card" (click)="downStade()">-</button>
+        <button mat-raised-button color="basic" class="modify-button button-card" (click)="upStade()">+</button>
       </td>
     </tr>
   </table>
-  <button *ngIf="userSelected.isAdmin == true" class="modify-button button-card" [routerLink]="['/user-list']">Gérer les
+  <button mat-raised-button color="primary" *ngIf="userSelected.isAdmin == true" class="resize-button manage-user-button" [routerLink]="['/user-list']">Gérer les
     utilisateurs
   </button>
 
-  <button class="modify-button button-card" [routerLink]="['/login-page']" (click)="logoutAccount()">
+  <button mat-raised-button color="accent" class="resize-button" [routerLink]="['/login-page']" (click)="logoutAccount()">
     Se déconnecter
   </button>
 </div>

@@ -1,6 +1,6 @@
 <div *ngIf="quizInstances && quiz" class="body-page">
   <div class="header-page">
-    <button class="button-card" routerLink="/stats-user-page/{{quiz.id}}">Retour</button>
+    <button  mat-raised-button color="primary" class="button-display" routerLink="/stats-user-page/{{quiz.id}}">Retour</button>
   </div>
   <h1 class="page-title">Instances du quiz "{{quiz.name}}"</h1>
   <h2 class="stat-quiz">Le quiz a été joué {{quizInstances.length}} fois !</h2>
